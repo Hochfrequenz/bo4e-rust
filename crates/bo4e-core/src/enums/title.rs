@@ -48,10 +48,7 @@ mod tests {
 
     #[test]
     fn test_deserialize() {
-        assert_eq!(
-            serde_json::from_str::<Title>(r#""DR""#).unwrap(),
-            Title::Dr
-        );
+        assert_eq!(serde_json::from_str::<Title>(r#""DR""#).unwrap(), Title::Dr);
         assert_eq!(
             serde_json::from_str::<Title>(r#""PROF_DR""#).unwrap(),
             Title::ProfDr

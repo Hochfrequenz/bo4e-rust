@@ -58,14 +58,8 @@ mod tests {
 
     #[test]
     fn test_serialize() {
-        assert_eq!(
-            serde_json::to_string(&Salutation::Mr).unwrap(),
-            r#""HERR""#
-        );
-        assert_eq!(
-            serde_json::to_string(&Salutation::Ms).unwrap(),
-            r#""FRAU""#
-        );
+        assert_eq!(serde_json::to_string(&Salutation::Mr).unwrap(), r#""HERR""#);
+        assert_eq!(serde_json::to_string(&Salutation::Ms).unwrap(), r#""FRAU""#);
     }
 
     #[test]
