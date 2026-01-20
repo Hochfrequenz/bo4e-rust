@@ -33,67 +33,74 @@ pub struct Meter {
     pub meta: Bo4eMeta,
 
     /// Unique meter identification number (Zaehlernummer)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "zaehlernummer")]
     pub meter_number: Option<String>,
 
     /// Energy division (Sparte)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "sparte")]
     pub division: Option<Division>,
 
     /// Type of meter (Zaehlertyp)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "zaehlertyp")]
     pub meter_type: Option<MeterType>,
 
     /// Meter size classification (Zaehlergroesse)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "zaehlergroesse")]
     pub meter_size: Option<MeterSize>,
 
     /// Installation location address (Standort)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "standort")]
     pub location: Option<Address>,
 
     /// Registers on this meter (Zaehlwerke)
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "zaehlwerke")]
     pub registers: Vec<MeterRegister>,
 
     /// Hardware components (Geraeteeigenschaften)
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        alias = "geraeteeigenschaften"
+    )]
     pub hardware: Vec<Hardware>,
 
     /// Reference to associated market location ID (Marktlokation)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "marktlokationsId")]
     pub market_location_id: Option<String>,
 
     /// Reference to associated metering location ID (Messlokation)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "messlokationsId")]
     pub metering_location_id: Option<String>,
 
     /// Ownership status (Eigentumsverhaeltnis)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "eigentumsverhaeltnis"
+    )]
     pub ownership: Option<String>,
 
     /// Manufacturer (Hersteller)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "hersteller")]
     pub manufacturer: Option<String>,
 
     /// Manufacturing year (Herstellungsjahr)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "herstellungsjahr")]
     pub manufacturing_year: Option<i32>,
 
     /// Installation date (Einbaudatum)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "einbaudatum")]
     pub installation_date: Option<chrono::DateTime<chrono::Utc>>,
 
     /// Removal date (Ausbaudatum)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "ausbaudatum")]
     pub removal_date: Option<chrono::DateTime<chrono::Utc>>,
 
     /// Calibration date (Eichdatum)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "eichdatum")]
     pub calibration_date: Option<chrono::DateTime<chrono::Utc>>,
 
     /// Calibration expiry date (Eichablaufdatum)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "eichablaufdatum")]
     pub calibration_expiry_date: Option<chrono::DateTime<chrono::Utc>>,
 }
 

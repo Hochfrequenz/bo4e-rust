@@ -30,39 +30,39 @@ pub struct Address {
     pub meta: Bo4eMeta,
 
     /// Street name (Strasse)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "strasse")]
     pub street: Option<String>,
 
     /// House number (Hausnummer)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "hausnummer")]
     pub house_number: Option<String>,
 
     /// Postal code (Postleitzahl)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "postleitzahl")]
     pub postal_code: Option<String>,
 
     /// City/town (Ort)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "ort")]
     pub city: Option<String>,
 
     /// District (Ortsteil)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "ortsteil")]
     pub district: Option<String>,
 
     /// PO Box number (Postfach)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "postfach")]
     pub po_box: Option<String>,
 
     /// Address addition/note (Adresszusatz)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "adresszusatz")]
     pub address_addition: Option<String>,
 
     /// Co-location info - c/o address (CoErgaenzung)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "coErgaenzung")]
     pub co_ergaenzung: Option<String>,
 
     /// Country code (Landescode)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "landescode")]
     pub country_code: Option<Country>,
 }
 

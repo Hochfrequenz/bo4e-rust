@@ -355,3 +355,49 @@ cargo test golden --
 # Full test suite
 cargo test --workspace
 ```
+
+## Test Summary
+
+| Metric | Value |
+|--------|-------|
+| Tests | 660 |
+| Passed | 660 |
+| Failed | 0 |
+| Skipped | 3 (doc-tests with `ignore` attribute) |
+
+### New Tests Added
+
+**Golden File Tests (`crates/bo4e/tests/golden.rs`):**
+- `test_meter_from_german_json` - Verifies Meter deserialization from German JSON
+- `test_market_location_from_german_json` - Verifies MarketLocation deserialization from German JSON
+- `test_business_partner_from_german_json` - Verifies BusinessPartner deserialization from German JSON
+- `test_roundtrip_meter` - Tests Rust serialize/deserialize roundtrip
+- `test_german_alias_deserialization` - Tests German field name aliases work
+- `test_english_deserialization` - Tests English camelCase field names work
+- `test_address_german_aliases` - Tests Address component with German aliases
+- `test_market_location_german_aliases` - Tests MarketLocation with German aliases
+- `test_business_partner_german_aliases` - Tests BusinessPartner with German aliases
+
+**Mapping Module Tests (`crates/bo4e-serde/src/mapping.rs`):**
+- `test_to_german` - Tests English to German field name translation
+- `test_to_english` - Tests German to English field name translation
+- `test_bidirectional` - Verifies all mappings are bidirectional
+- `test_field_detection` - Tests field type detection functions
+
+### Files Modified/Added
+
+**New Files:**
+- `crates/bo4e-serde/src/mapping.rs` - Field name mapping module
+- `crates/bo4e/tests/golden.rs` - Golden file tests
+- `crates/bo4e/tests/golden/fixtures/meter.json` - Meter fixture
+- `crates/bo4e/tests/golden/fixtures/market_location.json` - MarketLocation fixture
+- `crates/bo4e/tests/golden/fixtures/business_partner.json` - BusinessPartner fixture
+- `crates/bo4e/tests/golden/generate.py` - Python script to regenerate fixtures
+
+**Modified Files:**
+- `crates/bo4e-serde/src/lib.rs` - Export mapping module
+- `crates/bo4e-serde/Cargo.toml` - Add once_cell dependency
+- `crates/bo4e-core/src/bo/meter.rs` - Add German serde aliases
+- `crates/bo4e-core/src/bo/market_location.rs` - Add German serde aliases
+- `crates/bo4e-core/src/bo/business_partner.rs` - Add German serde aliases
+- `crates/bo4e-core/src/com/address.rs` - Add German serde aliases

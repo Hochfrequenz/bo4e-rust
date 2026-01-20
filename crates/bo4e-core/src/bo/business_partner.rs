@@ -30,7 +30,7 @@ pub struct BusinessPartner {
     pub meta: Bo4eMeta,
 
     /// Partner ID (Geschaeftspartner-ID)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "geschaeftspartnerId")]
     pub partner_id: Option<String>,
 
     /// Company/organization name (Name1)
@@ -46,27 +46,34 @@ pub struct BusinessPartner {
     pub name3: Option<String>,
 
     /// Roles this partner has (Rollen)
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        alias = "geschaeftspartnerrollen"
+    )]
     pub roles: Vec<BusinessPartnerRole>,
 
     /// Primary address (Adresse)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "adresse")]
     pub address: Option<Address>,
 
     /// Contact methods (Kontaktwege)
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "kontaktwege")]
     pub contact_methods: Vec<ContactMethod>,
 
     /// Commercial register number (Handelsregisternummer)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "handelsregisternummer"
+    )]
     pub commercial_register_number: Option<String>,
 
     /// Tax ID (Steuernummer)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "steuernummer")]
     pub tax_id: Option<String>,
 
     /// VAT ID (Umsatzsteuer-ID)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "umsatzsteuerId")]
     pub vat_id: Option<String>,
 }
 
