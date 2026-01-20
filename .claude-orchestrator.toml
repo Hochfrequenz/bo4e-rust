@@ -1,0 +1,33 @@
+[general]
+project_root = "/home/claude/github/BO4E-rust"
+worktree_dir = "/home/claude/.claude-orchestrator/worktrees/BO4E-rust"
+max_parallel_agents = 10
+database_path = "/home/claude/.claude-orchestrator/BO4E-rust.db"
+
+[claude]
+model = "claude-opus-4-5-20251101"
+max_tokens = 64000
+
+[build_pool]
+enabled = true
+websocket_port = 8082
+git_daemon_port = 9419
+git_daemon_listen_addr = ""  # Empty = all interfaces, "127.0.0.1" = local only
+
+[build_pool.local_fallback]
+enabled = true              # Run builds locally if no workers connected
+max_jobs = 2
+worktree_dir = "/tmp/build-pool/local"
+
+[build_pool.timeouts]
+job_default_secs = 300      # 5 minute default timeout
+heartbeat_interval_secs = 30
+heartbeat_timeout_secs = 90 # Allow missing 2 heartbeats (handles high CPU load)
+
+[notifications]
+desktop = false
+slack_webhook = ""
+
+[web]
+host = "0.0.0.0"
+port = 8082
