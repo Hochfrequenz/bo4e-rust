@@ -1,5 +1,5 @@
 ---
-status: in_progress
+status: complete
 ---
 # Epic 2.1: Energy & Technical Enumerations
 
