@@ -466,3 +466,70 @@ find crates/bo4e-core/src/enums -name "*.rs" | wc -l
 ```
 
 Expected: ~100 files (97 enums + mod.rs + bo_type + com_type)
+
+---
+
+## Test Summary
+
+| Metric | Value |
+|--------|-------|
+| Tests | 189 |
+| Passed | 189 |
+| Failed | 0 |
+| Skipped | 0 |
+
+### Enums Implemented (17 new enums)
+
+**Pricing:**
+- `PriceType` - Type of price (Preistyp)
+- `PriceModel` - Pricing model (Preismodell)
+- `PriceGuaranteeType` - Price guarantee type (Preisgarantietyp)
+- `PriceStatus` - Price status (Preisstatus)
+- `SurchargeType` - Surcharge/discount type (AufAbschlagstyp)
+- `SurchargeTarget` - Surcharge target (AufAbschlagsziel)
+- `CalculationMethod` - Calculation method (Kalkulationsmethode)
+- `TaxType` - Tax type (Steuerart)
+
+**Costs:**
+- `CostClass` - Cost class (Kostenklasse)
+
+**Tariffs:**
+- `TariffCalculationMethod` - Tariff calculation method (Tarifkalkulationsmethode)
+- `TariffTime` - Tariff time period (Tarifzeit)
+- `TariffFeature` - Tariff feature (Tarifmerkmal)
+- `TariffRegionCriterion` - Tariff region criterion (Tarifregionskriterium)
+
+**Regional:**
+- `RegionType` - Region type (Gebiettyp)
+- `RegionCriterionType` - Region criterion type (Regionskriteriumtyp)
+
+**Concession Fees:**
+- `ConcessionFeeType` - Concession fee type (Abgabeart)
+- `ConcessionFeeCustomerGroup` - Concession fee customer group (KundengruppeKA)
+
+**Eco/Certificates:**
+- `EcoLabel` - Eco label (Oekolabel)
+- `EcoCertificate` - Eco certificate (Oekozertifikat)
+
+### Files Created
+
+- `crates/bo4e-core/src/enums/price_type.rs`
+- `crates/bo4e-core/src/enums/price_model.rs`
+- `crates/bo4e-core/src/enums/price_guarantee_type.rs`
+- `crates/bo4e-core/src/enums/price_status.rs`
+- `crates/bo4e-core/src/enums/surcharge_type.rs`
+- `crates/bo4e-core/src/enums/surcharge_target.rs`
+- `crates/bo4e-core/src/enums/calculation_method.rs`
+- `crates/bo4e-core/src/enums/tax_type.rs`
+- `crates/bo4e-core/src/enums/cost_class.rs`
+- `crates/bo4e-core/src/enums/tariff_calculation_method.rs`
+- `crates/bo4e-core/src/enums/tariff_time.rs`
+- `crates/bo4e-core/src/enums/tariff_feature.rs`
+- `crates/bo4e-core/src/enums/tariff_region_criterion.rs`
+- `crates/bo4e-core/src/enums/region_type.rs`
+- `crates/bo4e-core/src/enums/region_criterion_type.rs`
+- `crates/bo4e-core/src/enums/concession_fee_type.rs`
+- `crates/bo4e-core/src/enums/concession_fee_customer_group.rs`
+- `crates/bo4e-core/src/enums/eco_label.rs`
+- `crates/bo4e-core/src/enums/eco_certificate.rs`
+- `crates/bo4e-core/src/enums/mod.rs` (updated)

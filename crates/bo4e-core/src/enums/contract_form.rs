@@ -62,7 +62,11 @@ mod tests {
 
     #[test]
     fn test_roundtrip() {
-        for form in [ContractForm::Online, ContractForm::Direct, ContractForm::Fax] {
+        for form in [
+            ContractForm::Online,
+            ContractForm::Direct,
+            ContractForm::Fax,
+        ] {
             let json = serde_json::to_string(&form).unwrap();
             let parsed: ContractForm = serde_json::from_str(&json).unwrap();
             assert_eq!(form, parsed);
