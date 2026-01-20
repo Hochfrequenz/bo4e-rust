@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Registeranzahl (also known as Registerart)
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Registertyp"))]
 #[non_exhaustive]
 pub enum RegisterType {
     /// Single tariff (Eintarif)

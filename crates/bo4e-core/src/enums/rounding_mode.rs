@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Rundungsverfahren
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Rundungsverfahren"))]
 #[non_exhaustive]
 pub enum RoundingMode {
     /// No rounding (Keine Rundung)

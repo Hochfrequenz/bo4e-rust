@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Tarifmerkmal
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Tarifmerkmal"))]
 #[non_exhaustive]
 pub enum TariffFeature {
     /// Standard product (Standardprodukt)

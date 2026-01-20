@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Rechnungsstatus
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Rechnungsstatus"))]
 #[non_exhaustive]
 pub enum InvoiceStatus {
     /// Unchecked - invoice created/received but not yet verified (Ungeprueft)

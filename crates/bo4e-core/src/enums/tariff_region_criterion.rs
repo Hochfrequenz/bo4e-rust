@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Tarifregionskriterium
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Tarifregionskriterium"))]
 #[non_exhaustive]
 pub enum TariffRegionCriterion {
     /// Network number (Netznummer)

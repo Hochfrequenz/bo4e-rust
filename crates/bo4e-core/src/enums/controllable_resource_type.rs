@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: SteuerbareRessourceTyp
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "SteuerbareRessourceTyp"))]
 #[non_exhaustive]
 pub enum ControllableResourceType {
     /// On/Off control (An/Aus)

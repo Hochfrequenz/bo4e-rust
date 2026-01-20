@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Preisstatus
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Preisstatus"))]
 #[non_exhaustive]
 pub enum PriceStatus {
     /// Preliminary (Vorläufig)

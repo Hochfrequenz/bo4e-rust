@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Kontaktart
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Kontaktart"))]
 #[non_exhaustive]
 pub enum ContactType {
     /// Postal mail (Postweg)

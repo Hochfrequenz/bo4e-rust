@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Oekozertifikat
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Oekozertifikat"))]
 #[non_exhaustive]
 pub enum EcoCertificate {
     /// CMS EE01 certificate

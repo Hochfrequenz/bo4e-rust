@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Spannungsebene
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Spannungsebene"))]
 #[non_exhaustive]
 pub enum VoltageLevel {
     /// Extra high voltage (Höchstspannung) - typically 220kV or 380kV

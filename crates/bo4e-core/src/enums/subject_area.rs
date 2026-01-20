@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Themengebiet
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Themengebiet"))]
 #[non_exhaustive]
 pub enum SubjectArea {
     /// General information exchange (Allgemeiner Informationsaustausch)

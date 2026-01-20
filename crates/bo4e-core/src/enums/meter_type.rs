@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Zaehlertyp
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Zaehlertyp"))]
 #[non_exhaustive]
 pub enum MeterType {
     /// Three-phase rotating meter (Ferraris meter for three-phase)

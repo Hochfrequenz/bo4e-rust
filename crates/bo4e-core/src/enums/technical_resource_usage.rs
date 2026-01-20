@@ -8,6 +8,11 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: TechnischeRessourceNutzung
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(
+    feature = "json-schema",
+    schemars(rename = "TechnischeRessourceNutzung")
+)]
 #[non_exhaustive]
 pub enum TechnicalResourceUsage {
     /// Electricity consumption type (Stromverbrauchsart)

@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// Used in the `_typ` field to identify the concrete type of a BO4E component.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "ComTyp"))]
 #[non_exhaustive]
 pub enum ComType {
     // Address related

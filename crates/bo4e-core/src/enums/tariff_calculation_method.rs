@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Tarifkalkulationsmethode
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Tarifkalkulationsmethode"))]
 #[non_exhaustive]
 pub enum TariffCalculationMethod {
     /// No calculation, just multiply quantity by price

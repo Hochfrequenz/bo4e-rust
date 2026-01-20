@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Gueltigkeitstyp
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Gueltigkeitstyp"))]
 #[non_exhaustive]
 pub enum ValidityType {
     /// Only in - criterion applies only with the specified values (NUR_IN)

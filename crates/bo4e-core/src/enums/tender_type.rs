@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Ausschreibungstyp
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Ausschreibungstyp"))]
 #[non_exhaustive]
 pub enum TenderType {
     /// Private law (Privatrechtlich)

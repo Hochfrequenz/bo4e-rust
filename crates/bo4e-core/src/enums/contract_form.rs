@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Vertragsform
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Vertragsform"))]
 #[non_exhaustive]
 pub enum ContractForm {
     /// Online contract
