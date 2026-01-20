@@ -8,6 +8,18 @@ BO4E-Rust is a Rust implementation of the BO4E (Business Objects for Energy) sta
 
 **Implementation plans:** See `docs/plans/` for detailed phase-by-phase implementation plans.
 
+## Before Committing
+
+**Always run before committing code changes:**
+
+```bash
+cargo fmt --all
+cargo clippy --workspace --all-targets -- -D warnings
+cargo test --workspace
+```
+
+CI will reject commits that fail formatting checks.
+
 ## Build Commands
 
 ```bash
@@ -25,8 +37,10 @@ cargo test -p bo4e
 # Run single test
 cargo test -p bo4e-core test_name
 
-# Linting
+# Check formatting (CI uses this)
 cargo fmt --all --check
+
+# Linting
 cargo clippy --workspace --all-targets -- -D warnings
 
 # Generate docs
