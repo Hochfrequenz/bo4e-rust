@@ -21,6 +21,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Bonus"))]
 #[serde(rename_all = "camelCase")]
 pub struct Bonus {
     /// BO4E metadata
@@ -29,22 +31,27 @@ pub struct Bonus {
 
     /// Description/name of the bonus (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub description: Option<String>,
 
     /// Bonus value (Wert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "wert"))]
     pub value: Option<f64>,
 
     /// Currency (Waehrung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "waehrung"))]
     pub currency: Option<Currency>,
 
     /// Conditions for receiving the bonus (Bedingungen)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bedingungen"))]
     pub conditions: Option<String>,
 
     /// Whether the bonus is a one-time payment (Einmalig)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einmalig"))]
     pub is_one_time: Option<bool>,
 }
 

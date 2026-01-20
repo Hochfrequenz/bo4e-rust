@@ -25,6 +25,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Zeitreihenwert"))]
 #[serde(rename_all = "camelCase")]
 pub struct TimeSeriesValue {
     /// BO4E metadata
@@ -33,26 +35,32 @@ pub struct TimeSeriesValue {
 
     /// Timestamp of the value (Zeitpunkt)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zeitpunkt"))]
     pub timestamp: Option<DateTime<Utc>>,
 
     /// Value (Wert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "wert"))]
     pub value: Option<f64>,
 
     /// Unit of measurement (Einheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einheit"))]
     pub unit: Option<Unit>,
 
     /// Status/quality of the value (Status)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "status"))]
     pub status: Option<MeasuredValueStatus>,
 
     /// OBIS code (OBIS-Kennzahl)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "obisKennzahl"))]
     pub obis_code: Option<String>,
 
     /// Sequence number in the time series (Sequenznummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sequenznummer"))]
     pub sequence_number: Option<i64>,
 }
 

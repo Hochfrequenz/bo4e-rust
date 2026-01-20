@@ -22,6 +22,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Qualitaetsindikator"))]
 #[serde(rename_all = "camelCase")]
 pub struct QualityIndicator {
     /// BO4E metadata
@@ -30,26 +32,32 @@ pub struct QualityIndicator {
 
     /// Quality code (Qualitätscode)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "qualitaetscode"))]
     pub quality_code: Option<String>,
 
     /// Status of the measured value (Status)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "status"))]
     pub status: Option<MeasuredValueStatus>,
 
     /// Quality description (Qualitätsbeschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "qualitaetsbeschreibung"))]
     pub quality_description: Option<String>,
 
     /// Confidence percentage (Konfidenz)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "konfidenz"))]
     pub confidence_percent: Option<f64>,
 
     /// Data source (Datenquelle)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "datenquelle"))]
     pub data_source: Option<String>,
 
     /// Whether the value was substituted (Ersetzt)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ersetzt"))]
     pub is_substituted: Option<bool>,
 }
 

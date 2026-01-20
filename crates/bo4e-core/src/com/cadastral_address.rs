@@ -22,6 +22,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Katasteradresse"))]
 #[serde(rename_all = "camelCase")]
 pub struct CadastralAddress {
     /// BO4E metadata
@@ -30,10 +32,12 @@ pub struct CadastralAddress {
 
     /// Cadastral district and parcel (Gemarkung/Flur)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gemarkungFlur"))]
     pub gemarkung_flur: Option<String>,
 
     /// Plot/parcel number (Flurstück)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "flurstueck"))]
     pub flurstueck: Option<String>,
 }
 

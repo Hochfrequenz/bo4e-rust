@@ -23,6 +23,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Angebotsteil"))]
 #[serde(rename_all = "camelCase")]
 pub struct OfferPart {
     /// BO4E metadata
@@ -31,6 +33,7 @@ pub struct OfferPart {
 
     /// Sub-reference identifying a sub-chapter of a request, e.g., tender lot (AnfrageSubreferenz)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "anfrageSubreferenz"))]
     pub request_sub_reference: Option<String>,
 
     // Note: The following fields would typically reference other COM types
@@ -38,22 +41,27 @@ pub struct OfferPart {
     // For now, we use simplified representations.
     /// Number of positions in this offer part
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "anzahlPositionen"))]
     pub position_count: Option<i32>,
 
     /// Total quantity value for this offer part (simplified - Gesamtmengeangebotsteil)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gesamtmengeAngebotsteil"))]
     pub total_quantity_value: Option<f64>,
 
     /// Total cost value for this offer part (simplified - Gesamtkostenangebotsteil)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gesamtkostenAngebotsteil"))]
     pub total_cost_value: Option<f64>,
 
     /// Delivery period start (simplified - Lieferzeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "lieferzeitraumBeginn"))]
     pub delivery_period_start: Option<String>,
 
     /// Delivery period end (simplified - Lieferzeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "lieferzeitraumEnde"))]
     pub delivery_period_end: Option<String>,
 }
 

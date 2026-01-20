@@ -26,6 +26,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Ersatzwert"))]
 #[serde(rename_all = "camelCase")]
 pub struct SubstitutionValue {
     /// BO4E metadata
@@ -34,30 +36,37 @@ pub struct SubstitutionValue {
 
     /// Timestamp for the substituted value (Zeitpunkt)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zeitpunkt"))]
     pub timestamp: Option<DateTime<Utc>>,
 
     /// The substituted value (Wert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "wert"))]
     pub value: Option<f64>,
 
     /// Unit of the value (Einheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einheit"))]
     pub unit: Option<Unit>,
 
     /// Method used for substitution (Ersatzwertmethode)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ersatzwertmethode"))]
     pub substitution_method: Option<String>,
 
     /// Reason for substitution (Grund)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "grund"))]
     pub reason: Option<String>,
 
     /// Original value that was replaced, if available (Originalwert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "originalwert"))]
     pub original_value: Option<f64>,
 
     /// OBIS code (OBIS-Kennzahl)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "obisKennzahl"))]
     pub obis_code: Option<String>,
 }
 

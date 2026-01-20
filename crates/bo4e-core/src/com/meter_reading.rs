@@ -26,6 +26,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Zaehlwerksstand"))]
 #[serde(rename_all = "camelCase")]
 pub struct MeterReading {
     /// BO4E metadata
@@ -34,30 +36,37 @@ pub struct MeterReading {
 
     /// Timestamp of the reading (Ablesezeitpunkt)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ablesezeitpunkt"))]
     pub timestamp: Option<DateTime<Utc>>,
 
     /// Meter reading value (Zaehlwerksstand)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zaehlwerksstand"))]
     pub value: Option<f64>,
 
     /// Unit of measurement (Einheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einheit"))]
     pub unit: Option<Unit>,
 
     /// Type of reading (Ableseart)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ableseart"))]
     pub reading_type: Option<ReadingType>,
 
     /// Status/quality of the reading (Status)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "status"))]
     pub status: Option<MeasuredValueStatus>,
 
     /// OBIS code for the register (OBIS-Kennzahl)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "obisKennzahl"))]
     pub obis_code: Option<String>,
 
     /// Register ID (Zaehlwerkskennung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zaehlwerkskennung"))]
     pub register_id: Option<String>,
 }
 

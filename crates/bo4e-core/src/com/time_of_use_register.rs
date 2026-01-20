@@ -23,6 +23,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Zaehlzeitregister"))]
 #[serde(rename_all = "camelCase")]
 pub struct TimeOfUseRegister {
     /// BO4E metadata
@@ -31,30 +33,37 @@ pub struct TimeOfUseRegister {
 
     /// Register ID (Zaehlwerkskennung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zaehlwerkskennung"))]
     pub register_id: Option<String>,
 
     /// OBIS code (OBIS-Kennzahl)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "obisKennzahl"))]
     pub obis_code: Option<String>,
 
     /// Tariff time period (Tarifzeit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarifzeit"))]
     pub tariff_time: Option<TariffTime>,
 
     /// Unit of measurement (Einheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einheit"))]
     pub unit: Option<Unit>,
 
     /// Description of the register (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub description: Option<String>,
 
     /// Active start time in HH:MM format (Aktivzeitbeginn)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "aktivzeitbeginn"))]
     pub active_start_time: Option<String>,
 
     /// Active end time in HH:MM format (Aktivzeitende)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "aktivzeitende"))]
     pub active_end_time: Option<String>,
 }
 

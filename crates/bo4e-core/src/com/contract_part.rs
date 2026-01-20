@@ -25,6 +25,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Vertragsteil"))]
 #[serde(rename_all = "camelCase")]
 pub struct ContractPart {
     /// BO4E metadata
@@ -33,28 +35,34 @@ pub struct ContractPart {
 
     /// Start of the contract part validity (inclusive) (Vertragsteilbeginn)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragsteilbeginn"))]
     pub contract_part_start: Option<String>,
 
     /// End of the contract part validity (exclusive) (Vertragsteilende)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragsteilende"))]
     pub contract_part_end: Option<String>,
 
     /// Identifier for the market or metering location belonging to this contract part (Lokation)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "lokation"))]
     pub location_id: Option<String>,
 
     // Note: The following fields would typically reference Menge COM type.
     // Using simplified f64 values for now.
     /// Contractually fixed consumption quantity (Vertraglich fixierte Menge)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertraglichFixierteMenge"))]
     pub fixed_quantity_value: Option<f64>,
 
     /// Minimum consumption quantity (inclusive) (Minimale Abnahmemenge)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "minimaleAbnahmemenge"))]
     pub minimum_quantity_value: Option<f64>,
 
     /// Maximum consumption quantity (exclusive) (Maximale Abnahmemenge)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "maximaleAbnahmemenge"))]
     pub maximum_quantity_value: Option<f64>,
 }
 

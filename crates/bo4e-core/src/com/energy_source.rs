@@ -22,6 +22,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Energieherkunft"))]
 #[serde(rename_all = "camelCase")]
 pub struct EnergySource {
     /// BO4E metadata
@@ -30,10 +32,12 @@ pub struct EnergySource {
 
     /// Type of energy generation (Erzeugungsart)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "erzeugungsart"))]
     pub generation_type: Option<GenerationType>,
 
     /// Percentage share of this generation type (Anteil in Prozent)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "anteilProzent"))]
     pub percentage_share: Option<f64>,
 }
 

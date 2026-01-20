@@ -25,6 +25,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Zustaendigkeit"))]
 #[serde(rename_all = "camelCase")]
 pub struct Responsibility {
     /// BO4E metadata
@@ -33,14 +35,17 @@ pub struct Responsibility {
 
     /// Subject area classification of the contact person (Themengebiet)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "themengebiet"))]
     pub subject_area: Option<SubjectArea>,
 
     /// Professional position/role of the contact person (Position)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "position"))]
     pub position: Option<String>,
 
     /// Department where the contact person works (Abteilung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "abteilung"))]
     pub department: Option<String>,
 }
 

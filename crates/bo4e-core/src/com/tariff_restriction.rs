@@ -21,6 +21,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Tarifeinschraenkung"))]
 #[serde(rename_all = "camelCase")]
 pub struct TariffRestriction {
     /// BO4E metadata
@@ -29,30 +31,40 @@ pub struct TariffRestriction {
 
     /// Applicable customer types (Kundentypen)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kundentypen"))]
     pub customer_types: Vec<CustomerType>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Required tariff features (Tarifmerkmale)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarifmerkmale"))]
     pub required_features: Vec<TariffFeature>,
 
     /// Excluded tariff features (Ausgeschlossene Tarifmerkmale)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(
+        feature = "json-schema",
+        schemars(rename = "ausgeschlosseneTarifmerkmale")
+    )]
     pub excluded_features: Vec<TariffFeature>,
 
     /// Minimum annual consumption (Mindestjahresverbrauch)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "mindestjahresverbrauch"))]
     pub min_annual_consumption: Option<f64>,
 
     /// Maximum annual consumption (Höchstjahresverbrauch)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "hoechstjahresverbrauch"))]
     pub max_annual_consumption: Option<f64>,
 
     /// Additional notes (Bemerkung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bemerkung"))]
     pub notes: Option<String>,
 }
 

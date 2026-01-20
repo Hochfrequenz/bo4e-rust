@@ -23,6 +23,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Saisontarif"))]
 #[serde(rename_all = "camelCase")]
 pub struct SeasonalTariff {
     /// BO4E metadata
@@ -31,22 +33,27 @@ pub struct SeasonalTariff {
 
     /// Name of the season/tariff period (Saisonbezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "saisonbezeichnung"))]
     pub season_name: Option<String>,
 
     /// Start date of the season (Startdatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "startdatum"))]
     pub start_date: Option<NaiveDate>,
 
     /// End date of the season (Enddatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "enddatum"))]
     pub end_date: Option<NaiveDate>,
 
     /// Tariff identifier (Tarifkennung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarifkennung"))]
     pub tariff_id: Option<String>,
 
     /// Price factor for the season (Preisfaktor)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "preisfaktor"))]
     pub price_factor: Option<f64>,
 }
 

@@ -24,6 +24,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Profildaten"))]
 #[serde(rename_all = "camelCase")]
 pub struct ProfileData {
     /// BO4E metadata
@@ -32,30 +34,37 @@ pub struct ProfileData {
 
     /// Profile type/identifier (Profiltyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "profiltyp"))]
     pub profile_type: Option<String>,
 
     /// Timestamp of the profile value (Zeitpunkt)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zeitpunkt"))]
     pub timestamp: Option<DateTime<Utc>>,
 
     /// Profile value (Profilwert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "profilwert"))]
     pub value: Option<f64>,
 
     /// Unit of the profile value (Einheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einheit"))]
     pub unit: Option<Unit>,
 
     /// Profile name (Profilname)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "profilname"))]
     pub profile_name: Option<String>,
 
     /// Profile version (Profilversion)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "profilversion"))]
     pub profile_version: Option<String>,
 
     /// Temperature zone (Temperaturzone)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "temperaturzone"))]
     pub temperature_zone: Option<String>,
 }
 

@@ -21,6 +21,11 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(
+    feature = "json-schema",
+    schemars(rename = "Tarifberechnungsparameter")
+)]
 #[serde(rename_all = "camelCase")]
 pub struct TariffCalculationParameter {
     /// BO4E metadata
@@ -29,26 +34,32 @@ pub struct TariffCalculationParameter {
 
     /// Method for tariff calculation (Berechnungsmethode)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "berechnungsmethode"))]
     pub calculation_method: Option<TariffCalculationMethod>,
 
     /// Tariff time (day/night, etc.) (Tarifzeit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarifzeit"))]
     pub tariff_time: Option<TariffTime>,
 
     /// Whether this applies to peak demand (Ist Leistungsabhängig)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "istLeistungsabhaengig"))]
     pub is_demand_based: Option<bool>,
 
     /// Minimum annual consumption for this tariff (Mindestjahresverbrauch)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "mindestjahresverbrauch"))]
     pub min_annual_consumption: Option<f64>,
 
     /// Maximum annual consumption for this tariff (Höchstjahresverbrauch)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "hoechstjahresverbrauch"))]
     pub max_annual_consumption: Option<f64>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 }
 

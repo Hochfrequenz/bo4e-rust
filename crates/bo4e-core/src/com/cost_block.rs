@@ -23,6 +23,8 @@ use super::{Amount, CostPosition};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Kostenblock"))]
 #[serde(rename_all = "camelCase")]
 pub struct CostBlock {
     /// BO4E metadata
@@ -31,18 +33,22 @@ pub struct CostBlock {
 
     /// Name/designation of the cost block (Kostenblockbezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kostenblockbezeichnung"))]
     pub designation: Option<String>,
 
     /// Cost class (Kostenklasse)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kostenklasse"))]
     pub cost_class: Option<CostClass>,
 
     /// Sum of all cost positions in this block (Summe Kostenblock)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "summeKostenblock"))]
     pub total_amount: Option<Amount>,
 
     /// Individual cost positions (Kostenpositionen)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kostenpositionen"))]
     pub positions: Vec<CostPosition>,
 }
 

@@ -23,6 +23,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Adresse"))]
 #[serde(rename_all = "camelCase")]
 pub struct Address {
     /// BO4E metadata
@@ -31,38 +33,47 @@ pub struct Address {
 
     /// Street name (Strasse)
     #[serde(skip_serializing_if = "Option::is_none", alias = "strasse")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "strasse"))]
     pub street: Option<String>,
 
     /// House number (Hausnummer)
     #[serde(skip_serializing_if = "Option::is_none", alias = "hausnummer")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "hausnummer"))]
     pub house_number: Option<String>,
 
     /// Postal code (Postleitzahl)
     #[serde(skip_serializing_if = "Option::is_none", alias = "postleitzahl")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "postleitzahl"))]
     pub postal_code: Option<String>,
 
     /// City/town (Ort)
     #[serde(skip_serializing_if = "Option::is_none", alias = "ort")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ort"))]
     pub city: Option<String>,
 
     /// District (Ortsteil)
     #[serde(skip_serializing_if = "Option::is_none", alias = "ortsteil")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ortsteil"))]
     pub district: Option<String>,
 
     /// PO Box number (Postfach)
     #[serde(skip_serializing_if = "Option::is_none", alias = "postfach")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "postfach"))]
     pub po_box: Option<String>,
 
     /// Address addition/note (Adresszusatz)
     #[serde(skip_serializing_if = "Option::is_none", alias = "adresszusatz")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "adresszusatz"))]
     pub address_addition: Option<String>,
 
     /// Co-location info - c/o address (CoErgaenzung)
     #[serde(skip_serializing_if = "Option::is_none", alias = "coErgaenzung")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "coErgaenzung"))]
     pub co_ergaenzung: Option<String>,
 
     /// Country code (Landescode)
     #[serde(skip_serializing_if = "Option::is_none", alias = "landescode")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "landescode"))]
     pub country_code: Option<Country>,
 }
 

@@ -24,6 +24,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Verbrauch"))]
 #[serde(rename_all = "camelCase")]
 pub struct Consumption {
     /// BO4E metadata
@@ -32,26 +34,32 @@ pub struct Consumption {
 
     /// Consumption value (Wert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "wert"))]
     pub value: Option<f64>,
 
     /// Unit of measurement (Einheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einheit"))]
     pub unit: Option<Unit>,
 
     /// Start date of consumption period inclusive (Startdatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "startdatum"))]
     pub start_date: Option<DateTime<Utc>>,
 
     /// End date of consumption period exclusive (Enddatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "enddatum"))]
     pub end_date: Option<DateTime<Utc>>,
 
     /// OBIS code identifying the measured value (OBIS-Kennzahl)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "obisKennzahl"))]
     pub obis_code: Option<String>,
 
     /// Status of the measured value (Messwertstatus)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "messwertstatus"))]
     pub measured_value_status: Option<MeasuredValueStatus>,
 }
 

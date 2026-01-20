@@ -20,6 +20,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// assert_eq!(ext_ref.external_ref_value, Some("4711".to_string()));
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "ExterneReferenz"))]
 #[serde(rename_all = "camelCase")]
 pub struct ExternalReference {
     /// BO4E metadata
@@ -28,10 +30,12 @@ pub struct ExternalReference {
 
     /// Name of the external system (ExRefName)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "exRefName"))]
     pub external_ref_name: Option<String>,
 
     /// Value/ID in the external system (ExRefWert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "exRefWert"))]
     pub external_ref_value: Option<String>,
 }
 

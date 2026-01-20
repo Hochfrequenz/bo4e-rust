@@ -37,6 +37,8 @@ use super::EnergySource;
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Energiemix"))]
 #[serde(rename_all = "camelCase")]
 pub struct EnergyMix {
     /// BO4E metadata
@@ -45,50 +47,62 @@ pub struct EnergyMix {
 
     /// Unique identifier for the energy mix (Energiemixnummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "energiemixnummer"))]
     pub energy_mix_number: Option<i32>,
 
     /// Energy type/division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Name/designation of the energy mix (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub designation: Option<String>,
 
     /// Year for which this mix applies (Gültigkeitsjahr)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigkeitsjahr"))]
     pub valid_year: Option<i32>,
 
     /// Individual energy sources and their shares (Anteil)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "anteil"))]
     pub sources: Vec<EnergySource>,
 
     /// Notes about the mix (Bemerkung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bemerkung"))]
     pub notes: Option<String>,
 
     /// CO₂ emissions in g/kWh (CO2-Emission)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "co2Emission"))]
     pub co2_emission: Option<f64>,
 
     /// Nuclear waste in g/kWh (Atommüll)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "atommuell"))]
     pub nuclear_waste: Option<f64>,
 
     /// Environmental certificates (Ökozertifikate)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "oekozertifikate"))]
     pub eco_certificates: Vec<EcoCertificate>,
 
     /// Eco-labels (Ökolabel)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "oekolabel"))]
     pub eco_labels: Vec<EcoLabel>,
 
     /// Whether provider is in eco top ten (Ist in Öko Top Ten)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "istInOekoTopTen"))]
     pub in_eco_top_ten: Option<bool>,
 
     /// Website for published energy mix data (Website)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "website"))]
     pub website: Option<String>,
 }
 

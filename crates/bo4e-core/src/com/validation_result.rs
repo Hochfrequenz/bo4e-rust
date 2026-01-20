@@ -22,6 +22,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Validierungsergebnis"))]
 #[serde(rename_all = "camelCase")]
 pub struct ValidationResult {
     /// BO4E metadata
@@ -30,30 +32,37 @@ pub struct ValidationResult {
 
     /// Timestamp of validation (Validierungszeitpunkt)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "validierungszeitpunkt"))]
     pub validation_timestamp: Option<DateTime<Utc>>,
 
     /// Whether validation passed (Gültig)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltig"))]
     pub is_valid: Option<bool>,
 
     /// Validation rule ID (Validierungsregel)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "validierungsregel"))]
     pub validation_rule_id: Option<String>,
 
     /// Validation rule name (Regelbezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "regelbezeichnung"))]
     pub validation_rule_name: Option<String>,
 
     /// Error code if validation failed (Fehlercode)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "fehlercode"))]
     pub error_code: Option<String>,
 
     /// Error message (Fehlermeldung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "fehlermeldung"))]
     pub error_message: Option<String>,
 
     /// Severity level (Schweregrad)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "schweregrad"))]
     pub severity: Option<String>,
 }
 

@@ -22,6 +22,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Angebotsvariante"))]
 #[serde(rename_all = "camelCase")]
 pub struct OfferVariant {
     /// BO4E metadata
@@ -30,28 +32,34 @@ pub struct OfferVariant {
 
     /// Status of the offer (Angebotsstatus)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "angebotsstatus"))]
     pub offer_status: Option<OfferStatus>,
 
     /// Creation date of the offer variant (Erstellungsdatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "erstellungsdatum"))]
     pub creation_date: Option<String>,
 
     /// Binding deadline - until this time the offer variant is valid (Bindefrist)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bindefrist"))]
     pub binding_deadline: Option<String>,
 
     // Note: The following fields would typically reference other COM types
     // (Angebotsteil, Menge, Betrag) which will be added later.
     /// Number of offer parts in this variant
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "anzahlTeile"))]
     pub parts_count: Option<i32>,
 
     /// Total quantity value across all offer parts (simplified - Gesamtmenge)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gesamtmenge"))]
     pub total_quantity_value: Option<f64>,
 
     /// Total cost value across all offer parts (simplified - Gesamtkosten)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gesamtkosten"))]
     pub total_cost_value: Option<f64>,
 }
 

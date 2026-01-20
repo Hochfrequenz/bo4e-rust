@@ -23,6 +23,8 @@ use super::PriceTier;
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "AufAbschlag"))]
 #[serde(rename_all = "camelCase")]
 pub struct Surcharge {
     /// BO4E metadata
@@ -31,35 +33,43 @@ pub struct Surcharge {
 
     /// Name/designation of the surcharge (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub description: Option<String>,
 
     /// Type of surcharge (AufAbschlagstyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "aufAbschlagstyp"))]
     pub surcharge_type: Option<SurchargeType>,
 
     /// Value of the surcharge (Wert)
     /// Positive = surcharge, negative = discount
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "wert"))]
     pub value: Option<f64>,
 
     /// Currency unit for absolute surcharges (Waehrungseinheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "waehrungseinheit"))]
     pub currency: Option<Currency>,
 
     /// Target price/cost category (AufAbschlagsziel)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "aufAbschlagsziel"))]
     pub target: Option<SurchargeTarget>,
 
     /// Tiered surcharge values (Staffeln)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "staffeln"))]
     pub tiers: Vec<PriceTier>,
 
     /// Additional description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub details: Option<String>,
 
     /// Website for published information (Website)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "website"))]
     pub website: Option<String>,
 }
 

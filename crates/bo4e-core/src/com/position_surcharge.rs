@@ -21,6 +21,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "PositionsAufAbschlag"))]
 #[serde(rename_all = "camelCase")]
 pub struct PositionSurcharge {
     /// BO4E metadata
@@ -29,18 +31,22 @@ pub struct PositionSurcharge {
 
     /// Description (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub description: Option<String>,
 
     /// Type of surcharge (AufAbschlagstyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "aufAbschlagstyp"))]
     pub surcharge_type: Option<SurchargeType>,
 
     /// Value (Wert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "wert"))]
     pub value: Option<f64>,
 
     /// Currency (Waehrung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "waehrung"))]
     pub currency: Option<Currency>,
 }
 

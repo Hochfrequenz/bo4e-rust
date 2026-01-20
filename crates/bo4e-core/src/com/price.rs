@@ -23,6 +23,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Preis"))]
 #[serde(rename_all = "camelCase")]
 pub struct Price {
     /// BO4E metadata
@@ -31,22 +33,27 @@ pub struct Price {
 
     /// Price value (Wert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "wert"))]
     pub value: Option<f64>,
 
     /// Currency (Waehrung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "waehrung"))]
     pub currency: Option<Currency>,
 
     /// Unit that the price applies to (Bezugswert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezugswert"))]
     pub reference_unit: Option<Unit>,
 
     /// Type of price (Preistyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "preistyp"))]
     pub price_type: Option<PriceType>,
 
     /// Status of the price (Preisstatus)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "preisstatus"))]
     pub status: Option<PriceStatus>,
 }
 

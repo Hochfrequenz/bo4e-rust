@@ -26,6 +26,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Regionskriterium"))]
 #[serde(rename_all = "camelCase")]
 pub struct RegionCriterion {
     /// BO4E metadata
@@ -34,15 +36,18 @@ pub struct RegionCriterion {
 
     /// Whether this is an inclusive or exclusive criterion (Gueltigkeitstyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigkeitstyp"))]
     pub validity_type: Option<ValidityType>,
 
     /// The type of criterion, e.g., federal state, postal code (Regionskriteriumtyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "regionskriteriumtyp"))]
     pub criterion_type: Option<RegionCriterionType>,
 
     /// The value the criterion takes, e.g., "NRW" or "50667" (Wert)
     /// Note: For BUNDESWEIT (nationwide), this value is not relevant.
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "wert"))]
     pub value: Option<String>,
 }
 

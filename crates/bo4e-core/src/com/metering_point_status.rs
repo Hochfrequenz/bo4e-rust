@@ -22,6 +22,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Messstellenstatus"))]
 #[serde(rename_all = "camelCase")]
 pub struct MeteringPointStatus {
     /// BO4E metadata
@@ -30,26 +32,32 @@ pub struct MeteringPointStatus {
 
     /// Timestamp of the status (Statuszeitpunkt)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "statuszeitpunkt"))]
     pub status_timestamp: Option<DateTime<Utc>>,
 
     /// Whether the metering point is active (Aktiv)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "aktiv"))]
     pub is_active: Option<bool>,
 
     /// Status code (Statuscode)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "statuscode"))]
     pub status_code: Option<String>,
 
     /// Status description (Statusbeschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "statusbeschreibung"))]
     pub status_description: Option<String>,
 
     /// Whether data is being transmitted (Datenübertragung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "datenuebertragung"))]
     pub data_transmission_active: Option<bool>,
 
     /// Installation status (Installationsstatus)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "installationsstatus"))]
     pub installation_status: Option<String>,
 }
 
