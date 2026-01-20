@@ -254,3 +254,32 @@ cargo run --example meter_roundtrip
 # Docs generate without warnings
 RUSTDOCFLAGS="-D warnings" cargo doc --workspace --no-deps
 ```
+
+## Test Summary
+
+| Metric | Value |
+|--------|-------|
+| Tests | 765 |
+| Passed | 763 |
+| Failed | 0 |
+| Skipped | 2 |
+
+Files added/modified:
+- crates/bo4e/src/lib.rs - Enhanced crate-level documentation with working examples
+- crates/bo4e/examples/meter_roundtrip.rs - Example demonstrating meter serialization roundtrip
+- crates/bo4e/examples/market_location.rs - Example demonstrating market location usage
+
+Test breakdown:
+- bo4e golden tests: 9 passed
+- bo4e-core unit tests: 631 passed
+- bo4e-serde unit tests: 19 passed
+- bo4e doc tests: 2 passed
+- bo4e-core doc tests: 102 passed
+- bo4e-serde doc tests: 2 skipped (use `ignore` attribute)
+
+All verification checks pass:
+- `cargo test --doc --workspace` - All doc tests pass
+- `cargo run --example meter_roundtrip` - Example runs successfully
+- `cargo run --example market_location` - Example runs successfully
+- `RUSTDOCFLAGS="-D warnings" cargo doc --workspace --no-deps` - Docs generate without warnings
+- `cargo clippy --workspace --all-targets -- -D warnings` - No clippy warnings
