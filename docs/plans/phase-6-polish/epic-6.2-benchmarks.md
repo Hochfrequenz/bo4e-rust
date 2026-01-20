@@ -1,3 +1,6 @@
+---
+status: in_progress
+---
 # Epic 6.2: Benchmarks
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
