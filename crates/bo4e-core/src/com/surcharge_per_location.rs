@@ -22,6 +22,8 @@ use super::Surcharge;
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "AufAbschlagProOrt"))]
 #[serde(rename_all = "camelCase")]
 pub struct SurchargePerLocation {
     /// BO4E metadata
@@ -30,18 +32,22 @@ pub struct SurchargePerLocation {
 
     /// Postal code (Postleitzahl)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "postleitzahl"))]
     pub postal_code: Option<String>,
 
     /// Municipality/city (Ort)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ort"))]
     pub municipality: Option<String>,
 
     /// Network area code (Netznummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "netznummer"))]
     pub network_area_code: Option<String>,
 
     /// Surcharges applicable to this location (AufAbschläge)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "aufAbschlaege"))]
     pub surcharges: Vec<Surcharge>,
 }
 

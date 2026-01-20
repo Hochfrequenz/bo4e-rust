@@ -22,6 +22,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Preisstaffel"))]
 #[serde(rename_all = "camelCase")]
 pub struct PriceTier {
     /// BO4E metadata
@@ -30,22 +32,27 @@ pub struct PriceTier {
 
     /// Lower consumption limit inclusive (Staffelgrenze von)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "staffelgrenzeVon"))]
     pub lower_limit: Option<f64>,
 
     /// Upper consumption limit exclusive (Staffelgrenze bis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "staffelgrenzeBis"))]
     pub upper_limit: Option<f64>,
 
     /// Unit price for this tier (Einheitspreis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einheitspreis"))]
     pub unit_price: Option<f64>,
 
     /// Tier number/sequence (Staffelnummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "staffelnummer"))]
     pub tier_number: Option<i32>,
 
     /// Article ID reference (Artikel-ID)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "artikelId"))]
     pub article_id: Option<String>,
 }
 

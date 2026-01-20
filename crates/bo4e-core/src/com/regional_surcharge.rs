@@ -24,6 +24,8 @@ use super::Surcharge;
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "AufAbschlagRegional"))]
 #[serde(rename_all = "camelCase")]
 pub struct RegionalSurcharge {
     /// BO4E metadata
@@ -32,14 +34,17 @@ pub struct RegionalSurcharge {
 
     /// Type of regional criterion (Tarifregionskriterium)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarifregionskriterium"))]
     pub region_criterion: Option<TariffRegionCriterion>,
 
     /// Region code/value (Regionscode)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "regionscode"))]
     pub region_code: Option<String>,
 
     /// Surcharges applicable to this region (AufAbschläge)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "aufAbschlaege"))]
     pub surcharges: Vec<Surcharge>,
 }
 

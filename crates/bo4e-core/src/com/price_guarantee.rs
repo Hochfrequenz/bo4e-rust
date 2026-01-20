@@ -23,6 +23,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Preisgarantie"))]
 #[serde(rename_all = "camelCase")]
 pub struct PriceGuarantee {
     /// BO4E metadata
@@ -31,18 +33,22 @@ pub struct PriceGuarantee {
 
     /// Type of price guarantee (Preisgarantietyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "preisgarantietyp"))]
     pub guarantee_type: Option<PriceGuaranteeType>,
 
     /// Start of validity period (Zeitliche Gültigkeit - Von)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zeitlicheGueltigkeit"))]
     pub valid_from: Option<DateTime<Utc>>,
 
     /// End of validity period (Zeitliche Gültigkeit - Bis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zeitlicheGueltigkeitBis"))]
     pub valid_until: Option<DateTime<Utc>>,
 
     /// Description of the guarantee (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 }
 

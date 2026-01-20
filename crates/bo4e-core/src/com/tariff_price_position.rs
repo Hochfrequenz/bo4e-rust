@@ -24,6 +24,8 @@ use super::TariffPrice;
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Tarifpreisposition"))]
 #[serde(rename_all = "camelCase")]
 pub struct TariffPricePosition {
     /// BO4E metadata
@@ -32,26 +34,32 @@ pub struct TariffPricePosition {
 
     /// Description of the position (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub description: Option<String>,
 
     /// Type of price (Preistyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "preistyp"))]
     pub price_type: Option<PriceType>,
 
     /// Reference unit (Bezugseinheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezugseinheit"))]
     pub reference_unit: Option<Unit>,
 
     /// Calculation method (Berechnungsmethode)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "berechnungsmethode"))]
     pub calculation_method: Option<CalculationMethod>,
 
     /// Tariff prices (Tarifpreise)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarifpreise"))]
     pub prices: Vec<TariffPrice>,
 
     /// Article ID (Artikel-ID)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "artikelId"))]
     pub article_id: Option<String>,
 }
 

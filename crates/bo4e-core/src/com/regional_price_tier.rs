@@ -21,6 +21,8 @@ use super::PriceTier;
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "RegionalePreisstaffel"))]
 #[serde(rename_all = "camelCase")]
 pub struct RegionalPriceTier {
     /// BO4E metadata
@@ -29,10 +31,12 @@ pub struct RegionalPriceTier {
 
     /// Region code (postal code, network area, etc.) (Regionscode)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "regionscode"))]
     pub region_code: Option<String>,
 
     /// Price tiers for this region (Preisstaffeln)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "preisstaffeln"))]
     pub tiers: Vec<PriceTier>,
 }
 
