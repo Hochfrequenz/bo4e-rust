@@ -115,7 +115,8 @@ mod tests {
         assert_eq!(tax.tax_type, Some(TaxType::ValueAddedTax));
         assert_eq!(tax.tax_rate, Some(7.0));
         assert_eq!(tax.basis_value, Some(100.0));
-        assert_eq!(tax.tax_value, Some(7.0));
+        // Use approximate comparison due to floating point precision
+        assert!((tax.tax_value.unwrap() - 7.0).abs() < 0.0001);
     }
 
     #[test]

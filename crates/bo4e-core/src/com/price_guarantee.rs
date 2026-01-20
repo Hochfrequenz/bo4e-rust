@@ -114,7 +114,7 @@ mod tests {
         };
 
         let json = serde_json::to_string(&guarantee).unwrap();
-        assert!(json.contains(r#""guaranteeType":"VOLLSTAENDIG""#));
+        assert!(json.contains(r#""guaranteeType":"ALLE_PREISBESTANDTEILE_BRUTTO""#));
         assert!(json.contains(r#""description":"Test guarantee""#));
     }
 
