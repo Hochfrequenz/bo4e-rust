@@ -13,7 +13,7 @@ categories.workspace = true
 [dependencies]
 serde = { workspace = true }
 chrono = { workspace = true }
-schemars = { version = "0.8", optional = true, features = ["chrono"] }
+schemars = { version = "1.2", optional = true, features = ["chrono"] }
 serde_json = { workspace = true, optional = true }
 
 [features]
