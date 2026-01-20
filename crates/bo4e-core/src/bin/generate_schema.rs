@@ -7,6 +7,7 @@
 fn main() {
     #[cfg(feature = "json-schema")]
     {
+        use bo4e_core::com::*;
         use bo4e_core::enums::*;
         use schemars::schema_for;
         use serde_json::{json, Map, Value};
@@ -196,9 +197,159 @@ fn main() {
         enum_schemas.insert("SubjectArea".into(), json!(schema_for!(SubjectArea)));
         enum_schemas.insert("ValidityType".into(), json!(schema_for!(ValidityType)));
 
+        // Build component schemas map
+        let mut com_schemas = Map::new();
+
+        // Address & Contact components
+        com_schemas.insert("Adresse".into(), json!(schema_for!(Address)));
+        com_schemas.insert(
+            "Katasteradresse".into(),
+            json!(schema_for!(CadastralAddress)),
+        );
+        com_schemas.insert("Geokoordinaten".into(), json!(schema_for!(GeoCoordinates)));
+        com_schemas.insert("Kontaktweg".into(), json!(schema_for!(ContactMethod)));
+        com_schemas.insert("Unterschrift".into(), json!(schema_for!(Signature)));
+        com_schemas.insert(
+            "ExterneReferenz".into(),
+            json!(schema_for!(ExternalReference)),
+        );
+
+        // Pricing components
+        com_schemas.insert("Preis".into(), json!(schema_for!(Price)));
+        com_schemas.insert("Preisstufe".into(), json!(schema_for!(PriceTier)));
+        com_schemas.insert("Preisposition".into(), json!(schema_for!(PricePosition)));
+        com_schemas.insert("Preisgarantie".into(), json!(schema_for!(PriceGuarantee)));
+        com_schemas.insert(
+            "RegionalePreisstufe".into(),
+            json!(schema_for!(RegionalPriceTier)),
+        );
+        com_schemas.insert("Margenpreis".into(), json!(schema_for!(MarginPrice)));
+        com_schemas.insert("Aufschlag".into(), json!(schema_for!(Surcharge)));
+        com_schemas.insert(
+            "PositionsAufschlag".into(),
+            json!(schema_for!(PositionSurcharge)),
+        );
+        com_schemas.insert(
+            "RegionalerAufschlag".into(),
+            json!(schema_for!(RegionalSurcharge)),
+        );
+        com_schemas.insert(
+            "AufschlagProOrt".into(),
+            json!(schema_for!(SurchargePerLocation)),
+        );
+        com_schemas.insert("Abgabe".into(), json!(schema_for!(Levy)));
+        com_schemas.insert("Netzentgelt".into(), json!(schema_for!(NetworkCharge)));
+
+        // Tariff components
+        com_schemas.insert("Tarifpreis".into(), json!(schema_for!(TariffPrice)));
+        com_schemas.insert(
+            "Tarifpreisposition".into(),
+            json!(schema_for!(TariffPricePosition)),
+        );
+        com_schemas.insert(
+            "Tarifberechnungsparameter".into(),
+            json!(schema_for!(TariffCalculationParameter)),
+        );
+        com_schemas.insert(
+            "Tarifeinschraenkung".into(),
+            json!(schema_for!(TariffRestriction)),
+        );
+        com_schemas.insert("Saisontarif".into(), json!(schema_for!(SeasonalTariff)));
+        com_schemas.insert(
+            "Zaehlzeitregister".into(),
+            json!(schema_for!(TimeOfUseRegister)),
+        );
+        com_schemas.insert("Energiemix".into(), json!(schema_for!(EnergyMix)));
+        com_schemas.insert("Energieherkunft".into(), json!(schema_for!(EnergySource)));
+
+        // Cost & Invoice components
+        com_schemas.insert("Kostenblock".into(), json!(schema_for!(CostBlock)));
+        com_schemas.insert("Kostenposition".into(), json!(schema_for!(CostPosition)));
+        com_schemas.insert(
+            "Fremdkostenblock".into(),
+            json!(schema_for!(ExternalCostBlock)),
+        );
+        com_schemas.insert(
+            "Fremdkostenposition".into(),
+            json!(schema_for!(ExternalCostPosition)),
+        );
+        com_schemas.insert("Steuerbetrag".into(), json!(schema_for!(TaxAmount)));
+        com_schemas.insert(
+            "Konzessionsabgabe".into(),
+            json!(schema_for!(ConcessionFee)),
+        );
+        com_schemas.insert(
+            "Rechnungsposition".into(),
+            json!(schema_for!(InvoicePosition)),
+        );
+        com_schemas.insert(
+            "Abrechnungsperiodendaten".into(),
+            json!(schema_for!(BillingPeriodData)),
+        );
+        com_schemas.insert("Bonus".into(), json!(schema_for!(Bonus)));
+        com_schemas.insert("Rabatt".into(), json!(schema_for!(Discount)));
+
+        // Measurement components
+        com_schemas.insert("Menge".into(), json!(schema_for!(Quantity)));
+        com_schemas.insert("Betrag".into(), json!(schema_for!(Amount)));
+        com_schemas.insert("Messwert".into(), json!(schema_for!(MeasuredValue)));
+        com_schemas.insert("Zaehlwerksstand".into(), json!(schema_for!(MeterReading)));
+        com_schemas.insert("Zaehlwerk".into(), json!(schema_for!(MeterRegister)));
+        com_schemas.insert(
+            "Messstellenstatus".into(),
+            json!(schema_for!(MeteringPointStatus)),
+        );
+        com_schemas.insert("Verbrauch".into(), json!(schema_for!(Consumption)));
+        com_schemas.insert(
+            "VerbrauchteQuantitaet".into(),
+            json!(schema_for!(ConsumedQuantity)),
+        );
+        com_schemas.insert("Aggregiertwert".into(), json!(schema_for!(AggregatedValue)));
+        com_schemas.insert("Ersatzwert".into(), json!(schema_for!(SubstitutionValue)));
+
+        // Time & Profile components
+        com_schemas.insert("Zeitraum".into(), json!(schema_for!(TimePeriod)));
+        com_schemas.insert("Datumsbereich".into(), json!(schema_for!(DateRange)));
+        com_schemas.insert("Intervall".into(), json!(schema_for!(Interval)));
+        com_schemas.insert("Lastkurvendaten".into(), json!(schema_for!(LoadCurveData)));
+        com_schemas.insert(
+            "Lastprofilwert".into(),
+            json!(schema_for!(LoadProfileValue)),
+        );
+        com_schemas.insert("Profildaten".into(), json!(schema_for!(ProfileData)));
+        com_schemas.insert("Zeitreihenwert".into(), json!(schema_for!(TimeSeriesValue)));
+        com_schemas.insert(
+            "Qualitaetsindikator".into(),
+            json!(schema_for!(QualityIndicator)),
+        );
+
+        // Contract & Offer components
+        com_schemas.insert(
+            "Vertragskonditionen".into(),
+            json!(schema_for!(ContractConditions)),
+        );
+        com_schemas.insert("Vertragsteil".into(), json!(schema_for!(ContractPart)));
+        com_schemas.insert("Angebotsteil".into(), json!(schema_for!(OfferPart)));
+        com_schemas.insert("Angebotsposition".into(), json!(schema_for!(OfferPosition)));
+        com_schemas.insert("Angebotsvariante".into(), json!(schema_for!(OfferVariant)));
+        com_schemas.insert(
+            "Regionskriterium".into(),
+            json!(schema_for!(RegionCriterion)),
+        );
+        com_schemas.insert("Zustaendigkeit".into(), json!(schema_for!(Responsibility)));
+        com_schemas.insert(
+            "Dienstleistungspreis".into(),
+            json!(schema_for!(ServicePrice)),
+        );
+        com_schemas.insert("Hardware".into(), json!(schema_for!(Hardware)));
+        com_schemas.insert(
+            "Validierungsergebnis".into(),
+            json!(schema_for!(ValidationResult)),
+        );
+
         let schemas = json!({
             "bo": {},
-            "com": {},
+            "com": Value::Object(com_schemas),
             "enum": Value::Object(enum_schemas)
         });
 

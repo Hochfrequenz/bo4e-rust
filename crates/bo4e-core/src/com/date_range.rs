@@ -22,6 +22,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Datumsbereich"))]
 #[serde(rename_all = "camelCase")]
 pub struct DateRange {
     /// BO4E metadata
@@ -30,10 +32,12 @@ pub struct DateRange {
 
     /// Start date (Startdatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "startdatum"))]
     pub start_date: Option<NaiveDate>,
 
     /// End date (Enddatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "enddatum"))]
     pub end_date: Option<NaiveDate>,
 }
 

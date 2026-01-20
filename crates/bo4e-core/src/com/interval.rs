@@ -22,6 +22,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Intervall"))]
 #[serde(rename_all = "camelCase")]
 pub struct Interval {
     /// BO4E metadata
@@ -30,10 +32,12 @@ pub struct Interval {
 
     /// Duration value (Dauer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "dauer"))]
     pub duration: Option<i32>,
 
     /// Time unit (Zeiteinheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zeiteinheit"))]
     pub unit: Option<TimeUnit>,
 }
 

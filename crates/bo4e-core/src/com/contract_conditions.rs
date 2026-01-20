@@ -20,6 +20,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Vertragskonditionen"))]
 #[serde(rename_all = "camelCase")]
 pub struct ContractConditions {
     /// BO4E metadata
@@ -28,28 +30,34 @@ pub struct ContractConditions {
 
     /// Free text description of conditions (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Number of agreed installments per year, e.g., 12 (AnzahlAbschlaege)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "anzahlAbschlaege"))]
     pub installment_count: Option<i32>,
 
     // Note: The following fields would typically reference Zeitraum COM type.
     // Using simplified string representations for now.
     /// Contract duration (Vertragslaufzeit) - ISO 8601 duration or description
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragslaufzeit"))]
     pub contract_duration: Option<String>,
 
     /// Notice period for termination (Kündigungsfrist)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kuendigungsfrist"))]
     pub notice_period: Option<String>,
 
     /// Automatic extension period if not terminated (Vertragsverlängerung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragsverlaengerung"))]
     pub extension_period: Option<String>,
 
     /// Installment cycle (Abschlagszyklus)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "abschlagszyklus"))]
     pub installment_cycle: Option<String>,
 }
 

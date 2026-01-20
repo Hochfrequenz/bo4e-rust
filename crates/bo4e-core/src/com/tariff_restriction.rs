@@ -46,7 +46,10 @@ pub struct TariffRestriction {
 
     /// Excluded tariff features (Ausgeschlossene Tarifmerkmale)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "json-schema", schemars(rename = "ausgeschlosseneTarifmerkmale"))]
+    #[cfg_attr(
+        feature = "json-schema",
+        schemars(rename = "ausgeschlosseneTarifmerkmale")
+    )]
     pub excluded_features: Vec<TariffFeature>,
 
     /// Minimum annual consumption (Mindestjahresverbrauch)

@@ -24,6 +24,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Angebotsposition"))]
 #[serde(rename_all = "camelCase")]
 pub struct OfferPosition {
     /// BO4E metadata
@@ -32,6 +34,7 @@ pub struct OfferPosition {
 
     /// Description of the offer position (Positionsbezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "positionsbezeichnung"))]
     pub position_description: Option<String>,
 
     // Note: The following fields would typically reference other COM types
@@ -39,14 +42,17 @@ pub struct OfferPosition {
     // For now, we use simplified representations.
     /// Position price value (simplified - Positionspreis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "positionspreis"))]
     pub position_price_value: Option<f64>,
 
     /// Position quantity value (simplified - Positionsmenge)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "positionsmenge"))]
     pub position_quantity_value: Option<f64>,
 
     /// Position cost value (simplified - Positionskosten)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "positionskosten"))]
     pub position_cost_value: Option<f64>,
 }
 

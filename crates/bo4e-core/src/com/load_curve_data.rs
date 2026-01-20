@@ -26,6 +26,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Lastkurvendaten"))]
 #[serde(rename_all = "camelCase")]
 pub struct LoadCurveData {
     /// BO4E metadata
@@ -34,34 +36,42 @@ pub struct LoadCurveData {
 
     /// Timestamp of the measurement (Zeitpunkt)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zeitpunkt"))]
     pub timestamp: Option<DateTime<Utc>>,
 
     /// Power value (Leistungswert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "leistungswert"))]
     pub power_value: Option<f64>,
 
     /// Unit of power measurement (Leistungseinheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "leistungseinheit"))]
     pub power_unit: Option<Unit>,
 
     /// Energy value for the interval (Energiewert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "energiewert"))]
     pub energy_value: Option<f64>,
 
     /// Unit of energy measurement (Energieeinheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "energieeinheit"))]
     pub energy_unit: Option<Unit>,
 
     /// Interval duration in minutes (Intervalllaenge)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "intervalllaenge"))]
     pub interval_minutes: Option<i32>,
 
     /// OBIS code (OBIS-Kennzahl)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "obisKennzahl"))]
     pub obis_code: Option<String>,
 
     /// Measurement location ID (Messlokations-ID)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "messlokationsId"))]
     pub measurement_location_id: Option<String>,
 }
 

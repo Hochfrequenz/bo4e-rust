@@ -24,6 +24,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Hardware"))]
 #[serde(rename_all = "camelCase")]
 pub struct Hardware {
     /// BO4E metadata
@@ -32,18 +34,22 @@ pub struct Hardware {
 
     /// Device number assigned by the metering service operator (Gerätenummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "geraetenummer"))]
     pub device_number: Option<String>,
 
     /// Description of the device (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub description: Option<String>,
 
     /// Category/class of the device (Geräteklasse)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "geraeteklasse"))]
     pub device_category: Option<DeviceCategory>,
 
     /// Specific type of the device (Gerätetyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "geraetetyp"))]
     pub device_type: Option<DeviceType>,
 }
 

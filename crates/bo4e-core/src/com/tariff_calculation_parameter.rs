@@ -22,7 +22,10 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
-#[cfg_attr(feature = "json-schema", schemars(rename = "Tarifberechnungsparameter"))]
+#[cfg_attr(
+    feature = "json-schema",
+    schemars(rename = "Tarifberechnungsparameter")
+)]
 #[serde(rename_all = "camelCase")]
 pub struct TariffCalculationParameter {
     /// BO4E metadata
