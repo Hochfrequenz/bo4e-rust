@@ -20,6 +20,28 @@ cargo test --workspace
 
 CI will reject commits that fail formatting checks.
 
+## Releasing
+
+All crate versions are managed centrally in the workspace `Cargo.toml`:
+
+```toml
+[workspace.package]
+version = "0.1.1"  # Change this for all crates
+
+[workspace.dependencies]
+bo4e-core = { path = "crates/bo4e-core", version = "0.1.1" }  # Update these too
+bo4e-serde = { path = "crates/bo4e-serde", version = "0.1.1" }
+```
+
+**To release a new version:**
+
+1. Update version in `Cargo.toml` (3 places: `workspace.package.version` and the two internal crate dependencies)
+2. Commit: `git commit -am "chore: bump version to X.Y.Z"`
+3. Push: `git push origin main`
+4. Create and push tag: `git tag -a vX.Y.Z -m "Release vX.Y.Z" && git push origin vX.Y.Z`
+
+The release workflow will automatically publish to crates.io using OIDC trusted publishing.
+
 ## Build Commands
 
 ```bash
