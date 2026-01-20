@@ -1,5 +1,5 @@
 ---
-status: in_progress
+status: complete
 ---
 # Epic 6.2: Benchmarks
 
