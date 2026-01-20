@@ -1,5 +1,5 @@
 ---
-status: in_progress
+status: complete
 ---
 # Epic 3.1: Address & Contact Components
 
