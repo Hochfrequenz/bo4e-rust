@@ -395,3 +395,17 @@ Reference `../BO4E-python/src/bo4e/bo/` for complete field definitions.
 cargo test -p bo4e-core bo -- --nocapture
 cargo clippy -p bo4e-core
 ```
+
+---
+
+## Test Summary
+
+| Metric | Count |
+|--------|-------|
+| Unit Tests | 525 |
+| Doc Tests | 79 |
+| **Total Tests** | **604** |
+| **Passed** | **604** |
+| **Failed** | **0** |
+
+All tests pass. Clippy reports no warnings.
