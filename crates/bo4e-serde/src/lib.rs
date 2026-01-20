@@ -87,7 +87,10 @@ pub fn to_json_english<T: Serialize>(value: &T) -> Result<String, Error> {
 }
 
 /// Serialize with custom configuration.
-pub fn to_json_with_config<T: Serialize>(value: &T, config: &SerializeConfig) -> Result<String, Error> {
+pub fn to_json_with_config<T: Serialize>(
+    value: &T,
+    config: &SerializeConfig,
+) -> Result<String, Error> {
     with_config(config.clone(), || {
         if config.pretty {
             serde_json::to_string_pretty(value).map_err(Error::from)
