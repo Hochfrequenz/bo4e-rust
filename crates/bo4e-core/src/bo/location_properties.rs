@@ -154,7 +154,13 @@ mod tests {
 
     #[test]
     fn test_bo4e_object_impl() {
-        assert_eq!(LocationProperties::type_name_german(), "Standorteigenschaften");
-        assert_eq!(LocationProperties::type_name_english(), "LocationProperties");
+        assert_eq!(
+            LocationProperties::type_name_german(),
+            "Standorteigenschaften"
+        );
+        assert_eq!(
+            LocationProperties::type_name_english(),
+            "LocationProperties"
+        );
     }
 }

@@ -37,7 +37,6 @@ pub struct OfferPosition {
     // Note: The following fields would typically reference other COM types
     // (Preis, Menge, Betrag) which will be added in a later epic.
     // For now, we use simplified representations.
-
     /// Position price value (simplified - Positionspreis)
     #[serde(skip_serializing_if = "Option::is_none")]
     pub position_price_value: Option<f64>,

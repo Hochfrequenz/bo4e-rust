@@ -127,7 +127,13 @@ mod tests {
 
     #[test]
     fn test_bo4e_object_impl() {
-        assert_eq!(ExternalCostPosition::type_name_german(), "Fremdkostenposition");
-        assert_eq!(ExternalCostPosition::type_name_english(), "ExternalCostPosition");
+        assert_eq!(
+            ExternalCostPosition::type_name_german(),
+            "Fremdkostenposition"
+        );
+        assert_eq!(
+            ExternalCostPosition::type_name_english(),
+            "ExternalCostPosition"
+        );
     }
 }

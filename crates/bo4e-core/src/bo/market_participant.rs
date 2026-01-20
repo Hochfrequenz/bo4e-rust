@@ -90,7 +90,10 @@ mod tests {
             ..Default::default()
         };
 
-        assert_eq!(participant.market_partner_id, Some("9900000000001".to_string()));
+        assert_eq!(
+            participant.market_partner_id,
+            Some("9900000000001".to_string())
+        );
         assert_eq!(participant.market_role, Some(MarketRole::Supplier));
     }
 

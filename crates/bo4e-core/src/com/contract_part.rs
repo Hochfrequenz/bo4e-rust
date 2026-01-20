@@ -45,7 +45,6 @@ pub struct ContractPart {
 
     // Note: The following fields would typically reference Menge COM type.
     // Using simplified f64 values for now.
-
     /// Contractually fixed consumption quantity (Vertraglich fixierte Menge)
     #[serde(skip_serializing_if = "Option::is_none")]
     pub fixed_quantity_value: Option<f64>,

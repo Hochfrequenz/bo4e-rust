@@ -99,14 +99,8 @@ mod tests {
     #[test]
     fn test_year_range() {
         let range = DateRange::year(2024);
-        assert_eq!(
-            range.start_date,
-            NaiveDate::from_ymd_opt(2024, 1, 1)
-        );
-        assert_eq!(
-            range.end_date,
-            NaiveDate::from_ymd_opt(2024, 12, 31)
-        );
+        assert_eq!(range.start_date, NaiveDate::from_ymd_opt(2024, 1, 1));
+        assert_eq!(range.end_date, NaiveDate::from_ymd_opt(2024, 12, 31));
     }
 
     #[test]

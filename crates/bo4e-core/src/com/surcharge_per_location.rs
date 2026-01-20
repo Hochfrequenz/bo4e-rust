@@ -107,7 +107,13 @@ mod tests {
 
     #[test]
     fn test_bo4e_object_impl() {
-        assert_eq!(SurchargePerLocation::type_name_german(), "AufAbschlagProOrt");
-        assert_eq!(SurchargePerLocation::type_name_english(), "SurchargePerLocation");
+        assert_eq!(
+            SurchargePerLocation::type_name_german(),
+            "AufAbschlagProOrt"
+        );
+        assert_eq!(
+            SurchargePerLocation::type_name_english(),
+            "SurchargePerLocation"
+        );
     }
 }

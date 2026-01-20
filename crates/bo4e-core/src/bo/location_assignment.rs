@@ -135,6 +135,9 @@ mod tests {
     #[test]
     fn test_bo4e_object_impl() {
         assert_eq!(LocationAssignment::type_name_german(), "Lokationszuordnung");
-        assert_eq!(LocationAssignment::type_name_english(), "LocationAssignment");
+        assert_eq!(
+            LocationAssignment::type_name_english(),
+            "LocationAssignment"
+        );
     }
 }

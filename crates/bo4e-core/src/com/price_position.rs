@@ -94,7 +94,10 @@ mod tests {
             ..Default::default()
         };
 
-        assert_eq!(position.price_type, Some(PriceType::WorkingPriceSingleTariff));
+        assert_eq!(
+            position.price_type,
+            Some(PriceType::WorkingPriceSingleTariff)
+        );
         assert_eq!(position.tiers.len(), 1);
     }
 

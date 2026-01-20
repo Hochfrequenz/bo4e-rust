@@ -62,14 +62,12 @@ mod tests {
     fn test_regional_tier() {
         let tier = RegionalPriceTier {
             region_code: Some("50667".to_string()),
-            tiers: vec![
-                PriceTier {
-                    lower_limit: Some(0.0),
-                    upper_limit: Some(1000.0),
-                    unit_price: Some(0.28),
-                    ..Default::default()
-                },
-            ],
+            tiers: vec![PriceTier {
+                lower_limit: Some(0.0),
+                upper_limit: Some(1000.0),
+                unit_price: Some(0.28),
+                ..Default::default()
+            }],
             ..Default::default()
         };
 
@@ -103,7 +101,10 @@ mod tests {
 
     #[test]
     fn test_bo4e_object_impl() {
-        assert_eq!(RegionalPriceTier::type_name_german(), "RegionalePreisstaffel");
+        assert_eq!(
+            RegionalPriceTier::type_name_german(),
+            "RegionalePreisstaffel"
+        );
         assert_eq!(RegionalPriceTier::type_name_english(), "RegionalPriceTier");
     }
 }

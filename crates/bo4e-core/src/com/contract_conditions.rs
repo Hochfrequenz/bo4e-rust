@@ -36,7 +36,6 @@ pub struct ContractConditions {
 
     // Note: The following fields would typically reference Zeitraum COM type.
     // Using simplified string representations for now.
-
     /// Contract duration (Vertragslaufzeit) - ISO 8601 duration or description
     #[serde(skip_serializing_if = "Option::is_none")]
     pub contract_duration: Option<String>,
@@ -118,7 +117,10 @@ mod tests {
 
     #[test]
     fn test_bo4e_object_impl() {
-        assert_eq!(ContractConditions::type_name_german(), "Vertragskonditionen");
+        assert_eq!(
+            ContractConditions::type_name_german(),
+            "Vertragskonditionen"
+        );
         assert_eq!(
             ContractConditions::type_name_english(),
             "ContractConditions"

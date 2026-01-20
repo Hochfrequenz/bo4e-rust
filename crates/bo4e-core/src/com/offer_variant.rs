@@ -42,7 +42,6 @@ pub struct OfferVariant {
 
     // Note: The following fields would typically reference other COM types
     // (Angebotsteil, Menge, Betrag) which will be added later.
-
     /// Number of offer parts in this variant
     #[serde(skip_serializing_if = "Option::is_none")]
     pub parts_count: Option<i32>,

@@ -123,8 +123,16 @@ mod tests {
         let guarantee = PriceGuarantee {
             guarantee_type: Some(PriceGuaranteeType::EnergyPriceOnly),
             description: Some("Energy price fixed".to_string()),
-            valid_from: Some(DateTime::parse_from_rfc3339("2024-01-01T00:00:00Z").unwrap().into()),
-            valid_until: Some(DateTime::parse_from_rfc3339("2024-12-31T23:59:59Z").unwrap().into()),
+            valid_from: Some(
+                DateTime::parse_from_rfc3339("2024-01-01T00:00:00Z")
+                    .unwrap()
+                    .into(),
+            ),
+            valid_until: Some(
+                DateTime::parse_from_rfc3339("2024-12-31T23:59:59Z")
+                    .unwrap()
+                    .into(),
+            ),
             ..Default::default()
         };
 

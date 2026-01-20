@@ -127,7 +127,13 @@ mod tests {
 
     #[test]
     fn test_bo4e_object_impl() {
-        assert_eq!(TariffPricePosition::type_name_german(), "Tarifpreisposition");
-        assert_eq!(TariffPricePosition::type_name_english(), "TariffPricePosition");
+        assert_eq!(
+            TariffPricePosition::type_name_german(),
+            "Tarifpreisposition"
+        );
+        assert_eq!(
+            TariffPricePosition::type_name_english(),
+            "TariffPricePosition"
+        );
     }
 }

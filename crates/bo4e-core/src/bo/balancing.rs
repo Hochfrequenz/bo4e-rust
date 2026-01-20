@@ -97,7 +97,10 @@ mod tests {
             ..Default::default()
         };
 
-        assert_eq!(balancing.balance_group_id, Some("11XBALANCEGROUP".to_string()));
+        assert_eq!(
+            balancing.balance_group_id,
+            Some("11XBALANCEGROUP".to_string())
+        );
         assert_eq!(balancing.division, Some(Division::Electricity));
     }
 

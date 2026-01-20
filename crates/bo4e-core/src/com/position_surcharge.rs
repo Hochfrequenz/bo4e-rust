@@ -115,7 +115,10 @@ mod tests {
 
     #[test]
     fn test_bo4e_object_impl() {
-        assert_eq!(PositionSurcharge::type_name_german(), "PositionsAufAbschlag");
+        assert_eq!(
+            PositionSurcharge::type_name_german(),
+            "PositionsAufAbschlag"
+        );
         assert_eq!(PositionSurcharge::type_name_english(), "PositionSurcharge");
     }
 }

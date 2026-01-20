@@ -158,7 +158,13 @@ mod tests {
 
     #[test]
     fn test_bo4e_object_impl() {
-        assert_eq!(ControllableResource::type_name_german(), "SteuerbareRessource");
-        assert_eq!(ControllableResource::type_name_english(), "ControllableResource");
+        assert_eq!(
+            ControllableResource::type_name_german(),
+            "SteuerbareRessource"
+        );
+        assert_eq!(
+            ControllableResource::type_name_english(),
+            "ControllableResource"
+        );
     }
 }

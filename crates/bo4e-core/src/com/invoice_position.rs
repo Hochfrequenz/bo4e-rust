@@ -48,7 +48,6 @@ pub struct InvoicePosition {
 
     // Note: The following fields would typically reference other COM types
     // (Menge, Preis, Betrag, Steuerbetrag). Using simplified representations.
-
     /// Billed quantity value (simplified - Positionsmenge)
     #[serde(skip_serializing_if = "Option::is_none")]
     pub quantity_value: Option<f64>,

@@ -102,7 +102,10 @@ mod tests {
             ..Default::default()
         };
 
-        assert_eq!(fee.customer_group, Some(ConcessionFeeCustomerGroup::ElectricitySpecialCustomer));
+        assert_eq!(
+            fee.customer_group,
+            Some(ConcessionFeeCustomerGroup::ElectricitySpecialCustomer)
+        );
     }
 
     #[test]

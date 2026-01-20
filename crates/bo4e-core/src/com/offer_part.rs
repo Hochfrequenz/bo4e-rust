@@ -36,7 +36,6 @@ pub struct OfferPart {
     // Note: The following fields would typically reference other COM types
     // (Angebotsposition, Marktlokation, Menge, Betrag, Zeitraum) which will be added later.
     // For now, we use simplified representations.
-
     /// Number of positions in this offer part
     #[serde(skip_serializing_if = "Option::is_none")]
     pub position_count: Option<i32>,
