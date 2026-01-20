@@ -57,6 +57,30 @@
 //! - [`Discount`] - Discount
 //! - [`MarginPrice`] - Margin price
 //! - [`ServicePrice`] - Service price
+//!
+//! # Epic 3.3: Measurement & Time Components
+//!
+//! Measurement, quantity, and time-related components:
+//!
+//! - [`TimePeriod`] - A time period with start and end timestamps
+//! - [`MeasuredValue`] - A measured value at a specific timestamp
+//! - [`Quantity`] - A quantity with value and unit
+//! - [`MeterRegister`] - A register on a meter
+//! - [`TimeOfUseRegister`] - Time-of-use register
+//! - [`MeterReading`] - Meter reading at a point in time
+//! - [`LoadProfileValue`] - Load profile value
+//! - [`TimeSeriesValue`] - Time series value
+//! - [`Interval`] - Time interval with duration and unit
+//! - [`DateRange`] - Date range with start and end dates
+//! - [`SeasonalTariff`] - Seasonal tariff period
+//! - [`BillingPeriodData`] - Billing period data
+//! - [`MeteringPointStatus`] - Metering point status
+//! - [`ValidationResult`] - Validation result
+//! - [`QualityIndicator`] - Quality indicator for measured data
+//! - [`SubstitutionValue`] - Substituted/replacement value
+//! - [`AggregatedValue`] - Aggregated value
+//! - [`ProfileData`] - Profile data (standard load profiles)
+//! - [`LoadCurveData`] - Load curve data
 
 // Epic 3.1: Address & Contact Components
 mod address;
@@ -107,6 +131,27 @@ mod tariff_price_position;
 mod tariff_restriction;
 mod tax_amount;
 
+// Epic 3.3: Measurement & Time Components
+mod aggregated_value;
+mod billing_period_data;
+mod date_range;
+mod interval;
+mod load_curve_data;
+mod load_profile_value;
+mod measured_value;
+mod meter_reading;
+mod meter_register;
+mod metering_point_status;
+mod profile_data;
+mod quality_indicator;
+mod quantity;
+mod seasonal_tariff;
+mod substitution_value;
+mod time_of_use_register;
+mod time_period;
+mod time_series_value;
+mod validation_result;
+
 // Epic 3.1 exports
 pub use address::Address;
 pub use cadastral_address::CadastralAddress;
@@ -155,3 +200,24 @@ pub use tariff_price::TariffPrice;
 pub use tariff_price_position::TariffPricePosition;
 pub use tariff_restriction::TariffRestriction;
 pub use tax_amount::TaxAmount;
+
+// Epic 3.3 exports
+pub use aggregated_value::AggregatedValue;
+pub use billing_period_data::BillingPeriodData;
+pub use date_range::DateRange;
+pub use interval::Interval;
+pub use load_curve_data::LoadCurveData;
+pub use load_profile_value::LoadProfileValue;
+pub use measured_value::MeasuredValue;
+pub use meter_reading::MeterReading;
+pub use meter_register::MeterRegister;
+pub use metering_point_status::MeteringPointStatus;
+pub use profile_data::ProfileData;
+pub use quality_indicator::QualityIndicator;
+pub use quantity::Quantity;
+pub use seasonal_tariff::SeasonalTariff;
+pub use substitution_value::SubstitutionValue;
+pub use time_of_use_register::TimeOfUseRegister;
+pub use time_period::TimePeriod;
+pub use time_series_value::TimeSeriesValue;
+pub use validation_result::ValidationResult;
