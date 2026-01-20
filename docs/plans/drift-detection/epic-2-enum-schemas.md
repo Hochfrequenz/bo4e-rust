@@ -1,3 +1,6 @@
+---
+status: in_progress
+---
 # Epic 2: Add Schemars to Enums
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
