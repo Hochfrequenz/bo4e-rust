@@ -1,5 +1,5 @@
 ---
-status: in_progress
+status: complete
 ---
 # Epic 1.3: Bo4eObject Trait System
 
