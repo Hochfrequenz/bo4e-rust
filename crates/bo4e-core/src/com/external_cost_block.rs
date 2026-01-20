@@ -68,7 +68,7 @@ mod tests {
     fn test_external_cost_block() {
         let cost_block = ExternalCostBlock {
             designation: Some("Netzkosten Fremd".to_string()),
-            cost_class: Some(CostClass::Network),
+            cost_class: Some(CostClass::ExternalCosts),
             total_amount: Some(Amount::eur(350.0)),
             ..Default::default()
         };
@@ -87,7 +87,7 @@ mod tests {
     fn test_roundtrip() {
         let cost_block = ExternalCostBlock {
             designation: Some("Messkosten extern".to_string()),
-            cost_class: Some(CostClass::Measurement),
+            cost_class: Some(CostClass::InternalCosts),
             total_amount: Some(Amount::eur(75.50)),
             ..Default::default()
         };

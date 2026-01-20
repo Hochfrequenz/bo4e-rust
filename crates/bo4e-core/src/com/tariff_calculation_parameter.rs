@@ -16,7 +16,7 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// use bo4e_core::enums::TariffCalculationMethod;
 ///
 /// let param = TariffCalculationParameter {
-///     calculation_method: Some(TariffCalculationMethod::TieredByConsumption),
+///     calculation_method: Some(TariffCalculationMethod::Tiers),
 ///     ..Default::default()
 /// };
 /// ```
@@ -77,7 +77,7 @@ mod tests {
     #[test]
     fn test_tiered_tariff() {
         let param = TariffCalculationParameter {
-            calculation_method: Some(TariffCalculationMethod::TieredByConsumption),
+            calculation_method: Some(TariffCalculationMethod::Tiers),
             min_annual_consumption: Some(0.0),
             max_annual_consumption: Some(10000.0),
             ..Default::default()
@@ -85,19 +85,19 @@ mod tests {
 
         assert_eq!(
             param.calculation_method,
-            Some(TariffCalculationMethod::TieredByConsumption)
+            Some(TariffCalculationMethod::Tiers)
         );
     }
 
     #[test]
     fn test_time_based_tariff() {
         let param = TariffCalculationParameter {
-            calculation_method: Some(TariffCalculationMethod::Flat),
-            tariff_time: Some(TariffTime::Day),
+            calculation_method: Some(TariffCalculationMethod::None),
+            tariff_time: Some(TariffTime::HighTariff),
             ..Default::default()
         };
 
-        assert_eq!(param.tariff_time, Some(TariffTime::Day));
+        assert_eq!(param.tariff_time, Some(TariffTime::HighTariff));
     }
 
     #[test]
@@ -110,8 +110,8 @@ mod tests {
     #[test]
     fn test_roundtrip() {
         let param = TariffCalculationParameter {
-            calculation_method: Some(TariffCalculationMethod::Flat),
-            tariff_time: Some(TariffTime::Night),
+            calculation_method: Some(TariffCalculationMethod::None),
+            tariff_time: Some(TariffTime::LowTariff),
             is_demand_based: Some(false),
             description: Some("Night rate tariff".to_string()),
             ..Default::default()

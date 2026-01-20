@@ -16,7 +16,7 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// use bo4e_core::enums::ServiceType;
 ///
 /// let price = ServicePrice {
-///     service_type: Some(ServiceType::Installation),
+///     service_type: Some(ServiceType::Disconnection),
 ///     value: Some(75.0),
 ///     ..Default::default()
 /// };
@@ -74,14 +74,14 @@ mod tests {
     #[test]
     fn test_installation_service() {
         let price = ServicePrice {
-            service_type: Some(ServiceType::Installation),
+            service_type: Some(ServiceType::Disconnection),
             value: Some(75.0),
             currency: Some(Currency::Eur),
             description: Some("Zählerinstallation".to_string()),
             ..Default::default()
         };
 
-        assert_eq!(price.service_type, Some(ServiceType::Installation));
+        assert_eq!(price.service_type, Some(ServiceType::Disconnection));
         assert_eq!(price.value, Some(75.0));
     }
 
@@ -95,7 +95,7 @@ mod tests {
     #[test]
     fn test_roundtrip() {
         let price = ServicePrice {
-            service_type: Some(ServiceType::Consultation),
+            service_type: Some(ServiceType::ManualReadingMonthly),
             value: Some(50.0),
             currency: Some(Currency::Eur),
             reference_unit: Some(Unit::Hour),

@@ -83,7 +83,7 @@ mod tests {
             value: Some(3660.0),
             unit: Some(Unit::KilowattHour),
             obis_code: Some("1-1:1.8.0".to_string()),
-            measured_value_status: Some(MeasuredValueStatus::Measured),
+            measured_value_status: Some(MeasuredValueStatus::Read),
             ..Default::default()
         };
 
@@ -141,7 +141,7 @@ mod tests {
                     .into(),
             ),
             obis_code: Some("1-1:1.8.0".to_string()),
-            measured_value_status: Some(MeasuredValueStatus::Measured),
+            measured_value_status: Some(MeasuredValueStatus::Read),
             ..Default::default()
         };
 

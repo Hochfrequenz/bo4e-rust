@@ -16,7 +16,7 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// use bo4e_core::enums::{Currency, PriceType, Unit};
 ///
 /// let tariff_price = TariffPrice {
-///     price_type: Some(PriceType::WorkPrice),
+///     price_type: Some(PriceType::WorkingPriceSingleTariff),
 ///     value: Some(0.30),
 ///     currency: Some(Currency::Eur),
 ///     reference_unit: Some(Unit::KilowattHour),
@@ -76,14 +76,14 @@ mod tests {
     #[test]
     fn test_work_price() {
         let price = TariffPrice {
-            price_type: Some(PriceType::WorkPrice),
+            price_type: Some(PriceType::WorkingPriceSingleTariff),
             value: Some(30.5),
             currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             ..Default::default()
         };
 
-        assert_eq!(price.price_type, Some(PriceType::WorkPrice));
+        assert_eq!(price.price_type, Some(PriceType::WorkingPriceSingleTariff));
         assert_eq!(price.value, Some(30.5));
     }
 
@@ -111,7 +111,7 @@ mod tests {
     #[test]
     fn test_roundtrip() {
         let price = TariffPrice {
-            price_type: Some(PriceType::WorkPrice),
+            price_type: Some(PriceType::WorkingPriceSingleTariff),
             value: Some(25.75),
             currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),

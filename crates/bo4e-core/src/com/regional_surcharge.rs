@@ -95,7 +95,7 @@ mod tests {
     #[test]
     fn test_roundtrip() {
         let surcharge = RegionalSurcharge {
-            region_criterion: Some(TariffRegionCriterion::NetworkOperator),
+            region_criterion: Some(TariffRegionCriterion::NetworkNumber),
             region_code: Some("9990001".to_string()),
             ..Default::default()
         };

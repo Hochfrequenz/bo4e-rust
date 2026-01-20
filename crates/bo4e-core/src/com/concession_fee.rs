@@ -16,8 +16,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// use bo4e_core::enums::{ConcessionFeeType, ConcessionFeeCustomerGroup};
 ///
 /// let fee = ConcessionFee {
-///     fee_type: Some(ConcessionFeeType::Ka1),
-///     customer_group: Some(ConcessionFeeCustomerGroup::Household),
+///     fee_type: Some(ConcessionFeeType::TariffCustomer),
+///     customer_group: Some(ConcessionFeeCustomerGroup::ElectricityTariff25000),
 ///     value: Some(1.59),
 ///     ..Default::default()
 /// };
@@ -79,30 +79,30 @@ mod tests {
     #[test]
     fn test_household_concession_fee() {
         let fee = ConcessionFee {
-            fee_type: Some(ConcessionFeeType::Ka1),
-            customer_group: Some(ConcessionFeeCustomerGroup::Household),
+            fee_type: Some(ConcessionFeeType::TariffCustomer),
+            customer_group: Some(ConcessionFeeCustomerGroup::ElectricityTariff25000),
             value: Some(1.59),
             currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             ..Default::default()
         };
 
-        assert_eq!(fee.fee_type, Some(ConcessionFeeType::Ka1));
+        assert_eq!(fee.fee_type, Some(ConcessionFeeType::TariffCustomer));
         assert_eq!(fee.value, Some(1.59));
     }
 
     #[test]
     fn test_business_concession_fee() {
         let fee = ConcessionFee {
-            fee_type: Some(ConcessionFeeType::Ka2),
-            customer_group: Some(ConcessionFeeCustomerGroup::Commercial),
+            fee_type: Some(ConcessionFeeType::SpecialContractCustomer),
+            customer_group: Some(ConcessionFeeCustomerGroup::ElectricitySpecialCustomer),
             value: Some(0.11),
             currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             ..Default::default()
         };
 
-        assert_eq!(fee.customer_group, Some(ConcessionFeeCustomerGroup::Commercial));
+        assert_eq!(fee.customer_group, Some(ConcessionFeeCustomerGroup::ElectricitySpecialCustomer));
     }
 
     #[test]
@@ -115,8 +115,8 @@ mod tests {
     #[test]
     fn test_roundtrip() {
         let fee = ConcessionFee {
-            fee_type: Some(ConcessionFeeType::Ka1),
-            customer_group: Some(ConcessionFeeCustomerGroup::Household),
+            fee_type: Some(ConcessionFeeType::TariffCustomer),
+            customer_group: Some(ConcessionFeeCustomerGroup::ElectricityTariff25000),
             value: Some(1.59),
             description: Some("Konzessionsabgabe Strom".to_string()),
             ..Default::default()

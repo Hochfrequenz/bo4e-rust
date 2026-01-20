@@ -73,7 +73,7 @@ mod tests {
     fn test_cost_block() {
         let cost_block = CostBlock {
             designation: Some("Netzkosten".to_string()),
-            cost_class: Some(CostClass::Network),
+            cost_class: Some(CostClass::ExternalCosts),
             total_amount: Some(Amount::eur(500.0)),
             positions: vec![
                 CostPosition {
@@ -118,7 +118,7 @@ mod tests {
     fn test_roundtrip() {
         let cost_block = CostBlock {
             designation: Some("Energiekosten".to_string()),
-            cost_class: Some(CostClass::Energy),
+            cost_class: Some(CostClass::Procurement),
             total_amount: Some(Amount::eur(1234.56)),
             positions: vec![CostPosition {
                 title: Some("Arbeitspreis Energie".to_string()),

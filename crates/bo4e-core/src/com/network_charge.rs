@@ -16,7 +16,7 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// use bo4e_core::enums::PriceType;
 ///
 /// let charge = NetworkCharge {
-///     price_type: Some(PriceType::WorkPrice),
+///     price_type: Some(PriceType::WorkingPriceSingleTariff),
 ///     value: Some(5.82),
 ///     ..Default::default()
 /// };
@@ -78,14 +78,14 @@ mod tests {
     #[test]
     fn test_work_price_charge() {
         let charge = NetworkCharge {
-            price_type: Some(PriceType::WorkPrice),
+            price_type: Some(PriceType::WorkingPriceSingleTariff),
             value: Some(5.82),
             currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             ..Default::default()
         };
 
-        assert_eq!(charge.price_type, Some(PriceType::WorkPrice));
+        assert_eq!(charge.price_type, Some(PriceType::WorkingPriceSingleTariff));
         assert_eq!(charge.value, Some(5.82));
     }
 
@@ -113,7 +113,7 @@ mod tests {
     #[test]
     fn test_roundtrip() {
         let charge = NetworkCharge {
-            price_type: Some(PriceType::WorkPrice),
+            price_type: Some(PriceType::WorkingPriceSingleTariff),
             value: Some(6.25),
             currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),

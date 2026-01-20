@@ -93,8 +93,8 @@ mod tests {
     #[test]
     fn test_business_tariff_with_features() {
         let restriction = TariffRestriction {
-            customer_types: vec![CustomerType::Business],
-            required_features: vec![TariffFeature::OnlineService],
+            customer_types: vec![CustomerType::Commercial],
+            required_features: vec![TariffFeature::Online],
             min_annual_consumption: Some(10000.0),
             ..Default::default()
         };
@@ -112,7 +112,7 @@ mod tests {
     #[test]
     fn test_roundtrip() {
         let restriction = TariffRestriction {
-            customer_types: vec![CustomerType::Private, CustomerType::Business],
+            customer_types: vec![CustomerType::Private, CustomerType::Commercial],
             division: Some(Division::Gas),
             notes: Some("Available in selected areas only".to_string()),
             ..Default::default()

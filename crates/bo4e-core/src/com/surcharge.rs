@@ -118,11 +118,11 @@ mod tests {
         let surcharge = Surcharge {
             description: Some("MwSt".to_string()),
             value: Some(19.0),
-            surcharge_type: Some(SurchargeType::Percentage),
+            surcharge_type: Some(SurchargeType::Relative),
             ..Default::default()
         };
 
-        assert_eq!(surcharge.surcharge_type, Some(SurchargeType::Percentage));
+        assert_eq!(surcharge.surcharge_type, Some(SurchargeType::Relative));
     }
 
     #[test]

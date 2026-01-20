@@ -19,7 +19,7 @@ use super::TariffPrice;
 ///
 /// let position = TariffPricePosition {
 ///     description: Some("Arbeitspreis".to_string()),
-///     price_type: Some(PriceType::WorkPrice),
+///     price_type: Some(PriceType::WorkingPriceSingleTariff),
 ///     ..Default::default()
 /// };
 /// ```
@@ -82,7 +82,7 @@ mod tests {
     fn test_tariff_price_position() {
         let position = TariffPricePosition {
             description: Some("Arbeitspreis HT/NT".to_string()),
-            price_type: Some(PriceType::WorkPrice),
+            price_type: Some(PriceType::WorkingPriceSingleTariff),
             reference_unit: Some(Unit::KilowattHour),
             prices: vec![
                 TariffPrice {

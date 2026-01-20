@@ -17,7 +17,7 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// use bo4e_core::enums::PriceGuaranteeType;
 ///
 /// let guarantee = PriceGuarantee {
-///     guarantee_type: Some(PriceGuaranteeType::CompletePrice),
+///     guarantee_type: Some(PriceGuaranteeType::AllComponentsGross),
 ///     description: Some("12-month price guarantee".to_string()),
 ///     ..Default::default()
 /// };
@@ -71,28 +71,28 @@ mod tests {
     #[test]
     fn test_complete_price_guarantee() {
         let guarantee = PriceGuarantee {
-            guarantee_type: Some(PriceGuaranteeType::CompletePrice),
+            guarantee_type: Some(PriceGuaranteeType::AllComponentsGross),
             description: Some("Full price guarantee for 12 months".to_string()),
             ..Default::default()
         };
 
         assert_eq!(
             guarantee.guarantee_type,
-            Some(PriceGuaranteeType::CompletePrice)
+            Some(PriceGuaranteeType::AllComponentsGross)
         );
     }
 
     #[test]
     fn test_energy_price_guarantee() {
         let guarantee = PriceGuarantee {
-            guarantee_type: Some(PriceGuaranteeType::EnergyPrice),
+            guarantee_type: Some(PriceGuaranteeType::EnergyPriceOnly),
             description: Some("Energy price guaranteed".to_string()),
             ..Default::default()
         };
 
         assert_eq!(
             guarantee.guarantee_type,
-            Some(PriceGuaranteeType::EnergyPrice)
+            Some(PriceGuaranteeType::EnergyPriceOnly)
         );
     }
 
@@ -108,7 +108,7 @@ mod tests {
     #[test]
     fn test_serialize() {
         let guarantee = PriceGuarantee {
-            guarantee_type: Some(PriceGuaranteeType::CompletePrice),
+            guarantee_type: Some(PriceGuaranteeType::AllComponentsGross),
             description: Some("Test guarantee".to_string()),
             ..Default::default()
         };
@@ -121,7 +121,7 @@ mod tests {
     #[test]
     fn test_roundtrip() {
         let guarantee = PriceGuarantee {
-            guarantee_type: Some(PriceGuaranteeType::EnergyPrice),
+            guarantee_type: Some(PriceGuaranteeType::EnergyPriceOnly),
             description: Some("Energy price fixed".to_string()),
             valid_from: Some(DateTime::parse_from_rfc3339("2024-01-01T00:00:00Z").unwrap().into()),
             valid_until: Some(DateTime::parse_from_rfc3339("2024-12-31T23:59:59Z").unwrap().into()),

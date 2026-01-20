@@ -74,12 +74,12 @@ mod tests {
     fn test_percentage_discount() {
         let discount = Discount {
             description: Some("10% Rabatt".to_string()),
-            discount_type: Some(SurchargeType::Percentage),
+            discount_type: Some(SurchargeType::Relative),
             value: Some(10.0),
             ..Default::default()
         };
 
-        assert_eq!(discount.discount_type, Some(SurchargeType::Percentage));
+        assert_eq!(discount.discount_type, Some(SurchargeType::Relative));
         assert_eq!(discount.value, Some(10.0));
     }
 
@@ -107,7 +107,7 @@ mod tests {
     fn test_roundtrip() {
         let discount = Discount {
             description: Some("Frühbucherrabatt".to_string()),
-            discount_type: Some(SurchargeType::Percentage),
+            discount_type: Some(SurchargeType::Relative),
             value: Some(15.0),
             conditions: Some("Bei Buchung bis 31.12.".to_string()),
             ..Default::default()

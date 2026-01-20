@@ -19,7 +19,7 @@ use super::PriceTier;
 ///
 /// let position = PricePosition {
 ///     description: Some("Arbeitspreis HT".to_string()),
-///     price_type: Some(PriceType::WorkPrice),
+///     price_type: Some(PriceType::WorkingPriceSingleTariff),
 ///     ..Default::default()
 /// };
 /// ```
@@ -85,7 +85,7 @@ mod tests {
     fn test_work_price_position() {
         let position = PricePosition {
             description: Some("Arbeitspreis HT".to_string()),
-            price_type: Some(PriceType::WorkPrice),
+            price_type: Some(PriceType::WorkingPriceSingleTariff),
             reference_unit: Some(Unit::KilowattHour),
             tiers: vec![PriceTier {
                 unit_price: Some(0.30),
@@ -94,7 +94,7 @@ mod tests {
             ..Default::default()
         };
 
-        assert_eq!(position.price_type, Some(PriceType::WorkPrice));
+        assert_eq!(position.price_type, Some(PriceType::WorkingPriceSingleTariff));
         assert_eq!(position.tiers.len(), 1);
     }
 

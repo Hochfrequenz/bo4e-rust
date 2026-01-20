@@ -83,12 +83,12 @@ mod tests {
     fn test_percentage_surcharge() {
         let surcharge = PositionSurcharge {
             description: Some("10% markup".to_string()),
-            surcharge_type: Some(SurchargeType::Percentage),
+            surcharge_type: Some(SurchargeType::Relative),
             value: Some(10.0),
             ..Default::default()
         };
 
-        assert_eq!(surcharge.surcharge_type, Some(SurchargeType::Percentage));
+        assert_eq!(surcharge.surcharge_type, Some(SurchargeType::Relative));
     }
 
     #[test]
