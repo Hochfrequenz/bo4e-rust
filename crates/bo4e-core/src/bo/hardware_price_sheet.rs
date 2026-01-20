@@ -150,6 +150,9 @@ mod tests {
     #[test]
     fn test_bo4e_object_impl() {
         assert_eq!(HardwarePriceSheet::type_name_german(), "PreisblattHardware");
-        assert_eq!(HardwarePriceSheet::type_name_english(), "HardwarePriceSheet");
+        assert_eq!(
+            HardwarePriceSheet::type_name_english(),
+            "HardwarePriceSheet"
+        );
     }
 }
