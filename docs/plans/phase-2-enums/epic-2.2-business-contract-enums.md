@@ -1,3 +1,6 @@
+---
+status: in_progress
+---
 # Epic 2.2: Business & Contract Enumerations
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
