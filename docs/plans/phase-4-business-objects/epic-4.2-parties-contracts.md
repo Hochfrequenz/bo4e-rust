@@ -1,5 +1,5 @@
 ---
-status: in_progress
+status: complete
 ---
 # Epic 4.2: Parties & Contracts Business Objects
 
