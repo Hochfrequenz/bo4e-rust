@@ -489,3 +489,28 @@ cargo clippy -p bo4e-core
 ```
 
 Expected: All tests pass, no warnings.
+
+---
+
+## Test Summary
+
+| Metric | Value |
+|--------|-------|
+| Tests | 261 |
+| Passed | 261 |
+| Failed | 0 |
+| Skipped | 0 |
+| Doc-tests | 18 |
+
+**Components implemented:** 15
+- Address, GeoCoordinates, CadastralAddress, ContactMethod, Signature
+- ExternalReference, Responsibility, Hardware, OfferPosition, OfferPart
+- OfferVariant, ContractPart, ContractConditions, InvoicePosition, RegionCriterion
+
+**New enums added:** 2
+- SubjectArea (Themengebiet) - ~60 variants for energy market subject areas
+- ValidityType (Gueltigkeitstyp) - for region criterion validity classification
+
+**Verification passed:**
+- `cargo test --workspace` - All 261 tests + 18 doc-tests passing
+- `cargo clippy --workspace` - No warnings

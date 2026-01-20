@@ -218,3 +218,10 @@ mod eco_label;
 
 pub use eco_certificate::EcoCertificate;
 pub use eco_label::EcoLabel;
+
+// Subject area and validity (Epic 3.1)
+mod subject_area;
+mod validity_type;
+
+pub use subject_area::SubjectArea;
+pub use validity_type::ValidityType;
