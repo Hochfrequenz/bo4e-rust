@@ -337,3 +337,20 @@ git commit -m "feat(serde): add high-level serialization API"
 cargo test -p bo4e-serde
 cargo doc -p bo4e-serde --open
 ```
+
+---
+
+## Test Summary
+
+| Metric | Value |
+|--------|-------|
+| Tests | 15 |
+| Passed | 15 |
+| Failed | 0 |
+| Skipped | 2 (doc-tests with `ignore`) |
+
+Files tested:
+- `crates/bo4e-serde/src/config.rs`
+- `crates/bo4e-serde/src/lib.rs`
+- `crates/bo4e-serde/src/serialize.rs`
+- `crates/bo4e-serde/src/simd.rs`
