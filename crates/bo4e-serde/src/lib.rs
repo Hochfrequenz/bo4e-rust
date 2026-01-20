@@ -19,8 +19,12 @@
 //! ```
 
 mod config;
+pub mod serialize;
+pub mod simd;
 
 pub use config::{JsonLanguage, SerializeConfig};
+pub use serialize::{to_string, to_string_pretty, to_vec};
+pub use simd::{from_slice, from_str, from_vec};
 
 use bo4e_core::Bo4eObject;
 use serde::{de::DeserializeOwned, Serialize};

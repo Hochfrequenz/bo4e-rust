@@ -321,3 +321,17 @@ cargo bench -p bo4e-serde
 ```
 
 Expected: simd-json should be 2-4x faster than serde_json for large payloads.
+
+## Test Summary
+
+| Metric | Value |
+|--------|-------|
+| Tests | 738 |
+| Passed | 738 |
+| Failed | 0 |
+| Skipped | 3 |
+
+Files tested:
+- crates/bo4e-serde/src/simd.rs
+- crates/bo4e-serde/src/serialize.rs
+- crates/bo4e-serde/benches/json_parsing.rs

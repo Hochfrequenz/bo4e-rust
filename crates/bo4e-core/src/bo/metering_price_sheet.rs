@@ -146,6 +146,9 @@ mod tests {
     #[test]
     fn test_bo4e_object_impl() {
         assert_eq!(MeteringPriceSheet::type_name_german(), "PreisblattMessung");
-        assert_eq!(MeteringPriceSheet::type_name_english(), "MeteringPriceSheet");
+        assert_eq!(
+            MeteringPriceSheet::type_name_english(),
+            "MeteringPriceSheet"
+        );
     }
 }

@@ -104,10 +104,7 @@ mod tests {
             ..Default::default()
         };
 
-        assert_eq!(
-            price_sheet.service_type,
-            Some(ServiceType::RemoteReading)
-        );
+        assert_eq!(price_sheet.service_type, Some(ServiceType::RemoteReading));
     }
 
     #[test]
