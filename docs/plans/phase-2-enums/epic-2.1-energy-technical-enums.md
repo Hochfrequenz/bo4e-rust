@@ -551,3 +551,16 @@ cargo clippy -p bo4e-core
 ```
 
 Expected: All tests pass, no warnings.
+
+---
+
+## Test Summary
+
+| Metric | Value |
+|--------|-------|
+| Tests | 84 |
+| Passed | 84 |
+| Failed | 0 |
+| Skipped | 0 |
+
+All 30 energy/technical enums implemented with roundtrip serialization tests passing.
