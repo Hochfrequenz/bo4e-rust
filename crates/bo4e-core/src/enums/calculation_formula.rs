@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Berechnungsformel
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Berechnungsformel"))]
 #[non_exhaustive]
 pub enum CalculationFormula {
     /// Highest of maximum values (Höchstwert der Maximalwerte)

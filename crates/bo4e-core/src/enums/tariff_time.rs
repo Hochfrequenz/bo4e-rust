@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Tarifzeit
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Tarifzeit"))]
 #[non_exhaustive]
 pub enum TariffTime {
     /// Standard tariff time for single-tariff configurations

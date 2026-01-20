@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Zahlungsart
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Zahlungsweise"))]
 #[non_exhaustive]
 pub enum PaymentMethod {
     /// SEPA direct debit (SEPA Lastschrift)

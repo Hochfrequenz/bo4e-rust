@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Messpreistyp
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Messpreistyp"))]
 #[non_exhaustive]
 pub enum MeasurementPriceType {
     /// Measurement price G2.5

@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: KundengruppeKA (Kundengruppe Konzessionsabgabe)
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "KundengruppeKA"))]
 #[non_exhaustive]
 pub enum ConcessionFeeCustomerGroup {
     // Electricity tariff groups

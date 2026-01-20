@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Organisationstyp
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Organisationstyp"))]
 #[non_exhaustive]
 pub enum OrganizationType {
     /// Private person (B2C)

@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Vertragsstatus
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Vertragsstatus"))]
 #[non_exhaustive]
 pub enum ContractStatus {
     /// In progress/draft (In Arbeit)

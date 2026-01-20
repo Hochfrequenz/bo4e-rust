@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Titel
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Titel"))]
 #[non_exhaustive]
 pub enum Title {
     /// Doctor (Doktor)

@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Marktrolle
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Marktrolle"))]
 #[non_exhaustive]
 pub enum MarketRole {
     /// Technical resource operator (Betreiber einer technischen Ressource)

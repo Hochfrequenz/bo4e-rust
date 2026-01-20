@@ -9,6 +9,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Landescode
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Landescode"))]
 #[non_exhaustive]
 pub enum Country {
     /// Germany (Deutschland)

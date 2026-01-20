@@ -9,6 +9,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Kostenklasse
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Kostenklasse"))]
 #[non_exhaustive]
 pub enum CostClass {
     /// External costs (Fremdkosten)

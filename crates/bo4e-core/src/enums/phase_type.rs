@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Phasenart
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Phasentyp"))]
 #[non_exhaustive]
 pub enum PhaseType {
     /// Single-phase (Einphasig)

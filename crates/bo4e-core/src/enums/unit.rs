@@ -8,6 +8,8 @@ use serde::{Deserialize, Serialize};
 ///
 /// German: Mengeneinheit
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Mengeneinheit"))]
 #[non_exhaustive]
 pub enum Unit {
     // Power units
