@@ -80,7 +80,7 @@ mod tests {
         let charge = NetworkCharge {
             price_type: Some(PriceType::WorkPrice),
             value: Some(5.82),
-            currency: Some(Currency::Cent),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             ..Default::default()
         };
@@ -94,7 +94,7 @@ mod tests {
         let charge = NetworkCharge {
             price_type: Some(PriceType::BasePrice),
             value: Some(55.0),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::Year),
             network_operator_code: Some("9900001".to_string()),
             ..Default::default()
@@ -115,7 +115,7 @@ mod tests {
         let charge = NetworkCharge {
             price_type: Some(PriceType::WorkPrice),
             value: Some(6.25),
-            currency: Some(Currency::Cent),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             description: Some("Arbeitspreis Netznutzung".to_string()),
             ..Default::default()

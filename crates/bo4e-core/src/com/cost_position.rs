@@ -127,7 +127,7 @@ mod tests {
             title: Some("Stromsteuer".to_string()),
             amount: Some(Amount {
                 value: Some(100.0),
-                currency: Some(Currency::Euro),
+                currency: Some(Currency::Eur),
                 ..Default::default()
             }),
             ..Default::default()

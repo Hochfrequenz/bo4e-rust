@@ -89,7 +89,7 @@ mod tests {
             description: Some("50 EUR Rabatt".to_string()),
             discount_type: Some(SurchargeType::Absolute),
             value: Some(50.0),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             ..Default::default()
         };
 

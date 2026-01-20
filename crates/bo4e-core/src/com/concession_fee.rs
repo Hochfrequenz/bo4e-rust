@@ -82,7 +82,7 @@ mod tests {
             fee_type: Some(ConcessionFeeType::Ka1),
             customer_group: Some(ConcessionFeeCustomerGroup::Household),
             value: Some(1.59),
-            currency: Some(Currency::Cent),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             ..Default::default()
         };
@@ -97,7 +97,7 @@ mod tests {
             fee_type: Some(ConcessionFeeType::Ka2),
             customer_group: Some(ConcessionFeeCustomerGroup::Commercial),
             value: Some(0.11),
-            currency: Some(Currency::Cent),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             ..Default::default()
         };

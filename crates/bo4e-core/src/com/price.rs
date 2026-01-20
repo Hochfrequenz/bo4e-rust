@@ -17,7 +17,7 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 ///
 /// let price = Price {
 ///     value: Some(0.25),
-///     currency: Some(Currency::Euro),
+///     currency: Some(Currency::Eur),
 ///     reference_unit: Some(Unit::KilowattHour),
 ///     ..Default::default()
 /// };
@@ -73,7 +73,7 @@ impl Price {
     pub fn eur_per_kwh(value: f64) -> Self {
         Self {
             value: Some(value),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             ..Default::default()
         }
@@ -83,7 +83,7 @@ impl Price {
     pub fn eur_per_month(value: f64) -> Self {
         Self {
             value: Some(value),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::Month),
             price_type: Some(PriceType::BasePrice),
             ..Default::default()
@@ -99,7 +99,7 @@ mod tests {
     fn test_energy_price() {
         let price = Price::eur_per_kwh(0.30);
         assert_eq!(price.value, Some(0.30));
-        assert_eq!(price.currency, Some(Currency::Euro));
+        assert_eq!(price.currency, Some(Currency::Eur));
         assert_eq!(price.reference_unit, Some(Unit::KilowattHour));
     }
 
@@ -107,7 +107,7 @@ mod tests {
     fn test_base_price() {
         let price = Price::eur_per_month(12.50);
         assert_eq!(price.value, Some(12.50));
-        assert_eq!(price.currency, Some(Currency::Euro));
+        assert_eq!(price.currency, Some(Currency::Eur));
         assert_eq!(price.reference_unit, Some(Unit::Month));
         assert_eq!(price.price_type, Some(PriceType::BasePrice));
     }
@@ -116,7 +116,7 @@ mod tests {
     fn test_serialize() {
         let price = Price {
             value: Some(12.50),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             ..Default::default()
         };
 

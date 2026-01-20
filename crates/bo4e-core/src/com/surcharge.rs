@@ -91,7 +91,7 @@ mod tests {
             description: Some("Ökosteuer".to_string()),
             value: Some(0.02),
             surcharge_type: Some(SurchargeType::Absolute),
-            currency: Some(Currency::Cent),
+            currency: Some(Currency::Eur),
             ..Default::default()
         };
 
@@ -106,7 +106,7 @@ mod tests {
             description: Some("Neukunden-Rabatt".to_string()),
             value: Some(-50.0),
             surcharge_type: Some(SurchargeType::Absolute),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             ..Default::default()
         };
 

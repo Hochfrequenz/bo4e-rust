@@ -79,7 +79,7 @@ mod tests {
         let levy = Levy {
             description: Some("EEG-Umlage".to_string()),
             value: Some(6.756),
-            currency: Some(Currency::Cent),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             legal_reference: Some("§ 60 EEG".to_string()),
             ..Default::default()
@@ -94,7 +94,7 @@ mod tests {
         let levy = Levy {
             description: Some("KWK-Umlage".to_string()),
             value: Some(0.254),
-            currency: Some(Currency::Cent),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             ..Default::default()
         };
@@ -114,7 +114,7 @@ mod tests {
         let levy = Levy {
             description: Some("§19 StromNEV-Umlage".to_string()),
             value: Some(0.437),
-            currency: Some(Currency::Cent),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             legal_reference: Some("§ 19 StromNEV".to_string()),
             website: Some("https://www.netztransparenz.de".to_string()),

@@ -17,7 +17,7 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 ///
 /// let amount = Amount {
 ///     value: Some(100.50),
-///     currency: Some(Currency::Euro),
+///     currency: Some(Currency::Eur),
 ///     ..Default::default()
 /// };
 /// ```
@@ -60,7 +60,7 @@ impl Amount {
     pub fn eur(value: f64) -> Self {
         Self {
             value: Some(value),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             ..Default::default()
         }
     }
@@ -74,7 +74,7 @@ mod tests {
     fn test_eur_amount() {
         let amount = Amount::eur(100.50);
         assert_eq!(amount.value, Some(100.50));
-        assert_eq!(amount.currency, Some(Currency::Euro));
+        assert_eq!(amount.currency, Some(Currency::Eur));
     }
 
     #[test]

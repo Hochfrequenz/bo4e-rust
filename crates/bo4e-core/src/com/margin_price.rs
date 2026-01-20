@@ -70,7 +70,7 @@ mod tests {
     fn test_margin_price() {
         let margin = MarginPrice {
             value: Some(0.5),
-            currency: Some(Currency::Cent),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             description: Some("Vertriebsmarge".to_string()),
             ..Default::default()
@@ -90,7 +90,7 @@ mod tests {
     fn test_roundtrip() {
         let margin = MarginPrice {
             value: Some(1.25),
-            currency: Some(Currency::Cent),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             description: Some("Deckungsbeitrag".to_string()),
             ..Default::default()

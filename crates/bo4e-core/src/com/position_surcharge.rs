@@ -72,7 +72,7 @@ mod tests {
             description: Some("Position discount".to_string()),
             surcharge_type: Some(SurchargeType::Absolute),
             value: Some(-5.0),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             ..Default::default()
         };
 
@@ -104,7 +104,7 @@ mod tests {
             description: Some("Test surcharge".to_string()),
             surcharge_type: Some(SurchargeType::Absolute),
             value: Some(15.50),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             ..Default::default()
         };
 

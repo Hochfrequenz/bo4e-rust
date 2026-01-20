@@ -75,7 +75,7 @@ mod tests {
         let bonus = Bonus {
             description: Some("Neukundenbonus".to_string()),
             value: Some(100.0),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             is_one_time: Some(true),
             conditions: Some("Bei Vertragsabschluss".to_string()),
             ..Default::default()
@@ -90,7 +90,7 @@ mod tests {
         let bonus = Bonus {
             description: Some("Treuebonus".to_string()),
             value: Some(25.0),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             is_one_time: Some(false),
             ..Default::default()
         };
@@ -110,7 +110,7 @@ mod tests {
         let bonus = Bonus {
             description: Some("Online-Bonus".to_string()),
             value: Some(50.0),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             conditions: Some("Bei Online-Abschluss".to_string()),
             is_one_time: Some(true),
             ..Default::default()

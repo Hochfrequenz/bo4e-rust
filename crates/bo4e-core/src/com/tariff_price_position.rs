@@ -88,13 +88,13 @@ mod tests {
                 TariffPrice {
                     description: Some("HT".to_string()),
                     value: Some(30.5),
-                    currency: Some(Currency::Cent),
+                    currency: Some(Currency::Eur),
                     ..Default::default()
                 },
                 TariffPrice {
                     description: Some("NT".to_string()),
                     value: Some(22.0),
-                    currency: Some(Currency::Cent),
+                    currency: Some(Currency::Eur),
                     ..Default::default()
                 },
             ],

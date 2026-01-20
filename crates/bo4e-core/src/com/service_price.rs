@@ -76,7 +76,7 @@ mod tests {
         let price = ServicePrice {
             service_type: Some(ServiceType::Installation),
             value: Some(75.0),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             description: Some("Zählerinstallation".to_string()),
             ..Default::default()
         };
@@ -97,7 +97,7 @@ mod tests {
         let price = ServicePrice {
             service_type: Some(ServiceType::Consultation),
             value: Some(50.0),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::Hour),
             description: Some("Energieberatung".to_string()),
             ..Default::default()

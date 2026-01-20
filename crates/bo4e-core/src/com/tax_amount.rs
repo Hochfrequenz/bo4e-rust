@@ -16,11 +16,11 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// use bo4e_core::enums::{Currency, TaxType};
 ///
 /// let tax = TaxAmount {
-///     tax_type: Some(TaxType::Ust19),
+///     tax_type: Some(TaxType::ValueAddedTax),
 ///     tax_rate: Some(19.0),
 ///     basis_value: Some(100.0),
 ///     tax_value: Some(19.0),
-///     currency: Some(Currency::Euro),
+///     currency: Some(Currency::Eur),
 ///     ..Default::default()
 /// };
 /// ```
@@ -74,11 +74,11 @@ impl TaxAmount {
     /// Calculate VAT 19% on a net amount.
     pub fn vat_19(net_amount: f64) -> Self {
         Self {
-            tax_type: Some(TaxType::Ust19),
+            tax_type: Some(TaxType::ValueAddedTax),
             tax_rate: Some(19.0),
             basis_value: Some(net_amount),
             tax_value: Some(net_amount * 0.19),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             ..Default::default()
         }
     }
@@ -86,11 +86,11 @@ impl TaxAmount {
     /// Calculate VAT 7% on a net amount.
     pub fn vat_7(net_amount: f64) -> Self {
         Self {
-            tax_type: Some(TaxType::Ust7),
+            tax_type: Some(TaxType::ValueAddedTax),
             tax_rate: Some(7.0),
             basis_value: Some(net_amount),
             tax_value: Some(net_amount * 0.07),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             ..Default::default()
         }
     }
@@ -103,7 +103,7 @@ mod tests {
     #[test]
     fn test_vat_19() {
         let tax = TaxAmount::vat_19(100.0);
-        assert_eq!(tax.tax_type, Some(TaxType::Ust19));
+        assert_eq!(tax.tax_type, Some(TaxType::ValueAddedTax));
         assert_eq!(tax.tax_rate, Some(19.0));
         assert_eq!(tax.basis_value, Some(100.0));
         assert_eq!(tax.tax_value, Some(19.0));
@@ -112,7 +112,7 @@ mod tests {
     #[test]
     fn test_vat_7() {
         let tax = TaxAmount::vat_7(100.0);
-        assert_eq!(tax.tax_type, Some(TaxType::Ust7));
+        assert_eq!(tax.tax_type, Some(TaxType::ValueAddedTax));
         assert_eq!(tax.tax_rate, Some(7.0));
         assert_eq!(tax.basis_value, Some(100.0));
         assert_eq!(tax.tax_value, Some(7.0));
@@ -138,11 +138,11 @@ mod tests {
     #[test]
     fn test_roundtrip() {
         let tax = TaxAmount {
-            tax_type: Some(TaxType::Ust19),
+            tax_type: Some(TaxType::ValueAddedTax),
             tax_rate: Some(19.0),
             basis_value: Some(123.45),
             tax_value: Some(23.4555),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             ..Default::default()
         };
 

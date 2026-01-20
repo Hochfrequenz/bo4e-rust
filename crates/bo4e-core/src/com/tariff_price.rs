@@ -18,7 +18,7 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// let tariff_price = TariffPrice {
 ///     price_type: Some(PriceType::WorkPrice),
 ///     value: Some(0.30),
-///     currency: Some(Currency::Cent),
+///     currency: Some(Currency::Eur),
 ///     reference_unit: Some(Unit::KilowattHour),
 ///     ..Default::default()
 /// };
@@ -78,7 +78,7 @@ mod tests {
         let price = TariffPrice {
             price_type: Some(PriceType::WorkPrice),
             value: Some(30.5),
-            currency: Some(Currency::Cent),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             ..Default::default()
         };
@@ -92,7 +92,7 @@ mod tests {
         let price = TariffPrice {
             price_type: Some(PriceType::BasePrice),
             value: Some(12.50),
-            currency: Some(Currency::Euro),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::Month),
             description: Some("Monthly base fee".to_string()),
             ..Default::default()
@@ -113,7 +113,7 @@ mod tests {
         let price = TariffPrice {
             price_type: Some(PriceType::WorkPrice),
             value: Some(25.75),
-            currency: Some(Currency::Cent),
+            currency: Some(Currency::Eur),
             reference_unit: Some(Unit::KilowattHour),
             description: Some("Peak rate".to_string()),
             ..Default::default()
