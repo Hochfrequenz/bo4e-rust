@@ -42,6 +42,28 @@ bo4e-serde = { path = "crates/bo4e-serde", version = "0.1.1" }
 
 The release workflow will automatically publish to crates.io using OIDC trusted publishing.
 
+## Drift Detection
+
+Check for schema drift between Rust and Python implementations:
+
+```bash
+# Install Python dependencies
+pip install -r scripts/requirements.txt
+
+# Generate schemas
+python scripts/extract_python_schema.py > schemas/python_schema.json
+cargo run --bin generate_schema --features json-schema > schemas/rust_schema.json
+
+# Compare and view report
+python scripts/compare_schemas.py
+```
+
+Drift detection runs automatically:
+- Weekly (Monday 6am UTC)
+- On PRs that modify `crates/bo4e-core/src/**`
+
+Reports are uploaded as artifacts in GitHub Actions.
+
 ## Build Commands
 
 ```bash
