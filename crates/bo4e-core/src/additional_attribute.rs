@@ -4,6 +4,7 @@ use serde::{Deserialize, Serialize};
 
 /// Value type for additional attributes.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 #[serde(untagged)]
 pub enum AttributeValue {
     /// String value
@@ -37,6 +38,7 @@ pub enum AttributeValue {
 /// };
 /// ```
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 #[serde(rename_all = "camelCase")]
 pub struct AdditionalAttribute {
     /// Name/key of the attribute
