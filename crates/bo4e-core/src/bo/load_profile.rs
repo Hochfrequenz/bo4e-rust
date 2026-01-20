@@ -29,6 +29,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Lastgang"))]
 #[serde(rename_all = "camelCase")]
 pub struct LoadProfile {
     /// BO4E metadata
@@ -37,50 +39,62 @@ pub struct LoadProfile {
 
     /// Load profile ID (Lastgang-ID)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "lastgangId"))]
     pub load_profile_id: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Energy direction (Energierichtung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "energierichtung"))]
     pub energy_direction: Option<EnergyDirection>,
 
     /// Measurement type (Messart)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "messart"))]
     pub measurement_type: Option<MeasurementType>,
 
     /// Unit of measurement (Einheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einheit"))]
     pub unit: Option<Unit>,
 
     /// Validity period (Gueltigkeitszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigkeitszeitraum"))]
     pub validity_period: Option<TimePeriod>,
 
     /// Load profile values (Lastgangwerte)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "lastgangwerte"))]
     pub values: Vec<LoadProfileValue>,
 
     /// Associated market location ID
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "marktlokationsId"))]
     pub market_location_id: Option<String>,
 
     /// Associated metering location ID
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "messlokationsId"))]
     pub metering_location_id: Option<String>,
 
     /// OBIS code
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "obisKennzahl"))]
     pub obis_code: Option<String>,
 
     /// Interval duration in minutes (Intervalllaenge)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "intervalllaenge"))]
     pub interval_minutes: Option<i32>,
 
     /// Standard load profile type (Standardlastprofil)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "standardlastprofil"))]
     pub standard_profile_type: Option<String>,
 }
 

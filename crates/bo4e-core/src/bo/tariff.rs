@@ -27,6 +27,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Tarif"))]
 #[serde(rename_all = "camelCase")]
 pub struct Tariff {
     /// BO4E metadata
@@ -35,46 +37,60 @@ pub struct Tariff {
 
     /// Tariff name (Tarifname)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarifname"))]
     pub tariff_name: Option<String>,
 
     /// Tariff description (Tarifbeschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarifbeschreibung"))]
     pub description: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Target customer type (Kundentyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kundentyp"))]
     pub customer_type: Option<CustomerType>,
 
     /// Validity period (Gueltigkeitszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigkeitszeitraum"))]
     pub validity_period: Option<TimePeriod>,
 
     /// Base price (Grundpreis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "grundpreis"))]
     pub base_price: Option<Price>,
 
     /// Working price (Arbeitspreis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "arbeitspreis"))]
     pub working_price: Option<Price>,
 
     /// Price tiers (Preisstaffeln)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "preisstaffeln"))]
     pub price_tiers: Vec<PriceTier>,
 
     /// Calculation parameters (Tarifberechnungsparameter)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(
+        feature = "json-schema",
+        schemars(rename = "tarifberechnungsparameter")
+    )]
     pub calculation_parameters: Option<TariffCalculationParameter>,
 
     /// Energy mix composition (Energiemix)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "energiemix"))]
     pub energy_mix: Option<EnergyMix>,
 
     /// Provider/supplier
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "anbieter"))]
     pub supplier: Option<Box<super::BusinessPartner>>,
 }
 

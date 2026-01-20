@@ -24,6 +24,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "PreisblattHardware"))]
 #[serde(rename_all = "camelCase")]
 pub struct HardwarePriceSheet {
     /// BO4E metadata
@@ -32,50 +34,62 @@ pub struct HardwarePriceSheet {
 
     /// Name/designation of the price sheet (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub designation: Option<String>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Price sheet number/identifier (Preisblattnummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "preisblattnummer"))]
     pub price_sheet_number: Option<String>,
 
     /// Validity period (Gueltigkeitszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigkeitszeitraum"))]
     pub validity_period: Option<TimePeriod>,
 
     /// Valid from date (Gueltig ab)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigAb"))]
     pub valid_from: Option<DateTime<Utc>>,
 
     /// Valid until date (Gueltig bis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigBis"))]
     pub valid_until: Option<DateTime<Utc>>,
 
     /// Hardware items with pricing (Hardware)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "hardware"))]
     pub hardware_items: Vec<Hardware>,
 
     /// Installation price (Installationspreis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "installationspreis"))]
     pub installation_price: Option<Price>,
 
     /// Rental price per unit (Mietpreis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "mietpreis"))]
     pub rental_price: Option<Price>,
 
     /// Purchase price (Kaufpreis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kaufpreis"))]
     pub purchase_price: Option<Price>,
 
     /// Hardware provider
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "hardwareanbieter"))]
     pub provider: Option<Box<super::BusinessPartner>>,
 }
 

@@ -26,6 +26,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Zaehler"))]
 #[serde(rename_all = "camelCase")]
 pub struct Meter {
     /// BO4E metadata
@@ -34,26 +36,32 @@ pub struct Meter {
 
     /// Unique meter identification number (Zaehlernummer)
     #[serde(skip_serializing_if = "Option::is_none", alias = "zaehlernummer")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zaehlernummer"))]
     pub meter_number: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none", alias = "sparte")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Type of meter (Zaehlertyp)
     #[serde(skip_serializing_if = "Option::is_none", alias = "zaehlertyp")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zaehlertyp"))]
     pub meter_type: Option<MeterType>,
 
     /// Meter size classification (Zaehlergroesse)
     #[serde(skip_serializing_if = "Option::is_none", alias = "zaehlergroesse")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zaehlergroesse"))]
     pub meter_size: Option<MeterSize>,
 
     /// Installation location address (Standort)
     #[serde(skip_serializing_if = "Option::is_none", alias = "standort")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "standort"))]
     pub location: Option<Address>,
 
     /// Registers on this meter (Zaehlwerke)
     #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "zaehlwerke")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zaehlwerke"))]
     pub registers: Vec<MeterRegister>,
 
     /// Hardware components (Geraeteeigenschaften)
@@ -62,14 +70,17 @@ pub struct Meter {
         skip_serializing_if = "Vec::is_empty",
         alias = "geraeteeigenschaften"
     )]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "geraeteeigenschaften"))]
     pub hardware: Vec<Hardware>,
 
     /// Reference to associated market location ID (Marktlokation)
     #[serde(skip_serializing_if = "Option::is_none", alias = "marktlokationsId")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "marktlokationsId"))]
     pub market_location_id: Option<String>,
 
     /// Reference to associated metering location ID (Messlokation)
     #[serde(skip_serializing_if = "Option::is_none", alias = "messlokationsId")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "messlokationsId"))]
     pub metering_location_id: Option<String>,
 
     /// Ownership status (Eigentumsverhaeltnis)
@@ -77,30 +88,37 @@ pub struct Meter {
         skip_serializing_if = "Option::is_none",
         alias = "eigentumsverhaeltnis"
     )]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "eigentumsverhaeltnis"))]
     pub ownership: Option<String>,
 
     /// Manufacturer (Hersteller)
     #[serde(skip_serializing_if = "Option::is_none", alias = "hersteller")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "hersteller"))]
     pub manufacturer: Option<String>,
 
     /// Manufacturing year (Herstellungsjahr)
     #[serde(skip_serializing_if = "Option::is_none", alias = "herstellungsjahr")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "herstellungsjahr"))]
     pub manufacturing_year: Option<i32>,
 
     /// Installation date (Einbaudatum)
     #[serde(skip_serializing_if = "Option::is_none", alias = "einbaudatum")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einbaudatum"))]
     pub installation_date: Option<chrono::DateTime<chrono::Utc>>,
 
     /// Removal date (Ausbaudatum)
     #[serde(skip_serializing_if = "Option::is_none", alias = "ausbaudatum")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ausbaudatum"))]
     pub removal_date: Option<chrono::DateTime<chrono::Utc>>,
 
     /// Calibration date (Eichdatum)
     #[serde(skip_serializing_if = "Option::is_none", alias = "eichdatum")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "eichdatum"))]
     pub calibration_date: Option<chrono::DateTime<chrono::Utc>>,
 
     /// Calibration expiry date (Eichablaufdatum)
     #[serde(skip_serializing_if = "Option::is_none", alias = "eichablaufdatum")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "eichablaufdatum"))]
     pub calibration_expiry_date: Option<chrono::DateTime<chrono::Utc>>,
 }
 

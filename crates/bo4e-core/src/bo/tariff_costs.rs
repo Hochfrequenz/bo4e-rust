@@ -28,6 +28,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Tarifkosten"))]
 #[serde(rename_all = "camelCase")]
 pub struct TariffCosts {
     /// BO4E metadata
@@ -36,50 +38,62 @@ pub struct TariffCosts {
 
     /// Name/designation of the tariff costs (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub designation: Option<String>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Period the costs apply to (Abrechnungszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "abrechnungszeitraum"))]
     pub period: Option<TimePeriod>,
 
     /// Total amount (Gesamtbetrag)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gesamtbetrag"))]
     pub total_amount: Option<Amount>,
 
     /// Base price applied (Grundpreis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "grundpreis"))]
     pub base_price: Option<Price>,
 
     /// Base price cost (Grundpreiskosten)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "grundpreiskosten"))]
     pub base_price_cost: Option<Amount>,
 
     /// Working price applied (Arbeitspreis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "arbeitspreis"))]
     pub working_price: Option<Price>,
 
     /// Working price cost (Arbeitspreiskosten)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "arbeitspreiskosten"))]
     pub working_price_cost: Option<Amount>,
 
     /// Consumption quantity (Verbrauchsmenge)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "verbrauchsmenge"))]
     pub consumption: Option<f64>,
 
     /// Cost blocks (Kostenbloecke)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kostenbloecke"))]
     pub cost_blocks: Vec<CostBlock>,
 
     /// Reference to the tariff
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarif"))]
     pub tariff: Option<Box<super::Tariff>>,
 }
 

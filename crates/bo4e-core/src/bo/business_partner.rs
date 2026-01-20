@@ -23,6 +23,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Geschaeftspartner"))]
 #[serde(rename_all = "camelCase")]
 pub struct BusinessPartner {
     /// BO4E metadata
@@ -31,18 +33,22 @@ pub struct BusinessPartner {
 
     /// Partner ID (Geschaeftspartner-ID)
     #[serde(skip_serializing_if = "Option::is_none", alias = "geschaeftspartnerId")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "geschaeftspartnerId"))]
     pub partner_id: Option<String>,
 
     /// Company/organization name (Name1)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "name1"))]
     pub name1: Option<String>,
 
     /// Additional name line (Name2)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "name2"))]
     pub name2: Option<String>,
 
     /// Additional name line (Name3)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "name3"))]
     pub name3: Option<String>,
 
     /// Roles this partner has (Rollen)
@@ -51,14 +57,17 @@ pub struct BusinessPartner {
         skip_serializing_if = "Vec::is_empty",
         alias = "geschaeftspartnerrollen"
     )]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "geschaeftspartnerrollen"))]
     pub roles: Vec<BusinessPartnerRole>,
 
     /// Primary address (Adresse)
     #[serde(skip_serializing_if = "Option::is_none", alias = "adresse")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "adresse"))]
     pub address: Option<Address>,
 
     /// Contact methods (Kontaktwege)
     #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "kontaktwege")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kontaktwege"))]
     pub contact_methods: Vec<ContactMethod>,
 
     /// Commercial register number (Handelsregisternummer)
@@ -66,14 +75,17 @@ pub struct BusinessPartner {
         skip_serializing_if = "Option::is_none",
         alias = "handelsregisternummer"
     )]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "handelsregisternummer"))]
     pub commercial_register_number: Option<String>,
 
     /// Tax ID (Steuernummer)
     #[serde(skip_serializing_if = "Option::is_none", alias = "steuernummer")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "steuernummer"))]
     pub tax_id: Option<String>,
 
     /// VAT ID (Umsatzsteuer-ID)
     #[serde(skip_serializing_if = "Option::is_none", alias = "umsatzsteuerId")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "umsatzsteuerId"))]
     pub vat_id: Option<String>,
 }
 

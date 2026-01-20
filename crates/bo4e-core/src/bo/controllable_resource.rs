@@ -29,6 +29,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "SteuerbareRessource"))]
 #[serde(rename_all = "camelCase")]
 pub struct ControllableResource {
     /// BO4E metadata
@@ -37,58 +39,72 @@ pub struct ControllableResource {
 
     /// Controllable resource ID (SteuerbareRessource-ID)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "steuerbareRessourceId"))]
     pub controllable_resource_id: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Resource type (Ressourcentyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ressourcentyp"))]
     pub resource_type: Option<ControllableResourceType>,
 
     /// Energy direction (Energierichtung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "energierichtung"))]
     pub energy_direction: Option<EnergyDirection>,
 
     /// Location address (Standort)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "standort"))]
     pub address: Option<Address>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Controllable power in kW (Steuerbare Leistung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "steuerbareLeistung"))]
     pub controllable_power: Option<f64>,
 
     /// Minimum activation time in minutes (Mindestaktivierungszeit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "mindestaktivierungszeit"))]
     pub min_activation_time: Option<i32>,
 
     /// Maximum activation time in minutes (Maximalaktivierungszeit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "maximalaktivierungszeit"))]
     pub max_activation_time: Option<i32>,
 
     /// Ramp up time in seconds (Hochlaufzeit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "hochlaufzeit"))]
     pub ramp_up_time: Option<i32>,
 
     /// Ramp down time in seconds (Herunterlaufzeit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "herunterlaufzeit"))]
     pub ramp_down_time: Option<i32>,
 
     /// Associated technical resource ID
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "technischeRessourceId"))]
     pub technical_resource_id: Option<String>,
 
     /// Associated market location ID
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "marktlokationsId"))]
     pub market_location_id: Option<String>,
 
     /// Is currently active/available (Ist aktiv)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "istAktiv"))]
     pub is_active: Option<bool>,
 }
 

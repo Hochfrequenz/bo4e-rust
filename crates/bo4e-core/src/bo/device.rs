@@ -27,6 +27,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Geraet"))]
 #[serde(rename_all = "camelCase")]
 pub struct Device {
     /// BO4E metadata
@@ -35,50 +37,62 @@ pub struct Device {
 
     /// Device identification (Geraetkennung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "geraetkennung"))]
     pub device_id: Option<String>,
 
     /// Serial number (Seriennummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "seriennummer"))]
     pub serial_number: Option<String>,
 
     /// Device category (Geraeteklasse)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "geraeteklasse"))]
     pub device_category: Option<DeviceCategory>,
 
     /// Device type (Geraetetyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "geraetetyp"))]
     pub device_type: Option<DeviceType>,
 
     /// Manufacturer (Hersteller)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "hersteller"))]
     pub manufacturer: Option<String>,
 
     /// Model name (Modellbezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "modellbezeichnung"))]
     pub model: Option<String>,
 
     /// Manufacturing year (Baujahr)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "baujahr"))]
     pub manufacturing_year: Option<i32>,
 
     /// Installation date (Einbaudatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einbaudatum"))]
     pub installation_date: Option<chrono::DateTime<chrono::Utc>>,
 
     /// Removal date (Ausbaudatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ausbaudatum"))]
     pub removal_date: Option<chrono::DateTime<chrono::Utc>>,
 
     /// Firmware version (Firmware-Version)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "firmwareVersion"))]
     pub firmware_version: Option<String>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Associated metering location ID
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "messlokationsId"))]
     pub metering_location_id: Option<String>,
 }
 

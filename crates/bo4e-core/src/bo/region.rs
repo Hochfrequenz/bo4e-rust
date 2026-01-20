@@ -24,6 +24,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Region"))]
 #[serde(rename_all = "camelCase")]
 pub struct Region {
     /// BO4E metadata
@@ -32,30 +34,37 @@ pub struct Region {
 
     /// Region code (Regionscode)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "regionscode"))]
     pub region_code: Option<String>,
 
     /// Region name (Name)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "name"))]
     pub name: Option<String>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Type of region (Gebietstyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gebietstyp"))]
     pub region_type: Option<RegionType>,
 
     /// Criteria that define this region (Regionskriterien)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "regionskriterien"))]
     pub criteria: Vec<RegionCriterion>,
 
     /// Parent region (Uebergeordnete Region)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "uebergeordneteRegion"))]
     pub parent_region: Option<Box<Region>>,
 
     /// Sub-regions (Unterregionen)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "unterregionen"))]
     pub sub_regions: Vec<Box<Region>>,
 }
 

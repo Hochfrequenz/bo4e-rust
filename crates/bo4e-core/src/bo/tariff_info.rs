@@ -27,6 +27,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Tarifinfo"))]
 #[serde(rename_all = "camelCase")]
 pub struct TariffInfo {
     /// BO4E metadata
@@ -35,50 +37,62 @@ pub struct TariffInfo {
 
     /// Tariff name (Tarifname)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarifname"))]
     pub tariff_name: Option<String>,
 
     /// Tariff description (Tarifbeschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarifbeschreibung"))]
     pub description: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Target customer type (Kundentyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kundentyp"))]
     pub customer_type: Option<CustomerType>,
 
     /// Website URL for tariff information (Website)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "website"))]
     pub website: Option<String>,
 
     /// Validity period (Gueltigkeitszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigkeitszeitraum"))]
     pub validity_period: Option<TimePeriod>,
 
     /// Start date of tariff availability (Angebotsdatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "angebotsdatum"))]
     pub available_from: Option<DateTime<Utc>>,
 
     /// End date of tariff availability (Enddatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "enddatum"))]
     pub available_until: Option<DateTime<Utc>>,
 
     /// Energy mix composition (Energiemix)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "energiemix"))]
     pub energy_mix: Option<EnergyMix>,
 
     /// Price guarantee (Preisgarantie)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "preisgarantie"))]
     pub price_guarantee: Option<PriceGuarantee>,
 
     /// Tariff restrictions (Tarifeinschraenkungen)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarifeinschraenkungen"))]
     pub restrictions: Vec<TariffRestriction>,
 
     /// Provider/supplier
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "anbieter"))]
     pub supplier: Option<Box<super::BusinessPartner>>,
 }
 

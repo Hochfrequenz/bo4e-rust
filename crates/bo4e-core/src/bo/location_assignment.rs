@@ -27,6 +27,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Lokationszuordnung"))]
 #[serde(rename_all = "camelCase")]
 pub struct LocationAssignment {
     /// BO4E metadata
@@ -35,38 +37,47 @@ pub struct LocationAssignment {
 
     /// Market location ID (Marktlokations-ID)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "marktlokationsId"))]
     pub market_location_id: Option<String>,
 
     /// Metering location ID (Messlokations-ID)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "messlokationsId"))]
     pub metering_location_id: Option<String>,
 
     /// Network location ID (Netzlokations-ID)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "netzlokationsId"))]
     pub network_location_id: Option<String>,
 
     /// Technical resource ID (Technische-Ressource-ID)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "technischeRessourceId"))]
     pub technical_resource_id: Option<String>,
 
     /// Controllable resource ID (Steuerbare-Ressource-ID)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "steuerbareRessourceId"))]
     pub controllable_resource_id: Option<String>,
 
     /// Location type (Lokationstyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "lokationstyp"))]
     pub location_type: Option<LocationType>,
 
     /// Arithmetic operation for combination (Rechenoperation)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "rechenoperation"))]
     pub arithmetic_operation: Option<ArithmeticOperation>,
 
     /// Validity period (Gueltigkeitszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigkeitszeitraum"))]
     pub validity_period: Option<TimePeriod>,
 
     /// Sequence/order number (Reihenfolge)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "reihenfolge"))]
     pub sequence: Option<i32>,
 }
 

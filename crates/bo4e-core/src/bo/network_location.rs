@@ -28,6 +28,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Netzlokation"))]
 #[serde(rename_all = "camelCase")]
 pub struct NetworkLocation {
     /// BO4E metadata
@@ -36,34 +38,42 @@ pub struct NetworkLocation {
 
     /// Network location ID (Netzlokations-ID)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "netzlokationsId"))]
     pub network_location_id: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Network level (Netzebene)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "netzebene"))]
     pub network_level: Option<NetworkLevel>,
 
     /// Location address (Adresse)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "adresse"))]
     pub address: Option<Address>,
 
     /// Network operator code (Netzbetreiber-Codenummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "netzbetreiberCodenummer"))]
     pub network_operator_code: Option<String>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Associated metering location IDs
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "messlokationsIds"))]
     pub metering_location_ids: Vec<String>,
 
     /// Associated technical resource IDs
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "technischeRessourceIds"))]
     pub technical_resource_ids: Vec<String>,
 }
 

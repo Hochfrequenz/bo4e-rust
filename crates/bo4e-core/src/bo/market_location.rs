@@ -30,6 +30,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Marktlokation"))]
 #[serde(rename_all = "camelCase")]
 pub struct MarketLocation {
     /// BO4E metadata
@@ -38,30 +40,37 @@ pub struct MarketLocation {
 
     /// Market location ID - 11 digits (Marktlokations-ID)
     #[serde(skip_serializing_if = "Option::is_none", alias = "marktlokationsId")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "marktlokationsId"))]
     pub market_location_id: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none", alias = "sparte")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Energy direction (Energierichtung)
     #[serde(skip_serializing_if = "Option::is_none", alias = "energierichtung")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "energierichtung"))]
     pub energy_direction: Option<EnergyDirection>,
 
     /// Customer type (Kundentyp)
     #[serde(skip_serializing_if = "Option::is_none", alias = "kundentyp")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kundentyp"))]
     pub customer_type: Option<CustomerType>,
 
     /// Location address (Adresse)
     #[serde(skip_serializing_if = "Option::is_none", alias = "adresse")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "adresse"))]
     pub address: Option<Address>,
 
     /// Supply start date (Lieferbeginn)
     #[serde(skip_serializing_if = "Option::is_none", alias = "lieferbeginn")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "lieferbeginn"))]
     pub supply_start: Option<chrono::DateTime<chrono::Utc>>,
 
     /// Supply end date (Lieferende)
     #[serde(skip_serializing_if = "Option::is_none", alias = "lieferende")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "lieferende"))]
     pub supply_end: Option<chrono::DateTime<chrono::Utc>>,
 
     /// Annual consumption in kWh (Jahresverbrauchsprognose)
@@ -69,6 +78,7 @@ pub struct MarketLocation {
         skip_serializing_if = "Option::is_none",
         alias = "jahresverbrauchsprognose"
     )]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "jahresverbrauchsprognose"))]
     pub annual_consumption: Option<f64>,
 
     /// Network operator code (Netzbetreiber-Codenummer)
@@ -76,6 +86,7 @@ pub struct MarketLocation {
         skip_serializing_if = "Option::is_none",
         alias = "netzbetreiberCodenummer"
     )]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "netzbetreiberCodenummer"))]
     pub network_operator_code: Option<String>,
 
     /// Basic supplier code (Grundversorger-Codenummer)
@@ -83,12 +94,17 @@ pub struct MarketLocation {
         skip_serializing_if = "Option::is_none",
         alias = "grundversorgerCodenummer"
     )]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "grundversorgerCodenummer"))]
     pub basic_supplier_code: Option<String>,
 
     /// Metering point operator code (Messstellenbetreiber-Codenummer)
     #[serde(
         skip_serializing_if = "Option::is_none",
         alias = "messstellenbetreiberCodenummer"
+    )]
+    #[cfg_attr(
+        feature = "json-schema",
+        schemars(rename = "messstellenbetreiberCodenummer")
     )]
     pub metering_operator_code: Option<String>,
 
@@ -97,18 +113,25 @@ pub struct MarketLocation {
         skip_serializing_if = "Option::is_none",
         alias = "uebertragungsnetzbetreiberCodenummer"
     )]
+    #[cfg_attr(
+        feature = "json-schema",
+        schemars(rename = "uebertragungsnetzbetreiberCodenummer")
+    )]
     pub transmission_operator_code: Option<String>,
 
     /// Grid connection level (Netzebene)
     #[serde(skip_serializing_if = "Option::is_none", alias = "netzebene")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "netzebene"))]
     pub grid_level: Option<String>,
 
     /// Network area (Netzgebiet)
     #[serde(skip_serializing_if = "Option::is_none", alias = "netzgebiet")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "netzgebiet"))]
     pub network_area: Option<String>,
 
     /// Billing balance area (Bilanzierungsgebiet)
     #[serde(skip_serializing_if = "Option::is_none", alias = "bilanzierungsgebiet")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bilanzierungsgebiet"))]
     pub balancing_area: Option<String>,
 
     /// Associated metering location IDs
@@ -117,6 +140,7 @@ pub struct MarketLocation {
         skip_serializing_if = "Vec::is_empty",
         alias = "messlokationsIds"
     )]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "messlokationsIds"))]
     pub metering_location_ids: Vec<String>,
 
     /// Is Controllable Resource (Steuerbare Ressource)
@@ -124,6 +148,7 @@ pub struct MarketLocation {
         skip_serializing_if = "Option::is_none",
         alias = "istSteuerbareRessource"
     )]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "istSteuerbareRessource"))]
     pub is_controllable_resource: Option<bool>,
 }
 

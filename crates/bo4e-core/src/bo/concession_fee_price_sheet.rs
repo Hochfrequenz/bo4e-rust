@@ -27,6 +27,11 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(
+    feature = "json-schema",
+    schemars(rename = "PreisblattKonzessionsabgabe")
+)]
 #[serde(rename_all = "camelCase")]
 pub struct ConcessionFeePriceSheet {
     /// BO4E metadata
@@ -35,46 +40,57 @@ pub struct ConcessionFeePriceSheet {
 
     /// Name/designation of the price sheet (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub designation: Option<String>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Customer group for concession fees (Kundengruppe)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kundengruppe"))]
     pub customer_group: Option<ConcessionFeeCustomerGroup>,
 
     /// Price sheet number/identifier (Preisblattnummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "preisblattnummer"))]
     pub price_sheet_number: Option<String>,
 
     /// Validity period (Gueltigkeitszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigkeitszeitraum"))]
     pub validity_period: Option<TimePeriod>,
 
     /// Valid from date (Gueltig ab)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigAb"))]
     pub valid_from: Option<DateTime<Utc>>,
 
     /// Valid until date (Gueltig bis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigBis"))]
     pub valid_until: Option<DateTime<Utc>>,
 
     /// Concession fees (Konzessionsabgaben)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "konzessionsabgaben"))]
     pub concession_fees: Vec<ConcessionFee>,
 
     /// Municipality/area name (Gemeindebezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gemeindebezeichnung"))]
     pub municipality: Option<String>,
 
     /// Network operator
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "netzbetreiber"))]
     pub operator: Option<Box<super::BusinessPartner>>,
 }
 

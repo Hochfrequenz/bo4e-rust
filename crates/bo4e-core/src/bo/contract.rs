@@ -26,6 +26,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Vertrag"))]
 #[serde(rename_all = "camelCase")]
 pub struct Contract {
     /// BO4E metadata
@@ -34,50 +36,62 @@ pub struct Contract {
 
     /// Contract number (Vertragsnummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragsnummer"))]
     pub contract_number: Option<String>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Type of contract (Vertragsart)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragsart"))]
     pub contract_type: Option<ContractType>,
 
     /// Status of contract (Vertragsstatus)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragsstatus"))]
     pub status: Option<ContractStatus>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Contract start date (Vertragsbeginn)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragsbeginn"))]
     pub contract_start: Option<DateTime<Utc>>,
 
     /// Contract end date (Vertragsende)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragsende"))]
     pub contract_end: Option<DateTime<Utc>>,
 
     /// Signing date (Unterzeichnungsdatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "unterzeichnungsdatum"))]
     pub signing_date: Option<DateTime<Utc>>,
 
     /// Validity period (Gueltigkeitszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigkeitszeitraum"))]
     pub validity_period: Option<TimePeriod>,
 
     /// Contract conditions (Vertragskonditionen)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragskonditionen"))]
     pub conditions: Option<ContractConditions>,
 
     /// Contract parts (Vertragsteile)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragsteile"))]
     pub parts: Vec<ContractPart>,
 
     /// Contracting party (Vertragspartner)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragspartner"))]
     pub contract_partner: Option<Box<super::BusinessPartner>>,
 }
 

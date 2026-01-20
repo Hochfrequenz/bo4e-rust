@@ -24,6 +24,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Marktteilnehmer"))]
 #[serde(rename_all = "camelCase")]
 pub struct MarketParticipant {
     /// BO4E metadata
@@ -32,30 +34,37 @@ pub struct MarketParticipant {
 
     /// Market partner ID (Marktpartner-ID) - typically BDEW code number
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "marktpartnerId"))]
     pub market_partner_id: Option<String>,
 
     /// Name of the market participant (Name)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "name"))]
     pub name: Option<String>,
 
     /// Market role (Marktrolle)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "marktrolle"))]
     pub market_role: Option<MarketRole>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Primary address (Adresse)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "adresse"))]
     pub address: Option<Address>,
 
     /// Contact methods (Kontaktwege)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kontaktwege"))]
     pub contact_methods: Vec<ContactMethod>,
 
     /// Associated business partner (Geschaeftspartner)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "geschaeftspartner"))]
     pub business_partner: Option<Box<super::BusinessPartner>>,
 }
 
