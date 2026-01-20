@@ -25,6 +25,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Regionaltarif"))]
 #[serde(rename_all = "camelCase")]
 pub struct RegionalTariff {
     /// BO4E metadata
@@ -33,46 +35,57 @@ pub struct RegionalTariff {
 
     /// Tariff code (Tarifcode)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarifcode"))]
     pub tariff_code: Option<String>,
 
     /// Tariff name (Tarifname)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarifname"))]
     pub name: Option<String>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Tariff provider (Tarifanbieter)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "tarifanbieter"))]
     pub provider: Option<Box<super::BusinessPartner>>,
 
     /// Region this tariff applies to (Region)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "region"))]
     pub region: Option<Box<super::Region>>,
 
     /// Validity period (Gueltigkeitszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigkeitszeitraum"))]
     pub validity_period: Option<TimePeriod>,
 
     /// Start date (Startdatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "startdatum"))]
     pub start_date: Option<DateTime<Utc>>,
 
     /// End date (Enddatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "enddatum"))]
     pub end_date: Option<DateTime<Utc>>,
 
     /// Regional price tiers (Regionale Preisstufen)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "regionalePreisstufen"))]
     pub price_tiers: Vec<RegionalPriceTier>,
 
     /// Regional surcharges (Regionale Aufschlaege)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "regionaleAufschlaege"))]
     pub surcharges: Vec<RegionalSurcharge>,
 }
 

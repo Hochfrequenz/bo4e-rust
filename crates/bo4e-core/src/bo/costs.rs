@@ -25,6 +25,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Kosten"))]
 #[serde(rename_all = "camelCase")]
 pub struct Costs {
     /// BO4E metadata
@@ -33,30 +35,37 @@ pub struct Costs {
 
     /// Name/designation of the cost summary (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub designation: Option<String>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Period the costs apply to (Abrechnungszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "abrechnungszeitraum"))]
     pub period: Option<TimePeriod>,
 
     /// Total amount (Gesamtbetrag)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gesamtbetrag"))]
     pub total_amount: Option<Amount>,
 
     /// Cost blocks (Kostenbloecke)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kostenbloecke"))]
     pub cost_blocks: Vec<CostBlock>,
 
     /// Related market location (Marktlokation)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "marktlokation"))]
     pub market_location: Option<Box<super::MarketLocation>>,
 }
 

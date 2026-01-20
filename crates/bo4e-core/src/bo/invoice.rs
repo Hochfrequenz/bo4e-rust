@@ -27,6 +27,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Rechnung"))]
 #[serde(rename_all = "camelCase")]
 pub struct Invoice {
     /// BO4E metadata
@@ -35,50 +37,62 @@ pub struct Invoice {
 
     /// Invoice number (Rechnungsnummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "rechnungsnummer"))]
     pub invoice_number: Option<String>,
 
     /// Invoice type (Rechnungstyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "rechnungstyp"))]
     pub invoice_type: Option<InvoiceType>,
 
     /// Invoice status (Rechnungsstatus)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "rechnungsstatus"))]
     pub status: Option<InvoiceStatus>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Invoice date (Rechnungsdatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "rechnungsdatum"))]
     pub invoice_date: Option<NaiveDate>,
 
     /// Due date (Faelligkeitsdatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "faelligkeitsdatum"))]
     pub due_date: Option<NaiveDate>,
 
     /// Billing period (Abrechnungszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "abrechnungszeitraum"))]
     pub billing_period: Option<TimePeriod>,
 
     /// Net amount (Nettobetrag)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "nettobetrag"))]
     pub net_amount: Option<Amount>,
 
     /// Tax amount (Steuerbetrag)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "steuerbetrag"))]
     pub tax_amount: Option<Amount>,
 
     /// Gross amount (Bruttobetrag)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bruttobetrag"))]
     pub gross_amount: Option<Amount>,
 
     /// Invoice line items (Rechnungspositionen)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "rechnungspositionen"))]
     pub positions: Vec<InvoicePosition>,
 
     /// Invoice recipient (Rechnungsempfaenger)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "rechnungsempfaenger"))]
     pub recipient: Option<Box<super::BusinessPartner>>,
 }
 

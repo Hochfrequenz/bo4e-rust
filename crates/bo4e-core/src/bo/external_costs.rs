@@ -28,6 +28,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Fremdkosten"))]
 #[serde(rename_all = "camelCase")]
 pub struct ExternalCosts {
     /// BO4E metadata
@@ -36,34 +38,42 @@ pub struct ExternalCosts {
 
     /// Name/designation of the external costs (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub designation: Option<String>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Period the costs apply to (Abrechnungszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "abrechnungszeitraum"))]
     pub period: Option<TimePeriod>,
 
     /// Total amount (Gesamtbetrag)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gesamtbetrag"))]
     pub total_amount: Option<Amount>,
 
     /// External cost blocks (Fremdkostenbloecke)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "fremdkostenbloecke"))]
     pub cost_blocks: Vec<ExternalCostBlock>,
 
     /// External provider/party
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "fremdpartei"))]
     pub external_party: Option<Box<super::BusinessPartner>>,
 
     /// Related market location (Marktlokation)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "marktlokation"))]
     pub market_location: Option<Box<super::MarketLocation>>,
 }
 

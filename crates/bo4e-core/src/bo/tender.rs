@@ -26,6 +26,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Ausschreibung"))]
 #[serde(rename_all = "camelCase")]
 pub struct Tender {
     /// BO4E metadata
@@ -34,46 +36,57 @@ pub struct Tender {
 
     /// Tender number (Ausschreibungsnummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ausschreibungsnummer"))]
     pub tender_number: Option<String>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Type of tender (Ausschreibungstyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ausschreibungstyp"))]
     pub tender_type: Option<TenderType>,
 
     /// Status/phase of tender (Ausschreibungsstatus)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ausschreibungsstatus"))]
     pub status: Option<TenderStatus>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Publication date (Veroeffentlichungsdatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "veroeffentlichungsdatum"))]
     pub publication_date: Option<DateTime<Utc>>,
 
     /// Submission deadline (Abgabefrist)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "abgabefrist"))]
     pub submission_deadline: Option<DateTime<Utc>>,
 
     /// Delivery period (Lieferzeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "lieferzeitraum"))]
     pub delivery_period: Option<TimePeriod>,
 
     /// Tendering party (Ausschreibender)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ausschreibender"))]
     pub tendering_party: Option<Box<super::BusinessPartner>>,
 
     /// Estimated annual consumption in kWh (Jahresverbrauch)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "jahresverbrauch"))]
     pub estimated_annual_consumption: Option<f64>,
 
     /// Number of delivery points (Anzahl Lieferstellen)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "anzahlLieferstellen"))]
     pub number_of_delivery_points: Option<i32>,
 }
 

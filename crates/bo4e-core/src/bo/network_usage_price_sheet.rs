@@ -25,6 +25,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "PreisblattNetznutzung"))]
 #[serde(rename_all = "camelCase")]
 pub struct NetworkUsagePriceSheet {
     /// BO4E metadata
@@ -33,50 +35,62 @@ pub struct NetworkUsagePriceSheet {
 
     /// Name/designation of the price sheet (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub designation: Option<String>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Voltage level this applies to (Spannungsebene)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "spannungsebene"))]
     pub voltage_level: Option<VoltageLevel>,
 
     /// Customer type (Kundentyp)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kundentyp"))]
     pub customer_type: Option<CustomerType>,
 
     /// Price sheet number/identifier (Preisblattnummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "preisblattnummer"))]
     pub price_sheet_number: Option<String>,
 
     /// Validity period (Gueltigkeitszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigkeitszeitraum"))]
     pub validity_period: Option<TimePeriod>,
 
     /// Valid from date (Gueltig ab)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigAb"))]
     pub valid_from: Option<DateTime<Utc>>,
 
     /// Valid until date (Gueltig bis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigBis"))]
     pub valid_until: Option<DateTime<Utc>>,
 
     /// Network charges (Netzentgelte)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "netzentgelte"))]
     pub network_charges: Vec<NetworkCharge>,
 
     /// Price positions (Preispositionen)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "preispositionen"))]
     pub positions: Vec<PricePosition>,
 
     /// Network operator
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "netzbetreiber"))]
     pub operator: Option<Box<super::BusinessPartner>>,
 }
 

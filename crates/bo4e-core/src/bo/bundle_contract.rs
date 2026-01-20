@@ -25,6 +25,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Buendelvertrag"))]
 #[serde(rename_all = "camelCase")]
 pub struct BundleContract {
     /// BO4E metadata
@@ -33,38 +35,47 @@ pub struct BundleContract {
 
     /// Bundle contract number (Buendelvertragsnummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "buendelvertragsnummer"))]
     pub bundle_contract_number: Option<String>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Status of bundle contract (Vertragsstatus)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragsstatus"))]
     pub status: Option<ContractStatus>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Bundle contract start date (Vertragsbeginn)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragsbeginn"))]
     pub contract_start: Option<DateTime<Utc>>,
 
     /// Bundle contract end date (Vertragsende)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragsende"))]
     pub contract_end: Option<DateTime<Utc>>,
 
     /// Validity period (Gueltigkeitszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigkeitszeitraum"))]
     pub validity_period: Option<TimePeriod>,
 
     /// Individual contracts in this bundle (Einzelvertraege)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einzelvertraege"))]
     pub individual_contracts: Vec<Box<super::Contract>>,
 
     /// Contracting party (Vertragspartner)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vertragspartner"))]
     pub contract_partner: Option<Box<super::BusinessPartner>>,
 }
 

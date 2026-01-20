@@ -28,6 +28,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Messlokation"))]
 #[serde(rename_all = "camelCase")]
 pub struct MeteringLocation {
     /// BO4E metadata
@@ -36,46 +38,60 @@ pub struct MeteringLocation {
 
     /// Metering location ID - 33 characters (Messlokations-ID)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "messlokationsId"))]
     pub metering_location_id: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Location address (Adresse)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "adresse"))]
     pub address: Option<Address>,
 
     /// Geographic coordinates (Geokoordinaten)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "geokoordinaten"))]
     pub coordinates: Option<GeoCoordinates>,
 
     /// Metering point operator code (Messstellenbetreiber-Codenummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(
+        feature = "json-schema",
+        schemars(rename = "messstellenbetreiberCodenummer")
+    )]
     pub metering_operator_code: Option<String>,
 
     /// Network operator code (Netzbetreiber-Codenummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "netzbetreiberCodenummer"))]
     pub network_operator_code: Option<String>,
 
     /// Grid area (Regelzone)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "regelzone"))]
     pub grid_area: Option<String>,
 
     /// Description of the metering location (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Hardware at this metering location (Geraete)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "geraete"))]
     pub hardware: Vec<Hardware>,
 
     /// Associated meter IDs (Zaehler)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zaehler"))]
     pub meter_ids: Vec<String>,
 
     /// Associated market location IDs (Marktlokationen)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "marktlokationen"))]
     pub market_location_ids: Vec<String>,
 }
 

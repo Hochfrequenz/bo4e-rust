@@ -29,6 +29,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Energiemenge"))]
 #[serde(rename_all = "camelCase")]
 pub struct EnergyAmount {
     /// BO4E metadata
@@ -37,42 +39,52 @@ pub struct EnergyAmount {
 
     /// Energy amount ID (Energiemenge-ID)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "energiemengeId"))]
     pub energy_amount_id: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Energy direction (Energierichtung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "energierichtung"))]
     pub energy_direction: Option<EnergyDirection>,
 
     /// Measurement type (Messart)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "messart"))]
     pub measurement_type: Option<MeasurementType>,
 
     /// Validity period (Gueltigkeitszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigkeitszeitraum"))]
     pub validity_period: Option<TimePeriod>,
 
     /// Time series data (Messwerte)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "messwerte"))]
     pub measured_values: Vec<MeasuredValue>,
 
     /// Associated market location ID
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "marktlokationsId"))]
     pub market_location_id: Option<String>,
 
     /// Associated metering location ID
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "messlokationsId"))]
     pub metering_location_id: Option<String>,
 
     /// OBIS code for the measurement
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "obisKennzahl"))]
     pub obis_code: Option<String>,
 
     /// Total energy value (Gesamtenergie)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gesamtenergie"))]
     pub total_energy: Option<f64>,
 }
 

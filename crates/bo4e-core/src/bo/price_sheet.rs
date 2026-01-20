@@ -24,6 +24,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Preisblatt"))]
 #[serde(rename_all = "camelCase")]
 pub struct PriceSheet {
     /// BO4E metadata
@@ -32,38 +34,47 @@ pub struct PriceSheet {
 
     /// Name/designation of the price sheet (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub designation: Option<String>,
 
     /// Description (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Energy division (Sparte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "sparte"))]
     pub division: Option<Division>,
 
     /// Price number/identifier (Preisnummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "preisnummer"))]
     pub price_number: Option<String>,
 
     /// Validity period (Gueltigkeitszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigkeitszeitraum"))]
     pub validity_period: Option<TimePeriod>,
 
     /// Valid from date (Gueltig ab)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigAb"))]
     pub valid_from: Option<DateTime<Utc>>,
 
     /// Valid until date (Gueltig bis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gueltigBis"))]
     pub valid_until: Option<DateTime<Utc>>,
 
     /// Price positions (Preispositionen)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "preispositionen"))]
     pub positions: Vec<PricePosition>,
 
     /// Publisher of the price sheet
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "herausgeber"))]
     pub publisher: Option<Box<super::BusinessPartner>>,
 }
 

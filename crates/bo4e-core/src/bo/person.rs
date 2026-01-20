@@ -25,6 +25,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Person"))]
 #[serde(rename_all = "camelCase")]
 pub struct Person {
     /// BO4E metadata
@@ -33,42 +35,52 @@ pub struct Person {
 
     /// Salutation (Anrede)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "anrede"))]
     pub salutation: Option<Salutation>,
 
     /// Title (Titel)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "titel"))]
     pub title: Option<Title>,
 
     /// First name (Vorname)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "vorname"))]
     pub first_name: Option<String>,
 
     /// Last name (Nachname)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "nachname"))]
     pub last_name: Option<String>,
 
     /// Name suffix (Namenszusatz)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "namenszusatz"))]
     pub name_suffix: Option<String>,
 
     /// Name prefix (Namenspraefix)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "namenspraefix"))]
     pub name_prefix: Option<String>,
 
     /// Company name if representing a company (Firma)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "firma"))]
     pub company_name: Option<String>,
 
     /// Birth date (Geburtsdatum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "geburtsdatum"))]
     pub birth_date: Option<NaiveDate>,
 
     /// Primary address (Adresse)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "adresse"))]
     pub address: Option<Address>,
 
     /// Contact methods (Kontaktwege)
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kontaktwege"))]
     pub contact_methods: Vec<ContactMethod>,
 }
 
