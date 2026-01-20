@@ -29,6 +29,10 @@ pub enum BusinessPartnerRole {
     /// Market partner (Marktpartner)
     #[serde(rename = "MARKTPARTNER")]
     MarketPartner,
+
+    /// Network operator (Netzbetreiber)
+    #[serde(rename = "NETZBETREIBER")]
+    NetworkOperator,
 }
 
 impl BusinessPartnerRole {
@@ -40,6 +44,7 @@ impl BusinessPartnerRole {
             Self::Customer => "Kunde",
             Self::InterestedParty => "Interessent",
             Self::MarketPartner => "Marktpartner",
+            Self::NetworkOperator => "Netzbetreiber",
         }
     }
 }
@@ -80,6 +85,7 @@ mod tests {
             BusinessPartnerRole::Customer,
             BusinessPartnerRole::InterestedParty,
             BusinessPartnerRole::MarketPartner,
+            BusinessPartnerRole::NetworkOperator,
         ] {
             let json = serde_json::to_string(&role).unwrap();
             let parsed: BusinessPartnerRole = serde_json::from_str(&json).unwrap();
