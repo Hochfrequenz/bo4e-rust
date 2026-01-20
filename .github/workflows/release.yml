@@ -25,23 +25,35 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@stable
 
-      - name: Authenticate with crates.io
-        uses: rust-lang/crates-io-auth-action@v1
+      # Authentication: uses CARGO_REGISTRY_TOKEN secret for first release,
+      # or OIDC trusted publishing for subsequent releases.
+      # To switch to OIDC after first release:
+      # 1. Configure trusted publishers on crates.io for each crate
+      # 2. Remove CARGO_REGISTRY_TOKEN secret
+      # 3. Uncomment the crates-io-auth-action below
+      # - name: Authenticate with crates.io (OIDC)
+      #   uses: rust-lang/crates-io-auth-action@v1
 
       - name: Publish bo4e-core
         run: cargo publish -p bo4e-core
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
       - name: Wait for crates.io
         run: sleep 30
 
       - name: Publish bo4e-serde
         run: cargo publish -p bo4e-serde
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
       - name: Wait for crates.io
         run: sleep 30
 
       - name: Publish bo4e
         run: cargo publish -p bo4e
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
   github-release:
     name: Create GitHub Release
