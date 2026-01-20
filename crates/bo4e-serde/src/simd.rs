@@ -29,7 +29,7 @@ pub fn from_str<T: DeserializeOwned>(json: &str) -> Result<T, simd_json::Error> 
     from_slice(&mut bytes)
 }
 
-/// Deserialize from owned bytes (Vec<u8>).
+/// Deserialize from owned bytes (`Vec<u8>`).
 ///
 /// Takes ownership of the vector, avoiding copies.
 pub fn from_vec<T: DeserializeOwned>(mut json: Vec<u8>) -> Result<T, simd_json::Error> {
