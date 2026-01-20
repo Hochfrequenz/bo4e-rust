@@ -80,7 +80,10 @@ mod tests {
     fn test_string_attribute() {
         let attr = AdditionalAttribute::string("system_id", "ABC123");
         assert_eq!(attr.name, "system_id");
-        assert_eq!(attr.value, Some(AttributeValue::String("ABC123".to_string())));
+        assert_eq!(
+            attr.value,
+            Some(AttributeValue::String("ABC123".to_string()))
+        );
     }
 
     #[test]
@@ -102,7 +105,10 @@ mod tests {
         let json = r#"{"name":"key","value":"value"}"#;
         let attr: AdditionalAttribute = serde_json::from_str(json).unwrap();
         assert_eq!(attr.name, "key");
-        assert_eq!(attr.value, Some(AttributeValue::String("value".to_string())));
+        assert_eq!(
+            attr.value,
+            Some(AttributeValue::String("value".to_string()))
+        );
     }
 
     #[test]
