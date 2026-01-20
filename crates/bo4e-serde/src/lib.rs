@@ -27,6 +27,7 @@
 //! ```
 
 mod config;
+pub mod mapping;
 pub mod serialize;
 pub mod simd;
 

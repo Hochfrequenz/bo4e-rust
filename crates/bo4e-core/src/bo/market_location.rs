@@ -37,71 +37,93 @@ pub struct MarketLocation {
     pub meta: Bo4eMeta,
 
     /// Market location ID - 11 digits (Marktlokations-ID)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "marktlokationsId")]
     pub market_location_id: Option<String>,
 
     /// Energy division (Sparte)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "sparte")]
     pub division: Option<Division>,
 
     /// Energy direction (Energierichtung)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "energierichtung")]
     pub energy_direction: Option<EnergyDirection>,
 
     /// Customer type (Kundentyp)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "kundentyp")]
     pub customer_type: Option<CustomerType>,
 
     /// Location address (Adresse)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "adresse")]
     pub address: Option<Address>,
 
     /// Supply start date (Lieferbeginn)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "lieferbeginn")]
     pub supply_start: Option<chrono::DateTime<chrono::Utc>>,
 
     /// Supply end date (Lieferende)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "lieferende")]
     pub supply_end: Option<chrono::DateTime<chrono::Utc>>,
 
     /// Annual consumption in kWh (Jahresverbrauchsprognose)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "jahresverbrauchsprognose"
+    )]
     pub annual_consumption: Option<f64>,
 
     /// Network operator code (Netzbetreiber-Codenummer)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "netzbetreiberCodenummer"
+    )]
     pub network_operator_code: Option<String>,
 
     /// Basic supplier code (Grundversorger-Codenummer)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "grundversorgerCodenummer"
+    )]
     pub basic_supplier_code: Option<String>,
 
     /// Metering point operator code (Messstellenbetreiber-Codenummer)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "messstellenbetreiberCodenummer"
+    )]
     pub metering_operator_code: Option<String>,
 
     /// Transmission system operator code (Übertragungsnetzbetreiber-Codenummer)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "uebertragungsnetzbetreiberCodenummer"
+    )]
     pub transmission_operator_code: Option<String>,
 
     /// Grid connection level (Netzebene)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "netzebene")]
     pub grid_level: Option<String>,
 
     /// Network area (Netzgebiet)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "netzgebiet")]
     pub network_area: Option<String>,
 
     /// Billing balance area (Bilanzierungsgebiet)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", alias = "bilanzierungsgebiet")]
     pub balancing_area: Option<String>,
 
     /// Associated metering location IDs
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        alias = "messlokationsIds"
+    )]
     pub metering_location_ids: Vec<String>,
 
     /// Is Controllable Resource (Steuerbare Ressource)
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "istSteuerbareRessource"
+    )]
     pub is_controllable_resource: Option<bool>,
 }
 
