@@ -23,6 +23,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Zaehlwerk"))]
 #[serde(rename_all = "camelCase")]
 pub struct MeterRegister {
     /// BO4E metadata
@@ -31,34 +33,42 @@ pub struct MeterRegister {
 
     /// Register number/ID (Zaehlwerkskennung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zaehlwerkskennung"))]
     pub register_id: Option<String>,
 
     /// OBIS code (OBIS-Kennzahl)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "obisKennzahl"))]
     pub obis_code: Option<String>,
 
     /// Type of register (Registerart)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "registerart"))]
     pub register_type: Option<RegisterType>,
 
     /// Direction of energy flow (Energierichtung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "energierichtung"))]
     pub energy_direction: Option<EnergyDirection>,
 
     /// Unit of measurement (Einheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einheit"))]
     pub unit: Option<Unit>,
 
     /// Number of decimal places (Nachkommastellen)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "nachkommastellen"))]
     pub decimal_places: Option<i32>,
 
     /// Multiplier/transformer ratio (Wandlerfaktor)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "wandlerfaktor"))]
     pub transformer_ratio: Option<f64>,
 
     /// Description (Bezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bezeichnung"))]
     pub description: Option<String>,
 }
 

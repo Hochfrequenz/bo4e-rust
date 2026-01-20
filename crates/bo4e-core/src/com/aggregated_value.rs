@@ -26,6 +26,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Aggregiertwert"))]
 #[serde(rename_all = "camelCase")]
 pub struct AggregatedValue {
     /// BO4E metadata
@@ -34,34 +36,42 @@ pub struct AggregatedValue {
 
     /// Timestamp for the aggregated value (Zeitpunkt)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zeitpunkt"))]
     pub timestamp: Option<DateTime<Utc>>,
 
     /// The aggregated value (Wert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "wert"))]
     pub value: Option<f64>,
 
     /// Unit of the value (Einheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einheit"))]
     pub unit: Option<Unit>,
 
     /// Aggregation method (Aggregationsmethode)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "aggregationsmethode"))]
     pub aggregation_method: Option<String>,
 
     /// Period start for aggregation (Periodenbeginn)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "periodenbeginn"))]
     pub period_start: Option<DateTime<Utc>>,
 
     /// Period end for aggregation (Periodenende)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "periodenende"))]
     pub period_end: Option<DateTime<Utc>>,
 
     /// Number of source values aggregated (Anzahl Quellwerte)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "anzahlQuellwerte"))]
     pub source_count: Option<i32>,
 
     /// OBIS code (OBIS-Kennzahl)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "obisKennzahl"))]
     pub obis_code: Option<String>,
 }
 

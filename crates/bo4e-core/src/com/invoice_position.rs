@@ -24,6 +24,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Rechnungsposition"))]
 #[serde(rename_all = "camelCase")]
 pub struct InvoicePosition {
     /// BO4E metadata
@@ -32,52 +34,64 @@ pub struct InvoicePosition {
 
     /// Sequential number for the invoice position (Positionsnummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "positionsnummer"))]
     pub position_number: Option<i32>,
 
     /// Description of the billed position (Positionstext)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "positionstext"))]
     pub position_text: Option<String>,
 
     /// Delivery period start (simplified - Lieferungszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "lieferungszeitraumVon"))]
     pub delivery_period_start: Option<String>,
 
     /// Delivery period end (simplified - Lieferungszeitraum)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "lieferungszeitraumBis"))]
     pub delivery_period_end: Option<String>,
 
     // Note: The following fields would typically reference other COM types
     // (Menge, Preis, Betrag, Steuerbetrag). Using simplified representations.
     /// Billed quantity value (simplified - Positionsmenge)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "positionsmenge"))]
     pub quantity_value: Option<f64>,
 
     /// Unit price value (simplified - Einzelpreis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einzelpreis"))]
     pub unit_price_value: Option<f64>,
 
     /// Total price value (simplified - Gesamtpreis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "gesamtpreis"))]
     pub total_price_value: Option<f64>,
 
     /// BDEW article number (Artikelnummer)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "artikelnummer"))]
     pub article_number: Option<String>,
 
     /// Article ID replacing BDEW article number (ArtikelId)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "artikelId"))]
     pub article_id: Option<String>,
 
     /// Tax amount value (simplified - Steuerbetrag)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "steuerbetrag"))]
     pub tax_amount_value: Option<f64>,
 
     /// Time unit if price is time-based (Zeiteinheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zeiteinheit"))]
     pub time_unit: Option<Unit>,
 
     /// Time-based quantity value (simplified - Zeitbezogene Menge)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zeitbezogeneMenge"))]
     pub time_based_quantity_value: Option<f64>,
 }
 

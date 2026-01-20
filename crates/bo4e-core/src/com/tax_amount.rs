@@ -25,6 +25,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Steuerbetrag"))]
 #[serde(rename_all = "camelCase")]
 pub struct TaxAmount {
     /// BO4E metadata
@@ -33,22 +35,27 @@ pub struct TaxAmount {
 
     /// Type of tax (Steuerart)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "steuerart"))]
     pub tax_type: Option<TaxType>,
 
     /// Tax rate as percentage (Steuersatz)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "steuersatz"))]
     pub tax_rate: Option<f64>,
 
     /// Net amount on which tax was calculated (Basiswert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "basiswert"))]
     pub basis_value: Option<f64>,
 
     /// Calculated tax amount (Steuerwert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "steuerwert"))]
     pub tax_value: Option<f64>,
 
     /// Currency (Waehrungscode)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "waehrungscode"))]
     pub currency: Option<Currency>,
 }
 

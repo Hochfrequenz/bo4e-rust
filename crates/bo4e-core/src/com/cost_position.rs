@@ -24,6 +24,8 @@ use super::{Amount, Price};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Kostenposition"))]
 #[serde(rename_all = "camelCase")]
 pub struct CostPosition {
     /// BO4E metadata
@@ -32,46 +34,57 @@ pub struct CostPosition {
 
     /// Title of the position (Positionstitel)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "positionstitel"))]
     pub title: Option<String>,
 
     /// Total amount for this position (Betrag Kostenposition)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "betragKostenposition"))]
     pub amount: Option<Amount>,
 
     /// Description of the article (Artikelbezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "artikelbezeichnung"))]
     pub article_description: Option<String>,
 
     /// Price per unit (Einzelpreis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einzelpreis"))]
     pub unit_price: Option<Price>,
 
     /// Start date of the cost period inclusive (Von)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "von"))]
     pub start_date: Option<DateTime<Utc>>,
 
     /// End date of the cost period exclusive (Bis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bis"))]
     pub end_date: Option<DateTime<Utc>>,
 
     /// Quantity value (Menge - Wert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "mengeWert"))]
     pub quantity_value: Option<f64>,
 
     /// Quantity unit (Menge - Einheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "mengeEinheit"))]
     pub quantity_unit: Option<Unit>,
 
     /// Time-based quantity value (Zeitmenge - Wert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zeitmengeWert"))]
     pub time_quantity_value: Option<f64>,
 
     /// Time-based quantity unit (Zeitmenge - Einheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "zeitmengeEinheit"))]
     pub time_quantity_unit: Option<Unit>,
 
     /// Optional article details (Artikeldetail)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "artikeldetail"))]
     pub article_detail: Option<String>,
 }
 

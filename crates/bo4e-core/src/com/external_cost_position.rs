@@ -24,6 +24,8 @@ use super::{Amount, Price};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Fremdkostenposition"))]
 #[serde(rename_all = "camelCase")]
 pub struct ExternalCostPosition {
     /// BO4E metadata
@@ -32,38 +34,47 @@ pub struct ExternalCostPosition {
 
     /// Title of the position (Positionstitel)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "positionstitel"))]
     pub title: Option<String>,
 
     /// Total amount for this position (Betrag)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "betrag"))]
     pub amount: Option<Amount>,
 
     /// Description of the article (Artikelbezeichnung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "artikelbezeichnung"))]
     pub article_description: Option<String>,
 
     /// Price per unit (Einzelpreis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "einzelpreis"))]
     pub unit_price: Option<Price>,
 
     /// Start date inclusive (Von)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "von"))]
     pub start_date: Option<DateTime<Utc>>,
 
     /// End date exclusive (Bis)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "bis"))]
     pub end_date: Option<DateTime<Utc>>,
 
     /// Quantity value (Menge - Wert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "mengeWert"))]
     pub quantity_value: Option<f64>,
 
     /// Quantity unit (Menge - Einheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "mengeEinheit"))]
     pub quantity_unit: Option<Unit>,
 
     /// External ID/reference (Link)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "link"))]
     pub external_reference: Option<String>,
 }
 

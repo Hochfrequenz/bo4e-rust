@@ -26,6 +26,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Abrechnungsperiodendaten"))]
 #[serde(rename_all = "camelCase")]
 pub struct BillingPeriodData {
     /// BO4E metadata
@@ -34,38 +36,47 @@ pub struct BillingPeriodData {
 
     /// Start of billing period (Abrechnungsbeginn)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "abrechnungsbeginn"))]
     pub period_start: Option<NaiveDate>,
 
     /// End of billing period (Abrechnungsende)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "abrechnungsende"))]
     pub period_end: Option<NaiveDate>,
 
     /// Starting meter reading (Anfangsstand)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "anfangsstand"))]
     pub start_reading: Option<f64>,
 
     /// Starting reading timestamp (Anfangsablesung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "anfangsablesung"))]
     pub start_reading_timestamp: Option<DateTime<Utc>>,
 
     /// Ending meter reading (Endstand)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "endstand"))]
     pub end_reading: Option<f64>,
 
     /// Ending reading timestamp (Endablesung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "endablesung"))]
     pub end_reading_timestamp: Option<DateTime<Utc>>,
 
     /// Consumption value for the period (Verbrauchswert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "verbrauchswert"))]
     pub consumption_value: Option<f64>,
 
     /// Unit of consumption (Verbrauchseinheit)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "verbrauchseinheit"))]
     pub consumption_unit: Option<Unit>,
 
     /// Number of days in period (Anzahl Tage)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "anzahlTage"))]
     pub days_in_period: Option<i32>,
 }
 
