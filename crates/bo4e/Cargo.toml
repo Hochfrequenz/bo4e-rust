@@ -1,0 +1,18 @@
+[package]
+name = "bo4e"
+description = "BO4E (Business Objects for Energy) - Rust implementation"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+bo4e-core = { workspace = true }
+bo4e-serde = { workspace = true }
+
+[dev-dependencies]
+serde_json = { workspace = true }

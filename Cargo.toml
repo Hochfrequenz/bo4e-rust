@@ -1,0 +1,30 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/bo4e-core",
+    "crates/bo4e-serde",
+    "crates/bo4e",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+license = "MIT"
+repository = "https://github.com/hochfrequenz/bo4e-rust"
+authors = ["Hochfrequenz Unternehmensberatung GmbH"]
+keywords = ["bo4e", "energy", "edi", "bdew"]
+categories = ["data-structures", "encoding"]
+
+[workspace.dependencies]
+# Core dependencies
+serde = { version = "1.0", features = ["derive"] }
+simd-json = "0.14"
+
+# Testing
+proptest = "1.4"
+serde_json = "1.0"
+
+# Internal crates
+bo4e-core = { path = "crates/bo4e-core", version = "0.1.0" }
+bo4e-serde = { path = "crates/bo4e-serde", version = "0.1.0" }
