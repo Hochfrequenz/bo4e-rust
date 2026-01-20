@@ -15,7 +15,19 @@ pub struct Meter {
 }
 
 impl Bo4eObject for Meter {
-    fn type_name() -> &'static str {
+    fn type_name_german() -> &'static str {
         "Zaehler"
+    }
+
+    fn type_name_english() -> &'static str {
+        "Meter"
+    }
+
+    fn meta(&self) -> &Bo4eMeta {
+        &self.meta
+    }
+
+    fn meta_mut(&mut self) -> &mut Bo4eMeta {
+        &mut self.meta
     }
 }

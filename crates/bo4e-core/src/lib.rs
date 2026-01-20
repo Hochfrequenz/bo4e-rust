@@ -16,9 +16,11 @@
 //! let meter = Meter::default();
 //! ```
 
+pub mod additional_attribute;
 pub mod bo;
 pub mod com;
 pub mod enums;
 pub mod traits;
 
+pub use additional_attribute::AdditionalAttribute;
 pub use traits::{Bo4eMeta, Bo4eObject};
