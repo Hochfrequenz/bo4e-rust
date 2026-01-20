@@ -19,6 +19,7 @@ categories = ["data-structures", "encoding"]
 [workspace.dependencies]
 # Core dependencies
 serde = { version = "1.0", features = ["derive"] }
+chrono = { version = "0.4", features = ["serde"] }
 simd-json = "0.14"
 
 # Testing
