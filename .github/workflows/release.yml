@@ -26,22 +26,29 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
 
       - name: Authenticate with crates.io (OIDC)
+        id: crates-io-auth
         uses: rust-lang/crates-io-auth-action@v1
 
       - name: Publish bo4e-core
         run: cargo publish -p bo4e-core
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ steps.crates-io-auth.outputs.token }}
 
       - name: Wait for crates.io
         run: sleep 30
 
       - name: Publish bo4e-serde
         run: cargo publish -p bo4e-serde
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ steps.crates-io-auth.outputs.token }}
 
       - name: Wait for crates.io
         run: sleep 30
 
       - name: Publish bo4e
         run: cargo publish -p bo4e
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ steps.crates-io-auth.outputs.token }}
 
   github-release:
     name: Create GitHub Release
