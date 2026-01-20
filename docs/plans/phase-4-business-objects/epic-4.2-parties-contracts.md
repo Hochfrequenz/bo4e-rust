@@ -301,3 +301,31 @@ Follow the pattern for:
 cargo test -p bo4e-core bo -- --nocapture
 cargo clippy -p bo4e-core
 ```
+
+---
+
+## Test Summary
+
+| Metric | Value |
+|--------|-------|
+| Tests | 575 |
+| Passed | 575 |
+| Failed | 0 |
+| Skipped | 0 |
+| Doc Tests | 89 |
+
+Files created:
+- `crates/bo4e-core/src/bo/business_partner.rs`
+- `crates/bo4e-core/src/bo/person.rs`
+- `crates/bo4e-core/src/bo/market_participant.rs`
+- `crates/bo4e-core/src/bo/contract.rs`
+- `crates/bo4e-core/src/bo/bundle_contract.rs`
+- `crates/bo4e-core/src/bo/offer.rs`
+- `crates/bo4e-core/src/bo/tender.rs`
+- `crates/bo4e-core/src/bo/balancing.rs`
+- `crates/bo4e-core/src/bo/region.rs`
+- `crates/bo4e-core/src/bo/regional_tariff.rs`
+
+Files modified:
+- `crates/bo4e-core/src/bo/mod.rs` (added exports for new BOs)
+- `crates/bo4e-core/src/enums/business_partner_role.rs` (added NetworkOperator variant)
