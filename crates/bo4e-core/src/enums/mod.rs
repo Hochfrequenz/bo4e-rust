@@ -98,3 +98,67 @@ mod technical_resource_usage;
 
 pub use controllable_resource_type::ControllableResourceType;
 pub use technical_resource_usage::TechnicalResourceUsage;
+
+// Business partner and market roles
+mod business_partner_role;
+mod market_role;
+mod organization_type;
+
+pub use business_partner_role::BusinessPartnerRole;
+pub use market_role::MarketRole;
+pub use organization_type::OrganizationType;
+
+// Contact and person related
+mod contact_type;
+mod salutation;
+mod title;
+
+pub use contact_type::ContactType;
+pub use salutation::Salutation;
+pub use title::Title;
+
+// Contract related
+mod contract_form;
+mod contract_status;
+mod contract_type;
+
+pub use contract_form::ContractForm;
+pub use contract_status::ContractStatus;
+pub use contract_type::ContractType;
+
+// Customer related
+mod customer_group;
+mod customer_type;
+
+pub use customer_group::CustomerGroup;
+pub use customer_type::CustomerType;
+
+// Invoice and payment related
+mod invoice_status;
+mod invoice_type;
+mod payment_method;
+
+pub use invoice_status::InvoiceStatus;
+pub use invoice_type::InvoiceType;
+pub use payment_method::PaymentMethod;
+
+// Offer and tender related
+mod offer_status;
+mod tender_status;
+mod tender_type;
+
+pub use offer_status::OfferStatus;
+pub use tender_status::TenderStatus;
+pub use tender_type::TenderType;
+
+// Service and area related
+mod area_type;
+mod service_type;
+
+pub use area_type::AreaType;
+pub use service_type::ServiceType;
+
+// Geographic
+mod country;
+
+pub use country::Country;

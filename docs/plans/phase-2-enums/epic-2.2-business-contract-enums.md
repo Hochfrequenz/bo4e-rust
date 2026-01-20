@@ -305,3 +305,37 @@ Follow the established pattern for all remaining enums. Reference the Python sou
 cargo test -p bo4e-core -- --nocapture
 cargo clippy -p bo4e-core
 ```
+
+## Test Summary
+
+| Metric | Value |
+|--------|-------|
+| Tests | 145 |
+| Passed | 145 |
+| Failed | 0 |
+| Skipped | 0 |
+
+Files created:
+- `crates/bo4e-core/src/enums/business_partner_role.rs`
+- `crates/bo4e-core/src/enums/market_role.rs`
+- `crates/bo4e-core/src/enums/organization_type.rs`
+- `crates/bo4e-core/src/enums/contact_type.rs`
+- `crates/bo4e-core/src/enums/salutation.rs`
+- `crates/bo4e-core/src/enums/title.rs`
+- `crates/bo4e-core/src/enums/contract_type.rs`
+- `crates/bo4e-core/src/enums/contract_status.rs`
+- `crates/bo4e-core/src/enums/contract_form.rs`
+- `crates/bo4e-core/src/enums/customer_type.rs`
+- `crates/bo4e-core/src/enums/customer_group.rs`
+- `crates/bo4e-core/src/enums/invoice_type.rs`
+- `crates/bo4e-core/src/enums/invoice_status.rs`
+- `crates/bo4e-core/src/enums/payment_method.rs`
+- `crates/bo4e-core/src/enums/offer_status.rs`
+- `crates/bo4e-core/src/enums/tender_type.rs`
+- `crates/bo4e-core/src/enums/tender_status.rs`
+- `crates/bo4e-core/src/enums/service_type.rs`
+- `crates/bo4e-core/src/enums/area_type.rs`
+- `crates/bo4e-core/src/enums/country.rs`
+
+Files modified:
+- `crates/bo4e-core/src/enums/mod.rs`
