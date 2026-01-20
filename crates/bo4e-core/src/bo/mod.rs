@@ -31,6 +31,24 @@
 //! - [`Balancing`] - Balance group data
 //! - [`Region`] - A geographical region
 //! - [`RegionalTariff`] - A regional tariff definition
+//!
+//! # Epic 4.3: Pricing & Billing Business Objects
+//!
+//! This module contains tariff, invoice, and cost-related business objects:
+//!
+//! - [`Invoice`] - An invoice for energy services
+//! - [`Tariff`] - A tariff definition
+//! - [`TariffInfo`] - Tariff information/overview
+//! - [`TariffPriceSheet`] - Tariff price sheet
+//! - [`PriceSheet`] - Generic price sheet
+//! - [`ServicePriceSheet`] - Service price sheet
+//! - [`HardwarePriceSheet`] - Hardware price sheet
+//! - [`MeteringPriceSheet`] - Metering price sheet
+//! - [`NetworkUsagePriceSheet`] - Network usage price sheet
+//! - [`ConcessionFeePriceSheet`] - Concession fee price sheet
+//! - [`Costs`] - Cost breakdown
+//! - [`TariffCosts`] - Tariff-related costs
+//! - [`ExternalCosts`] - External/third-party costs
 
 // Epic 4.1: Locations & Technical Business Objects
 mod controllable_resource;
@@ -58,6 +76,21 @@ mod region;
 mod regional_tariff;
 mod tender;
 
+// Epic 4.3: Pricing & Billing Business Objects
+mod concession_fee_price_sheet;
+mod costs;
+mod external_costs;
+mod hardware_price_sheet;
+mod invoice;
+mod metering_price_sheet;
+mod network_usage_price_sheet;
+mod price_sheet;
+mod service_price_sheet;
+mod tariff;
+mod tariff_costs;
+mod tariff_info;
+mod tariff_price_sheet;
+
 // Epic 4.1 exports
 pub use controllable_resource::ControllableResource;
 pub use device::Device;
@@ -83,3 +116,18 @@ pub use person::Person;
 pub use region::Region;
 pub use regional_tariff::RegionalTariff;
 pub use tender::Tender;
+
+// Epic 4.3 exports
+pub use concession_fee_price_sheet::ConcessionFeePriceSheet;
+pub use costs::Costs;
+pub use external_costs::ExternalCosts;
+pub use hardware_price_sheet::HardwarePriceSheet;
+pub use invoice::Invoice;
+pub use metering_price_sheet::MeteringPriceSheet;
+pub use network_usage_price_sheet::NetworkUsagePriceSheet;
+pub use price_sheet::PriceSheet;
+pub use service_price_sheet::ServicePriceSheet;
+pub use tariff::Tariff;
+pub use tariff_costs::TariffCosts;
+pub use tariff_info::TariffInfo;
+pub use tariff_price_sheet::TariffPriceSheet;
