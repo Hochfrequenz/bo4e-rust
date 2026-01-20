@@ -22,7 +22,43 @@
 //! - [`ContractConditions`] - Contract conditions
 //! - [`InvoicePosition`] - Position within an invoice
 //! - [`RegionCriterion`] - Regional criterion for delimitation
+//!
+//! # Epic 3.2: Pricing & Cost Components
+//!
+//! Pricing, cost, and tariff-related components:
+//!
+//! - [`Price`] - A price with value and unit
+//! - [`Amount`] - Monetary amount
+//! - [`PriceTier`] - Price tier/bracket
+//! - [`PricePosition`] - Position in a price sheet
+//! - [`TariffPrice`] - Tariff price
+//! - [`TariffPricePosition`] - Tariff price position
+//! - [`RegionalPriceTier`] - Regional price tier
+//! - [`Surcharge`] - Surcharge or discount
+//! - [`SurchargePerLocation`] - Surcharge per location
+//! - [`RegionalSurcharge`] - Regional surcharge
+//! - [`PositionSurcharge`] - Position-specific surcharge
+//! - [`TaxAmount`] - Tax amount
+//! - [`CostBlock`] - Block of costs
+//! - [`CostPosition`] - Cost position
+//! - [`ExternalCostBlock`] - External cost block
+//! - [`ExternalCostPosition`] - External cost position
+//! - [`TariffCalculationParameter`] - Tariff calculation parameters
+//! - [`TariffRestriction`] - Tariff restriction
+//! - [`PriceGuarantee`] - Price guarantee
+//! - [`EnergySource`] - Energy source/origin
+//! - [`EnergyMix`] - Energy mix composition
+//! - [`Consumption`] - Consumption data
+//! - [`ConsumedQuantity`] - Consumed quantity
+//! - [`ConcessionFee`] - Concession fee
+//! - [`NetworkCharge`] - Network charge
+//! - [`Levy`] - Levy (EEG, KWK, etc.)
+//! - [`Bonus`] - Bonus/incentive
+//! - [`Discount`] - Discount
+//! - [`MarginPrice`] - Margin price
+//! - [`ServicePrice`] - Service price
 
+// Epic 3.1: Address & Contact Components
 mod address;
 mod cadastral_address;
 mod contact_method;
@@ -39,6 +75,39 @@ mod region_criterion;
 mod responsibility;
 mod signature;
 
+// Epic 3.2: Pricing & Cost Components
+mod amount;
+mod bonus;
+mod concession_fee;
+mod consumed_quantity;
+mod consumption;
+mod cost_block;
+mod cost_position;
+mod discount;
+mod energy_mix;
+mod energy_source;
+mod external_cost_block;
+mod external_cost_position;
+mod levy;
+mod margin_price;
+mod network_charge;
+mod position_surcharge;
+mod price;
+mod price_guarantee;
+mod price_position;
+mod price_tier;
+mod regional_price_tier;
+mod regional_surcharge;
+mod service_price;
+mod surcharge;
+mod surcharge_per_location;
+mod tariff_calculation_parameter;
+mod tariff_price;
+mod tariff_price_position;
+mod tariff_restriction;
+mod tax_amount;
+
+// Epic 3.1 exports
 pub use address::Address;
 pub use cadastral_address::CadastralAddress;
 pub use contact_method::ContactMethod;
@@ -54,3 +123,35 @@ pub use offer_variant::OfferVariant;
 pub use region_criterion::RegionCriterion;
 pub use responsibility::Responsibility;
 pub use signature::Signature;
+
+// Epic 3.2 exports
+pub use amount::Amount;
+pub use bonus::Bonus;
+pub use concession_fee::ConcessionFee;
+pub use consumed_quantity::ConsumedQuantity;
+pub use consumption::Consumption;
+pub use cost_block::CostBlock;
+pub use cost_position::CostPosition;
+pub use discount::Discount;
+pub use energy_mix::EnergyMix;
+pub use energy_source::EnergySource;
+pub use external_cost_block::ExternalCostBlock;
+pub use external_cost_position::ExternalCostPosition;
+pub use levy::Levy;
+pub use margin_price::MarginPrice;
+pub use network_charge::NetworkCharge;
+pub use position_surcharge::PositionSurcharge;
+pub use price::Price;
+pub use price_guarantee::PriceGuarantee;
+pub use price_position::PricePosition;
+pub use price_tier::PriceTier;
+pub use regional_price_tier::RegionalPriceTier;
+pub use regional_surcharge::RegionalSurcharge;
+pub use service_price::ServicePrice;
+pub use surcharge::Surcharge;
+pub use surcharge_per_location::SurchargePerLocation;
+pub use tariff_calculation_parameter::TariffCalculationParameter;
+pub use tariff_price::TariffPrice;
+pub use tariff_price_position::TariffPricePosition;
+pub use tariff_restriction::TariffRestriction;
+pub use tax_amount::TaxAmount;
