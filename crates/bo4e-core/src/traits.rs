@@ -23,6 +23,7 @@ use serde::{Deserialize, Serialize};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 #[serde(rename_all = "camelCase")]
 pub struct Bo4eMeta {
     /// Type discriminator (maps to `_typ` in JSON)
