@@ -21,6 +21,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Geokoordinaten"))]
 #[serde(rename_all = "camelCase")]
 pub struct GeoCoordinates {
     /// BO4E metadata
@@ -29,10 +31,12 @@ pub struct GeoCoordinates {
 
     /// Latitude in decimal degrees (Breitengrad)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "breitengrad"))]
     pub latitude: Option<f64>,
 
     /// Longitude in decimal degrees (Laengengrad)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "laengengrad"))]
     pub longitude: Option<f64>,
 }
 

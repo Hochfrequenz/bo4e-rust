@@ -21,6 +21,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Unterschrift"))]
 #[serde(rename_all = "camelCase")]
 pub struct Signature {
     /// BO4E metadata
@@ -29,14 +31,17 @@ pub struct Signature {
 
     /// Name of the signatory (Name)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "name"))]
     pub name: Option<String>,
 
     /// Location where the signature was made (Ort)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "ort"))]
     pub location: Option<String>,
 
     /// Date of the signature (Datum) - ISO 8601 datetime string
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "datum"))]
     pub date: Option<String>,
 }
 

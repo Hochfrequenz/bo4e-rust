@@ -25,6 +25,8 @@ use crate::traits::{Bo4eMeta, Bo4eObject};
 /// };
 /// ```
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[cfg_attr(feature = "json-schema", schemars(rename = "Kontaktweg"))]
 #[serde(rename_all = "camelCase")]
 pub struct ContactMethod {
     /// BO4E metadata
@@ -33,18 +35,22 @@ pub struct ContactMethod {
 
     /// Type of contact (Kontaktart)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kontaktart"))]
     pub contact_type: Option<ContactType>,
 
     /// Contact value - phone number, email address, etc. (Kontaktwert)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "kontaktwert"))]
     pub contact_value: Option<String>,
 
     /// Description/specification, e.g., "direct line", "switchboard" (Beschreibung)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "beschreibung"))]
     pub description: Option<String>,
 
     /// Whether this is the preferred contact method (IstBevorzugterKontaktweg)
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "json-schema", schemars(rename = "istBevorzugterKontaktweg"))]
     pub is_preferred: Option<bool>,
 }
 
