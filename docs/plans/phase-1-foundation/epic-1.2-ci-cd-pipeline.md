@@ -1,3 +1,6 @@
+---
+status: in_progress
+---
 # Epic 1.2: CI/CD Pipeline
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
