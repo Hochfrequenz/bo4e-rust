@@ -1,5 +1,5 @@
 ---
-status: in_progress
+status: complete
 ---
 # Epic 2.3: Pricing & Regional Enumerations
 
