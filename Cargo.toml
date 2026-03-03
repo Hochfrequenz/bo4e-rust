@@ -4,6 +4,7 @@ members = [
     "crates/bo4e-core",
     "crates/bo4e-serde",
     "crates/bo4e",
+    "crates/generate-german",
 ]
 
 [workspace.package]
