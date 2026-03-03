@@ -18,13 +18,13 @@ pub struct FieldInfo {
     pub german_name: Option<String>,
     /// Full type as string
     pub type_str: String,
-    /// Whether the type is Vec<T>
+    /// Whether the type is `Vec<T>`
     pub is_vec: bool,
-    /// Whether the type is Option<T>
+    /// Whether the type is `Option<T>`
     pub is_option: bool,
-    /// Whether the type is Box<T>
+    /// Whether the type is `Box<T>`
     pub is_box: bool,
-    /// Inner BO4E type name (e.g., "Address" from Option<Address>)
+    /// Inner BO4E type name (e.g., `"Address"` from `Option<Address>`)
     pub inner_type: Option<String>,
     /// Whether this field has #[serde(flatten)]
     pub is_flatten: bool,
