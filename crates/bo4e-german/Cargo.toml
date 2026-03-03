@@ -1,0 +1,19 @@
+[package]
+name = "bo4e-german"
+description = "German API for BO4E (Business Objects for Energy) - Deutsche Feldnamen"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+keywords = ["bo4e", "energy", "edi", "bdew", "deutsch"]
+categories = ["data-structures", "encoding"]
+
+[dependencies]
+serde = { workspace = true }
+chrono = { workspace = true }
+bo4e-core = { workspace = true }
+
+[dev-dependencies]
+serde_json = { workspace = true }

@@ -4,6 +4,7 @@ members = [
     "crates/bo4e-core",
     "crates/bo4e-serde",
     "crates/bo4e",
+    "crates/bo4e-german",
     "crates/generate-german",
 ]
 
@@ -31,3 +32,4 @@ criterion = { version = "0.5", features = ["html_reports"] }
 # Internal crates
 bo4e-core = { path = "crates/bo4e-core", version = "0.1.1" }
 bo4e-serde = { path = "crates/bo4e-serde", version = "0.1.1" }
+bo4e-german = { path = "crates/bo4e-german", version = "0.1.1" }
