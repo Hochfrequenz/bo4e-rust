@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Verwendungszweck {
     #[serde(rename = "NETZNUTZUNGSABRECHNUNG")]
     Netznutzungsabrechnung,
@@ -10,12 +11,13 @@ pub enum Verwendungszweck {
     #[serde(rename = "ENDKUNDENABRECHNUNG")]
     Endkundenabrechnung,
     #[serde(rename = "UEBERMITTLUNG_AN_DAS_HKNR")]
-    BermittlungAnDasHKNR,
+    BermittlungAnDasHknr,
     #[serde(rename = "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS")]
     ErmittlungAusgeglichenheitBilanzkreis,
 }
 impl From<bo4e_core::enums::UsageType> for Verwendungszweck {
     fn from(v: bo4e_core::enums::UsageType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::UsageType::NetworkUsageBilling => {
                 Verwendungszweck::Netznutzungsabrechnung
@@ -30,7 +32,7 @@ impl From<bo4e_core::enums::UsageType> for Verwendungszweck {
                 Verwendungszweck::Endkundenabrechnung
             }
             bo4e_core::enums::UsageType::TransmissionToOriginRegistry => {
-                Verwendungszweck::BermittlungAnDasHKNR
+                Verwendungszweck::BermittlungAnDasHknr
             }
             bo4e_core::enums::UsageType::BalancingGroupBalanceDetermination => {
                 Verwendungszweck::ErmittlungAusgeglichenheitBilanzkreis
@@ -41,6 +43,7 @@ impl From<bo4e_core::enums::UsageType> for Verwendungszweck {
 }
 impl From<Verwendungszweck> for bo4e_core::enums::UsageType {
     fn from(v: Verwendungszweck) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Verwendungszweck::Netznutzungsabrechnung => {
                 bo4e_core::enums::UsageType::NetworkUsageBilling
@@ -54,13 +57,12 @@ impl From<Verwendungszweck> for bo4e_core::enums::UsageType {
             Verwendungszweck::Endkundenabrechnung => {
                 bo4e_core::enums::UsageType::EndCustomerBilling
             }
-            Verwendungszweck::BermittlungAnDasHKNR => {
+            Verwendungszweck::BermittlungAnDasHknr => {
                 bo4e_core::enums::UsageType::TransmissionToOriginRegistry
             }
             Verwendungszweck::ErmittlungAusgeglichenheitBilanzkreis => {
                 bo4e_core::enums::UsageType::BalancingGroupBalanceDetermination
             }
-            _ => panic!("Unknown {} variant", stringify!(Verwendungszweck)),
         }
     }
 }

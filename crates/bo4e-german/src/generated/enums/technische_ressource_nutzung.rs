@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum TechnischeRessourceNutzung {
     #[serde(rename = "STROMVERBRAUCHSART")]
     Stromverbrauchsart,
@@ -10,6 +11,7 @@ pub enum TechnischeRessourceNutzung {
 }
 impl From<bo4e_core::enums::TechnicalResourceUsage> for TechnischeRessourceNutzung {
     fn from(v: bo4e_core::enums::TechnicalResourceUsage) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::TechnicalResourceUsage::ElectricityConsumptionType => {
                 TechnischeRessourceNutzung::Stromverbrauchsart
@@ -26,6 +28,7 @@ impl From<bo4e_core::enums::TechnicalResourceUsage> for TechnischeRessourceNutzu
 }
 impl From<TechnischeRessourceNutzung> for bo4e_core::enums::TechnicalResourceUsage {
     fn from(v: TechnischeRessourceNutzung) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             TechnischeRessourceNutzung::Stromverbrauchsart => {
                 bo4e_core::enums::TechnicalResourceUsage::ElectricityConsumptionType
@@ -36,7 +39,6 @@ impl From<TechnischeRessourceNutzung> for bo4e_core::enums::TechnicalResourceUsa
             TechnischeRessourceNutzung::Speicher => {
                 bo4e_core::enums::TechnicalResourceUsage::Storage
             }
-            _ => panic!("Unknown {} variant", stringify!(TechnischeRessourceNutzung)),
         }
     }
 }

@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Kontaktart {
     #[serde(rename = "POSTWEG")]
     Postweg,
@@ -14,6 +15,7 @@ pub enum Kontaktart {
 }
 impl From<bo4e_core::enums::ContactType> for Kontaktart {
     fn from(v: bo4e_core::enums::ContactType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::ContactType::Mail => Kontaktart::Postweg,
             bo4e_core::enums::ContactType::Phone => Kontaktart::Telefon,
@@ -26,13 +28,13 @@ impl From<bo4e_core::enums::ContactType> for Kontaktart {
 }
 impl From<Kontaktart> for bo4e_core::enums::ContactType {
     fn from(v: Kontaktart) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Kontaktart::Postweg => bo4e_core::enums::ContactType::Mail,
             Kontaktart::Telefon => bo4e_core::enums::ContactType::Phone,
             Kontaktart::Fax => bo4e_core::enums::ContactType::Fax,
             Kontaktart::EMail => bo4e_core::enums::ContactType::Email,
             Kontaktart::Sms => bo4e_core::enums::ContactType::Sms,
-            _ => panic!("Unknown {} variant", stringify!(Kontaktart)),
         }
     }
 }

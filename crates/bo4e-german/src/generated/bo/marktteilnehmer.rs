@@ -13,7 +13,11 @@ pub struct Marktteilnehmer {
     pub sparte: Option<crate::Sparte>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "address")]
     pub adresse: Option<crate::Adresse>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "contactMethods")]
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        alias = "contactMethods"
+    )]
     pub kontaktwege: Vec<crate::Kontaktweg>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "businessPartner")]
     pub geschaeftspartner: Option<Box<crate::Geschaeftspartner>>,

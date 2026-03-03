@@ -1,14 +1,15 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum AufAbschlagsziel {
     #[serde(rename = "ARBEITSPREIS_EINTARIF")]
     ArbeitspreisEintarif,
     #[serde(rename = "ARBEITSPREIS_HT")]
-    ArbeitspreisHT,
+    ArbeitspreisHt,
     #[serde(rename = "ARBEITSPREIS_NT")]
-    ArbeitspreisNT,
+    ArbeitspreisNt,
     #[serde(rename = "ARBEITSPREIS_HT_NT")]
-    ArbeitspreisHTUndNT,
+    ArbeitspreisHtUndNt,
     #[serde(rename = "GRUNDPREIS")]
     Grundpreis,
     #[serde(rename = "GESAMTPREIS")]
@@ -16,47 +17,36 @@ pub enum AufAbschlagsziel {
 }
 impl From<bo4e_core::enums::SurchargeTarget> for AufAbschlagsziel {
     fn from(v: bo4e_core::enums::SurchargeTarget) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::SurchargeTarget::WorkingPriceSingleTariff => {
                 AufAbschlagsziel::ArbeitspreisEintarif
             }
-            bo4e_core::enums::SurchargeTarget::WorkingPriceHT => {
-                AufAbschlagsziel::ArbeitspreisHT
-            }
-            bo4e_core::enums::SurchargeTarget::WorkingPriceNT => {
-                AufAbschlagsziel::ArbeitspreisNT
-            }
+            bo4e_core::enums::SurchargeTarget::WorkingPriceHT => AufAbschlagsziel::ArbeitspreisHt,
+            bo4e_core::enums::SurchargeTarget::WorkingPriceNT => AufAbschlagsziel::ArbeitspreisNt,
             bo4e_core::enums::SurchargeTarget::WorkingPriceHTNT => {
-                AufAbschlagsziel::ArbeitspreisHTUndNT
+                AufAbschlagsziel::ArbeitspreisHtUndNt
             }
             bo4e_core::enums::SurchargeTarget::BasePrice => AufAbschlagsziel::Grundpreis,
-            bo4e_core::enums::SurchargeTarget::TotalPrice => {
-                AufAbschlagsziel::Gesamtpreis
-            }
+            bo4e_core::enums::SurchargeTarget::TotalPrice => AufAbschlagsziel::Gesamtpreis,
             _ => panic!("Unknown {} variant", stringify!(SurchargeTarget)),
         }
     }
 }
 impl From<AufAbschlagsziel> for bo4e_core::enums::SurchargeTarget {
     fn from(v: AufAbschlagsziel) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             AufAbschlagsziel::ArbeitspreisEintarif => {
                 bo4e_core::enums::SurchargeTarget::WorkingPriceSingleTariff
             }
-            AufAbschlagsziel::ArbeitspreisHT => {
-                bo4e_core::enums::SurchargeTarget::WorkingPriceHT
-            }
-            AufAbschlagsziel::ArbeitspreisNT => {
-                bo4e_core::enums::SurchargeTarget::WorkingPriceNT
-            }
-            AufAbschlagsziel::ArbeitspreisHTUndNT => {
+            AufAbschlagsziel::ArbeitspreisHt => bo4e_core::enums::SurchargeTarget::WorkingPriceHT,
+            AufAbschlagsziel::ArbeitspreisNt => bo4e_core::enums::SurchargeTarget::WorkingPriceNT,
+            AufAbschlagsziel::ArbeitspreisHtUndNt => {
                 bo4e_core::enums::SurchargeTarget::WorkingPriceHTNT
             }
             AufAbschlagsziel::Grundpreis => bo4e_core::enums::SurchargeTarget::BasePrice,
-            AufAbschlagsziel::Gesamtpreis => {
-                bo4e_core::enums::SurchargeTarget::TotalPrice
-            }
-            _ => panic!("Unknown {} variant", stringify!(AufAbschlagsziel)),
+            AufAbschlagsziel::Gesamtpreis => bo4e_core::enums::SurchargeTarget::TotalPrice,
         }
     }
 }

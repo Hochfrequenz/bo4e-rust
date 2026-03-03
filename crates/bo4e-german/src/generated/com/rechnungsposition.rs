@@ -25,7 +25,10 @@ pub struct Rechnungsposition {
     pub steuerbetrag: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "timeUnit")]
     pub zeiteinheit: Option<crate::Mengeneinheit>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "timeBasedQuantityValue")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "timeBasedQuantityValue"
+    )]
     pub zeitbezogene_menge: Option<f64>,
 }
 impl From<bo4e_core::com::InvoicePosition> for Rechnungsposition {

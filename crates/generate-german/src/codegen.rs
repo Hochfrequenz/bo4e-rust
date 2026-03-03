@@ -2,7 +2,7 @@
 //!
 //! Generates German versions of structs and enums with From/Into conversions.
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 use proc_macro2::{Ident, Span, TokenStream};
 use quote::{format_ident, quote};
@@ -90,10 +90,13 @@ pub fn generate_german_enum(info: &EnumInfo, german_name: &str) -> TokenStream {
     let german_ident = Ident::new(german_name, Span::call_site());
     let english_ident = Ident::new(&info.name, Span::call_site());
 
-    // Build the enum variants
+    // Build the enum variants, deduplicating by German variant name.
+    // When multiple English variants map to the same German name, only the first
+    // becomes a variant definition; the rest just get From arms pointing to it.
     let mut variant_defs = Vec::new();
     let mut from_english_arms = Vec::new();
     let mut from_german_arms = Vec::new();
+    let mut seen_german_variants: HashSet<String> = HashSet::new();
 
     for variant in &info.variants {
         let english_variant = Ident::new(&variant.name, Span::call_site());
@@ -101,29 +104,32 @@ pub fn generate_german_enum(info: &EnumInfo, german_name: &str) -> TokenStream {
         // German variant name: use extracted German name or fall back to English
         let german_variant_name = variant.german_name.as_deref().unwrap_or(&variant.name);
         // Clean up the German variant name to be a valid Rust identifier
-        let german_variant_ident = Ident::new(
-            &sanitize_variant_name(german_variant_name),
-            Span::call_site(),
-        );
+        let sanitized = sanitize_variant_name(german_variant_name);
+        let german_variant_ident = Ident::new(&sanitized, Span::call_site());
 
-        // Preserve serde(rename) if present
-        let serde_attr = if let Some(ref rename) = variant.serde_rename {
-            quote! { #[serde(rename = #rename)] }
-        } else {
-            quote! {}
-        };
+        // Only emit the variant definition once
+        if seen_german_variants.insert(sanitized.clone()) {
+            // Preserve serde(rename) if present
+            let serde_attr = if let Some(ref rename) = variant.serde_rename {
+                quote! { #[serde(rename = #rename)] }
+            } else {
+                quote! {}
+            };
 
-        variant_defs.push(quote! {
-            #serde_attr
-            #german_variant_ident
-        });
+            variant_defs.push(quote! {
+                #serde_attr
+                #german_variant_ident
+            });
 
+            // Only emit the German->English arm once (first English variant wins)
+            from_german_arms.push(quote! {
+                #german_ident::#german_variant_ident => bo4e_core::enums::#english_ident::#english_variant
+            });
+        }
+
+        // Every English variant maps to its German variant (many-to-one is fine here)
         from_english_arms.push(quote! {
             bo4e_core::enums::#english_ident::#english_variant => #german_ident::#german_variant_ident
-        });
-
-        from_german_arms.push(quote! {
-            #german_ident::#german_variant_ident => bo4e_core::enums::#english_ident::#english_variant
         });
     }
 
@@ -142,12 +148,14 @@ pub fn generate_german_enum(info: &EnumInfo, german_name: &str) -> TokenStream {
     quote! {
         #[derive(Debug, Clone, #derive_copy PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
         #[non_exhaustive]
+        #[allow(non_camel_case_types)]
         pub enum #german_ident {
             #(#variant_defs,)*
         }
 
         impl From<bo4e_core::enums::#english_ident> for #german_ident {
             fn from(v: bo4e_core::enums::#english_ident) -> Self {
+                #[allow(unreachable_patterns)]
                 match v {
                     #(#from_english_arms,)*
                 }
@@ -156,9 +164,9 @@ pub fn generate_german_enum(info: &EnumInfo, german_name: &str) -> TokenStream {
 
         impl From<#german_ident> for bo4e_core::enums::#english_ident {
             fn from(v: #german_ident) -> Self {
+                #[allow(unreachable_patterns)]
                 match v {
                     #(#from_german_arms,)*
-                    _ => panic!("Unknown {} variant", stringify!(#german_ident)),
                 }
             }
         }
@@ -168,13 +176,17 @@ pub fn generate_german_enum(info: &EnumInfo, german_name: &str) -> TokenStream {
 /// Sanitize a German name for use as a Rust variant identifier.
 /// Removes spaces, hyphens, and special characters, converts to PascalCase.
 fn sanitize_variant_name(name: &str) -> String {
-    // If it's already a valid identifier-like string, use it
-    if name.chars().all(|c| c.is_ascii_alphanumeric() || c == '_') && !name.is_empty() {
+    // Check if it's already a valid PascalCase identifier (no underscores, starts with uppercase)
+    if name.chars().all(|c| c.is_ascii_alphanumeric())
+        && !name.is_empty()
+        && name.chars().next().unwrap().is_uppercase()
+    {
         return name.to_string();
     }
 
-    // Split by spaces, hyphens, and other non-alphanumeric chars, then join as PascalCase
-    name.split(|c: char| !c.is_ascii_alphanumeric() && c != '_')
+    // Split by underscores, spaces, hyphens, and other non-alphanumeric chars,
+    // then join as PascalCase.
+    name.split(|c: char| !c.is_ascii_alphanumeric())
         .filter(|s| !s.is_empty())
         .map(|word| {
             let mut chars = word.chars();
@@ -182,7 +194,8 @@ fn sanitize_variant_name(name: &str) -> String {
                 None => String::new(),
                 Some(c) => {
                     let upper: String = c.to_uppercase().collect();
-                    upper + &chars.collect::<String>()
+                    let rest: String = chars.as_str().to_lowercase();
+                    upper + &rest
                 }
             }
         })
@@ -323,6 +336,13 @@ fn qualify_type_string(type_str: &str) -> String {
     if s.contains("<Utc>") && !s.contains("chrono :: Utc") && !s.contains("chrono::Utc") {
         s = s.replace("<Utc>", "<chrono::Utc>");
     }
+    // Replace bare NaiveDate with chrono::NaiveDate
+    if s.contains("NaiveDate")
+        && !s.contains("chrono :: NaiveDate")
+        && !s.contains("chrono::NaiveDate")
+    {
+        s = s.replace("NaiveDate", "chrono::NaiveDate");
+    }
     s
 }
 
@@ -334,6 +354,8 @@ fn build_german_type(field: &FieldInfo, german_inner: &str) -> String {
         format!("Option<Box<{}>>", inner)
     } else if field.is_option && field.is_vec {
         format!("Option<Vec<{}>>", inner)
+    } else if field.is_vec && field.is_box {
+        format!("Vec<Box<{}>>", inner)
     } else if field.is_option {
         format!("Option<{}>", inner)
     } else if field.is_vec {
@@ -400,6 +422,8 @@ fn generate_conversion_expr(
         quote! { v.#source_field.map(|b| Box::new((*b).into())) }
     } else if field.is_option {
         quote! { v.#source_field.map(Into::into) }
+    } else if field.is_vec && field.is_box {
+        quote! { v.#source_field.into_iter().map(|b| Box::new((*b).into())).collect() }
     } else if field.is_vec {
         quote! { v.#source_field.into_iter().map(Into::into).collect() }
     } else if field.is_box {

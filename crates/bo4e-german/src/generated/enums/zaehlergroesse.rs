@@ -1,8 +1,9 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Zaehlergroesse {
     #[serde(rename = "G2KOMMA5")]
-    G2_5,
+    G25,
     #[serde(rename = "G4")]
     G4,
     #[serde(rename = "G6")]
@@ -11,8 +12,6 @@ pub enum Zaehlergroesse {
     G10,
     #[serde(rename = "G16")]
     G16,
-    #[serde(rename = "G25")]
-    G25,
     #[serde(rename = "G40")]
     G40,
     #[serde(rename = "G65")]
@@ -46,8 +45,9 @@ pub enum Zaehlergroesse {
 }
 impl From<bo4e_core::enums::MeterSize> for Zaehlergroesse {
     fn from(v: bo4e_core::enums::MeterSize) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
-            bo4e_core::enums::MeterSize::G2_5 => Zaehlergroesse::G2_5,
+            bo4e_core::enums::MeterSize::G2_5 => Zaehlergroesse::G25,
             bo4e_core::enums::MeterSize::G4 => Zaehlergroesse::G4,
             bo4e_core::enums::MeterSize::G6 => Zaehlergroesse::G6,
             bo4e_core::enums::MeterSize::G10 => Zaehlergroesse::G10,
@@ -74,13 +74,13 @@ impl From<bo4e_core::enums::MeterSize> for Zaehlergroesse {
 }
 impl From<Zaehlergroesse> for bo4e_core::enums::MeterSize {
     fn from(v: Zaehlergroesse) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
-            Zaehlergroesse::G2_5 => bo4e_core::enums::MeterSize::G2_5,
+            Zaehlergroesse::G25 => bo4e_core::enums::MeterSize::G2_5,
             Zaehlergroesse::G4 => bo4e_core::enums::MeterSize::G4,
             Zaehlergroesse::G6 => bo4e_core::enums::MeterSize::G6,
             Zaehlergroesse::G10 => bo4e_core::enums::MeterSize::G10,
             Zaehlergroesse::G16 => bo4e_core::enums::MeterSize::G16,
-            Zaehlergroesse::G25 => bo4e_core::enums::MeterSize::G25,
             Zaehlergroesse::G40 => bo4e_core::enums::MeterSize::G40,
             Zaehlergroesse::G65 => bo4e_core::enums::MeterSize::G65,
             Zaehlergroesse::G100 => bo4e_core::enums::MeterSize::G100,
@@ -96,7 +96,6 @@ impl From<Zaehlergroesse> for bo4e_core::enums::MeterSize {
             Zaehlergroesse::G10000 => bo4e_core::enums::MeterSize::G10000,
             Zaehlergroesse::G12500 => bo4e_core::enums::MeterSize::G12500,
             Zaehlergroesse::G16000 => bo4e_core::enums::MeterSize::G16000,
-            _ => panic!("Unknown {} variant", stringify!(Zaehlergroesse)),
         }
     }
 }

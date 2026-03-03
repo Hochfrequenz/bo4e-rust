@@ -7,7 +7,10 @@ pub struct Angebotsposition {
     pub positionsbezeichnung: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "positionPriceValue")]
     pub positionspreis: Option<f64>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "positionQuantityValue")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "positionQuantityValue"
+    )]
     pub positionsmenge: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "positionCostValue")]
     pub positionskosten: Option<f64>,

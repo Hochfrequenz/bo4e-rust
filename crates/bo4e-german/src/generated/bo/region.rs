@@ -16,7 +16,7 @@ pub struct Region {
     #[serde(skip_serializing_if = "Option::is_none", alias = "parentRegion")]
     pub uebergeordnete_region: Option<Box<crate::Region>>,
     #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "subRegions")]
-    pub unterregionen: Vec<crate::Region>,
+    pub unterregionen: Vec<Box<crate::Region>>,
 }
 impl From<bo4e_core::bo::Region> for Region {
     fn from(v: bo4e_core::bo::Region) -> Self {
@@ -28,7 +28,11 @@ impl From<bo4e_core::bo::Region> for Region {
             gebietstyp: v.region_type.map(Into::into),
             regionskriterien: v.criteria.into_iter().map(Into::into).collect(),
             uebergeordnete_region: v.parent_region.map(|b| Box::new((*b).into())),
-            unterregionen: v.sub_regions.into_iter().map(Into::into).collect(),
+            unterregionen: v
+                .sub_regions
+                .into_iter()
+                .map(|b| Box::new((*b).into()))
+                .collect(),
         }
     }
 }
@@ -42,7 +46,11 @@ impl From<Region> for bo4e_core::bo::Region {
             region_type: v.gebietstyp.map(Into::into),
             criteria: v.regionskriterien.into_iter().map(Into::into).collect(),
             parent_region: v.uebergeordnete_region.map(|b| Box::new((*b).into())),
-            sub_regions: v.unterregionen.into_iter().map(Into::into).collect(),
+            sub_regions: v
+                .unterregionen
+                .into_iter()
+                .map(|b| Box::new((*b).into()))
+                .collect(),
         }
     }
 }

@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Mengeneinheit {
     #[serde(rename = "W")]
     Watt,
@@ -52,6 +53,7 @@ pub enum Mengeneinheit {
 }
 impl From<bo4e_core::enums::Unit> for Mengeneinheit {
     fn from(v: bo4e_core::enums::Unit) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::Unit::Watt => Mengeneinheit::Watt,
             bo4e_core::enums::Unit::Kilowatt => Mengeneinheit::Kilowatt,
@@ -59,15 +61,9 @@ impl From<bo4e_core::enums::Unit> for Mengeneinheit {
             bo4e_core::enums::Unit::WattHour => Mengeneinheit::WattHour,
             bo4e_core::enums::Unit::KilowattHour => Mengeneinheit::KilowattHour,
             bo4e_core::enums::Unit::MegawattHour => Mengeneinheit::MegawattHour,
-            bo4e_core::enums::Unit::VoltAmpereReactive => {
-                Mengeneinheit::VoltAmpereReactive
-            }
-            bo4e_core::enums::Unit::KilovoltAmpereReactive => {
-                Mengeneinheit::KilovoltAmpereReactive
-            }
-            bo4e_core::enums::Unit::VoltAmpereReactiveHour => {
-                Mengeneinheit::VoltAmpereReactiveHour
-            }
+            bo4e_core::enums::Unit::VoltAmpereReactive => Mengeneinheit::VoltAmpereReactive,
+            bo4e_core::enums::Unit::KilovoltAmpereReactive => Mengeneinheit::KilovoltAmpereReactive,
+            bo4e_core::enums::Unit::VoltAmpereReactiveHour => Mengeneinheit::VoltAmpereReactiveHour,
             bo4e_core::enums::Unit::KilovoltAmpereReactiveHour => {
                 Mengeneinheit::KilovoltAmpereReactiveHour
             }
@@ -84,15 +80,14 @@ impl From<bo4e_core::enums::Unit> for Mengeneinheit {
             bo4e_core::enums::Unit::HalfYear => Mengeneinheit::HalfYear,
             bo4e_core::enums::Unit::Year => Mengeneinheit::Year,
             bo4e_core::enums::Unit::Percent => Mengeneinheit::Percent,
-            bo4e_core::enums::Unit::KilowattHourPerKelvin => {
-                Mengeneinheit::KilowattHourPerKelvin
-            }
+            bo4e_core::enums::Unit::KilowattHourPerKelvin => Mengeneinheit::KilowattHourPerKelvin,
             _ => panic!("Unknown {} variant", stringify!(Unit)),
         }
     }
 }
 impl From<Mengeneinheit> for bo4e_core::enums::Unit {
     fn from(v: Mengeneinheit) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Mengeneinheit::Watt => bo4e_core::enums::Unit::Watt,
             Mengeneinheit::Kilowatt => bo4e_core::enums::Unit::Kilowatt,
@@ -100,15 +95,9 @@ impl From<Mengeneinheit> for bo4e_core::enums::Unit {
             Mengeneinheit::WattHour => bo4e_core::enums::Unit::WattHour,
             Mengeneinheit::KilowattHour => bo4e_core::enums::Unit::KilowattHour,
             Mengeneinheit::MegawattHour => bo4e_core::enums::Unit::MegawattHour,
-            Mengeneinheit::VoltAmpereReactive => {
-                bo4e_core::enums::Unit::VoltAmpereReactive
-            }
-            Mengeneinheit::KilovoltAmpereReactive => {
-                bo4e_core::enums::Unit::KilovoltAmpereReactive
-            }
-            Mengeneinheit::VoltAmpereReactiveHour => {
-                bo4e_core::enums::Unit::VoltAmpereReactiveHour
-            }
+            Mengeneinheit::VoltAmpereReactive => bo4e_core::enums::Unit::VoltAmpereReactive,
+            Mengeneinheit::KilovoltAmpereReactive => bo4e_core::enums::Unit::KilovoltAmpereReactive,
+            Mengeneinheit::VoltAmpereReactiveHour => bo4e_core::enums::Unit::VoltAmpereReactiveHour,
             Mengeneinheit::KilovoltAmpereReactiveHour => {
                 bo4e_core::enums::Unit::KilovoltAmpereReactiveHour
             }
@@ -125,10 +114,7 @@ impl From<Mengeneinheit> for bo4e_core::enums::Unit {
             Mengeneinheit::HalfYear => bo4e_core::enums::Unit::HalfYear,
             Mengeneinheit::Year => bo4e_core::enums::Unit::Year,
             Mengeneinheit::Percent => bo4e_core::enums::Unit::Percent,
-            Mengeneinheit::KilowattHourPerKelvin => {
-                bo4e_core::enums::Unit::KilowattHourPerKelvin
-            }
-            _ => panic!("Unknown {} variant", stringify!(Mengeneinheit)),
+            Mengeneinheit::KilowattHourPerKelvin => bo4e_core::enums::Unit::KilowattHourPerKelvin,
         }
     }
 }

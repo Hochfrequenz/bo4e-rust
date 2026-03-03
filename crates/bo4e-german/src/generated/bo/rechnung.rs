@@ -12,9 +12,9 @@ pub struct Rechnung {
     #[serde(skip_serializing_if = "Option::is_none", alias = "division")]
     pub sparte: Option<crate::Sparte>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "invoiceDate")]
-    pub rechnungsdatum: Option<NaiveDate>,
+    pub rechnungsdatum: Option<chrono::NaiveDate>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "dueDate")]
-    pub faelligkeitsdatum: Option<NaiveDate>,
+    pub faelligkeitsdatum: Option<chrono::NaiveDate>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "billingPeriod")]
     pub abrechnungszeitraum: Option<crate::Zeitraum>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "netAmount")]

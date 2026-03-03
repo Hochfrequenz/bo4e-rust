@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Rundungsverfahren {
     #[serde(rename = "KEINE")]
     KeineRundung,
@@ -12,11 +13,10 @@ pub enum Rundungsverfahren {
 }
 impl From<bo4e_core::enums::RoundingMode> for Rundungsverfahren {
     fn from(v: bo4e_core::enums::RoundingMode) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::RoundingMode::None => Rundungsverfahren::KeineRundung,
-            bo4e_core::enums::RoundingMode::Commercial => {
-                Rundungsverfahren::KaufmNnischeRundung
-            }
+            bo4e_core::enums::RoundingMode::Commercial => Rundungsverfahren::KaufmNnischeRundung,
             bo4e_core::enums::RoundingMode::Floor => Rundungsverfahren::Abrunden,
             bo4e_core::enums::RoundingMode::Ceiling => Rundungsverfahren::Aufrunden,
             _ => panic!("Unknown {} variant", stringify!(RoundingMode)),
@@ -25,14 +25,12 @@ impl From<bo4e_core::enums::RoundingMode> for Rundungsverfahren {
 }
 impl From<Rundungsverfahren> for bo4e_core::enums::RoundingMode {
     fn from(v: Rundungsverfahren) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Rundungsverfahren::KeineRundung => bo4e_core::enums::RoundingMode::None,
-            Rundungsverfahren::KaufmNnischeRundung => {
-                bo4e_core::enums::RoundingMode::Commercial
-            }
+            Rundungsverfahren::KaufmNnischeRundung => bo4e_core::enums::RoundingMode::Commercial,
             Rundungsverfahren::Abrunden => bo4e_core::enums::RoundingMode::Floor,
             Rundungsverfahren::Aufrunden => bo4e_core::enums::RoundingMode::Ceiling,
-            _ => panic!("Unknown {} variant", stringify!(Rundungsverfahren)),
         }
     }
 }

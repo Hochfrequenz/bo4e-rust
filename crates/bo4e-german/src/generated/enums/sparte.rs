@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Sparte {
     #[serde(rename = "STROM")]
     Strom,
@@ -18,6 +19,7 @@ pub enum Sparte {
 }
 impl From<bo4e_core::enums::Division> for Sparte {
     fn from(v: bo4e_core::enums::Division) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::Division::Electricity => Sparte::Strom,
             bo4e_core::enums::Division::Gas => Sparte::Gas,
@@ -32,6 +34,7 @@ impl From<bo4e_core::enums::Division> for Sparte {
 }
 impl From<Sparte> for bo4e_core::enums::Division {
     fn from(v: Sparte) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Sparte::Strom => bo4e_core::enums::Division::Electricity,
             Sparte::Gas => bo4e_core::enums::Division::Gas,
@@ -40,7 +43,6 @@ impl From<Sparte> for bo4e_core::enums::Division {
             Sparte::Wasser => bo4e_core::enums::Division::Water,
             Sparte::Abwasser => bo4e_core::enums::Division::Wastewater,
             Sparte::StromUndGas => bo4e_core::enums::Division::ElectricityAndGas,
-            _ => panic!("Unknown {} variant", stringify!(Sparte)),
         }
     }
 }

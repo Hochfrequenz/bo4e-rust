@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Marktrolle {
     #[serde(rename = "BTR")]
     BetreiberEinerTechnischenRessource,
@@ -30,13 +31,12 @@ pub enum Marktrolle {
 }
 impl From<bo4e_core::enums::MarketRole> for Marktrolle {
     fn from(v: bo4e_core::enums::MarketRole) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::MarketRole::TechnicalResourceOperator => {
                 Marktrolle::BetreiberEinerTechnischenRessource
             }
-            bo4e_core::enums::MarketRole::BalanceCoordinator => {
-                Marktrolle::BalanceCoordinator
-            }
+            bo4e_core::enums::MarketRole::BalanceCoordinator => Marktrolle::BalanceCoordinator,
             bo4e_core::enums::MarketRole::BalanceResponsibleParty => {
                 Marktrolle::Bilanzkreisverantwortlicher
             }
@@ -52,13 +52,9 @@ impl From<bo4e_core::enums::MarketRole> for Marktrolle {
             bo4e_core::enums::MarketRole::MarketAreaManager => {
                 Marktrolle::Marktgebietsverantwortlicher
             }
-            bo4e_core::enums::MarketRole::MeteringPointOperator => {
-                Marktrolle::Messstellenbetreiber
-            }
+            bo4e_core::enums::MarketRole::MeteringPointOperator => Marktrolle::Messstellenbetreiber,
             bo4e_core::enums::MarketRole::NetworkOperator => Marktrolle::Netzbetreiber,
-            bo4e_core::enums::MarketRole::RegisterOperator => {
-                Marktrolle::Registerbetreiber
-            }
+            bo4e_core::enums::MarketRole::RegisterOperator => Marktrolle::Registerbetreiber,
             bo4e_core::enums::MarketRole::TransmissionSystemOperator => {
                 Marktrolle::Uebertragungsnetzbetreiber
             }
@@ -68,13 +64,12 @@ impl From<bo4e_core::enums::MarketRole> for Marktrolle {
 }
 impl From<Marktrolle> for bo4e_core::enums::MarketRole {
     fn from(v: Marktrolle) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Marktrolle::BetreiberEinerTechnischenRessource => {
                 bo4e_core::enums::MarketRole::TechnicalResourceOperator
             }
-            Marktrolle::BalanceCoordinator => {
-                bo4e_core::enums::MarketRole::BalanceCoordinator
-            }
+            Marktrolle::BalanceCoordinator => bo4e_core::enums::MarketRole::BalanceCoordinator,
             Marktrolle::Bilanzkreisverantwortlicher => {
                 bo4e_core::enums::MarketRole::BalanceResponsibleParty
             }
@@ -90,17 +85,12 @@ impl From<Marktrolle> for bo4e_core::enums::MarketRole {
             Marktrolle::Marktgebietsverantwortlicher => {
                 bo4e_core::enums::MarketRole::MarketAreaManager
             }
-            Marktrolle::Messstellenbetreiber => {
-                bo4e_core::enums::MarketRole::MeteringPointOperator
-            }
+            Marktrolle::Messstellenbetreiber => bo4e_core::enums::MarketRole::MeteringPointOperator,
             Marktrolle::Netzbetreiber => bo4e_core::enums::MarketRole::NetworkOperator,
-            Marktrolle::Registerbetreiber => {
-                bo4e_core::enums::MarketRole::RegisterOperator
-            }
+            Marktrolle::Registerbetreiber => bo4e_core::enums::MarketRole::RegisterOperator,
             Marktrolle::Uebertragungsnetzbetreiber => {
                 bo4e_core::enums::MarketRole::TransmissionSystemOperator
             }
-            _ => panic!("Unknown {} variant", stringify!(Marktrolle)),
         }
     }
 }

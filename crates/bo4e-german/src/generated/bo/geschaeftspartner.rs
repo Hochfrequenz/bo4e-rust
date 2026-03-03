@@ -15,9 +15,16 @@ pub struct Geschaeftspartner {
     pub geschaeftspartnerrollen: Vec<crate::Geschaeftspartnerrolle>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "address")]
     pub adresse: Option<crate::Adresse>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "contactMethods")]
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        alias = "contactMethods"
+    )]
     pub kontaktwege: Vec<crate::Kontaktweg>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "commercialRegisterNumber")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "commercialRegisterNumber"
+    )]
     pub handelsregisternummer: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "taxId")]
     pub steuernummer: Option<String>,
@@ -49,7 +56,11 @@ impl From<Geschaeftspartner> for bo4e_core::bo::BusinessPartner {
             name1: v.name1,
             name2: v.name2,
             name3: v.name3,
-            roles: v.geschaeftspartnerrollen.into_iter().map(Into::into).collect(),
+            roles: v
+                .geschaeftspartnerrollen
+                .into_iter()
+                .map(Into::into)
+                .collect(),
             address: v.adresse.map(Into::into),
             contact_methods: v.kontaktwege.into_iter().map(Into::into).collect(),
             commercial_register_number: v.handelsregisternummer,

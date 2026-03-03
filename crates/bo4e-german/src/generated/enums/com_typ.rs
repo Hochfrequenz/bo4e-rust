@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum ComTyp {
     #[serde(rename = "Adresse")]
     Address,
@@ -84,6 +85,7 @@ pub enum ComTyp {
 }
 impl From<bo4e_core::enums::ComType> for ComTyp {
     fn from(v: bo4e_core::enums::ComType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::ComType::Address => ComTyp::Address,
             bo4e_core::enums::ComType::GeoCoordinates => ComTyp::GeoCoordinates,
@@ -102,15 +104,11 @@ impl From<bo4e_core::enums::ComType> for ComTyp {
             bo4e_core::enums::ComType::MeterRegister => ComTyp::MeterRegister,
             bo4e_core::enums::ComType::TimeOfUseRegister => ComTyp::TimeOfUseRegister,
             bo4e_core::enums::ComType::ExternalCostBlock => ComTyp::ExternalCostBlock,
-            bo4e_core::enums::ComType::ExternalCostPosition => {
-                ComTyp::ExternalCostPosition
-            }
+            bo4e_core::enums::ComType::ExternalCostPosition => ComTyp::ExternalCostPosition,
             bo4e_core::enums::ComType::CostBlock => ComTyp::CostBlock,
             bo4e_core::enums::ComType::CostPosition => ComTyp::CostPosition,
             bo4e_core::enums::ComType::Surcharge => ComTyp::Surcharge,
-            bo4e_core::enums::ComType::SurchargePerLocation => {
-                ComTyp::SurchargePerLocation
-            }
+            bo4e_core::enums::ComType::SurchargePerLocation => ComTyp::SurchargePerLocation,
             bo4e_core::enums::ComType::RegionalSurcharge => ComTyp::RegionalSurcharge,
             bo4e_core::enums::ComType::PositionSurcharge => ComTyp::PositionSurcharge,
             bo4e_core::enums::ComType::TariffCalculationParameter => {
@@ -137,6 +135,7 @@ impl From<bo4e_core::enums::ComType> for ComTyp {
 }
 impl From<ComTyp> for bo4e_core::enums::ComType {
     fn from(v: ComTyp) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             ComTyp::Address => bo4e_core::enums::ComType::Address,
             ComTyp::GeoCoordinates => bo4e_core::enums::ComType::GeoCoordinates,
@@ -155,15 +154,11 @@ impl From<ComTyp> for bo4e_core::enums::ComType {
             ComTyp::MeterRegister => bo4e_core::enums::ComType::MeterRegister,
             ComTyp::TimeOfUseRegister => bo4e_core::enums::ComType::TimeOfUseRegister,
             ComTyp::ExternalCostBlock => bo4e_core::enums::ComType::ExternalCostBlock,
-            ComTyp::ExternalCostPosition => {
-                bo4e_core::enums::ComType::ExternalCostPosition
-            }
+            ComTyp::ExternalCostPosition => bo4e_core::enums::ComType::ExternalCostPosition,
             ComTyp::CostBlock => bo4e_core::enums::ComType::CostBlock,
             ComTyp::CostPosition => bo4e_core::enums::ComType::CostPosition,
             ComTyp::Surcharge => bo4e_core::enums::ComType::Surcharge,
-            ComTyp::SurchargePerLocation => {
-                bo4e_core::enums::ComType::SurchargePerLocation
-            }
+            ComTyp::SurchargePerLocation => bo4e_core::enums::ComType::SurchargePerLocation,
             ComTyp::RegionalSurcharge => bo4e_core::enums::ComType::RegionalSurcharge,
             ComTyp::PositionSurcharge => bo4e_core::enums::ComType::PositionSurcharge,
             ComTyp::TariffCalculationParameter => {
@@ -184,7 +179,6 @@ impl From<ComTyp> for bo4e_core::enums::ComType {
             ComTyp::PriceGuarantee => bo4e_core::enums::ComType::PriceGuarantee,
             ComTyp::RegionCriterion => bo4e_core::enums::ComType::RegionCriterion,
             ComTyp::Consumption => bo4e_core::enums::ComType::Consumption,
-            _ => panic!("Unknown {} variant", stringify!(ComTyp)),
         }
     }
 }

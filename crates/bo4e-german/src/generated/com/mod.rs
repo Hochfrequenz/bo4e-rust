@@ -191,4 +191,3 @@ pub use zeitreihenwert::Zeitreihenwert;
 
 mod zustaendigkeit;
 pub use zustaendigkeit::Zustaendigkeit;
-

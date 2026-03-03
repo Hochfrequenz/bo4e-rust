@@ -17,7 +17,10 @@ pub struct Lastkurvendaten {
     pub intervalllaenge: Option<i32>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "obisCode")]
     pub obis_kennzahl: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "measurementLocationId")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "measurementLocationId"
+    )]
     pub messlokations_id: Option<String>,
 }
 impl From<bo4e_core::com::LoadCurveData> for Lastkurvendaten {

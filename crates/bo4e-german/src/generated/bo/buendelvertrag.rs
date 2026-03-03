@@ -3,7 +3,10 @@
 pub struct Buendelvertrag {
     #[serde(flatten)]
     pub meta: bo4e_core::Bo4eMeta,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "bundleContractNumber")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "bundleContractNumber"
+    )]
     pub buendelvertragsnummer: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "description")]
     pub beschreibung: Option<String>,
@@ -22,7 +25,7 @@ pub struct Buendelvertrag {
         skip_serializing_if = "Vec::is_empty",
         alias = "individualContracts"
     )]
-    pub einzelvertraege: Vec<crate::Vertrag>,
+    pub einzelvertraege: Vec<Box<crate::Vertrag>>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "contractPartner")]
     pub vertragspartner: Option<Box<crate::Geschaeftspartner>>,
 }
@@ -40,7 +43,7 @@ impl From<bo4e_core::bo::BundleContract> for Buendelvertrag {
             einzelvertraege: v
                 .individual_contracts
                 .into_iter()
-                .map(Into::into)
+                .map(|b| Box::new((*b).into()))
                 .collect(),
             vertragspartner: v.contract_partner.map(|b| Box::new((*b).into())),
         }
@@ -60,7 +63,7 @@ impl From<Buendelvertrag> for bo4e_core::bo::BundleContract {
             individual_contracts: v
                 .einzelvertraege
                 .into_iter()
-                .map(Into::into)
+                .map(|b| Box::new((*b).into()))
                 .collect(),
             contract_partner: v.vertragspartner.map(|b| Box::new((*b).into())),
         }

@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Preisgarantietyp {
     #[serde(rename = "ALLE_PREISBESTANDTEILE_BRUTTO")]
     AllePreisbestandteileBrutto,
@@ -12,6 +13,7 @@ pub enum Preisgarantietyp {
 }
 impl From<bo4e_core::enums::PriceGuaranteeType> for Preisgarantietyp {
     fn from(v: bo4e_core::enums::PriceGuaranteeType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::PriceGuaranteeType::AllComponentsGross => {
                 Preisgarantietyp::AllePreisbestandteileBrutto
@@ -31,6 +33,7 @@ impl From<bo4e_core::enums::PriceGuaranteeType> for Preisgarantietyp {
 }
 impl From<Preisgarantietyp> for bo4e_core::enums::PriceGuaranteeType {
     fn from(v: Preisgarantietyp) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Preisgarantietyp::AllePreisbestandteileBrutto => {
                 bo4e_core::enums::PriceGuaranteeType::AllComponentsGross
@@ -44,7 +47,6 @@ impl From<Preisgarantietyp> for bo4e_core::enums::PriceGuaranteeType {
             Preisgarantietyp::NurEnergiepreis => {
                 bo4e_core::enums::PriceGuaranteeType::EnergyPriceOnly
             }
-            _ => panic!("Unknown {} variant", stringify!(Preisgarantietyp)),
         }
     }
 }

@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Kalkulationsmethode {
     #[serde(rename = "STUFEN")]
     Steps,
@@ -31,13 +32,12 @@ pub enum Kalkulationsmethode {
     CapacityPriceTransportOrDistributionLocalSigmoid,
     #[serde(rename = "FUNKTIONEN")]
     Functions,
-    #[serde(
-        rename = "VERBRAUCH_UEBER_SLP_GRENZE_FUNKTIONSBEZOGEN_WEITERE_BERECHNUNG_ALS_LGK"
-    )]
+    #[serde(rename = "VERBRAUCH_UEBER_SLP_GRENZE_FUNKTIONSBEZOGEN_WEITERE_BERECHNUNG_ALS_LGK")]
     ConsumptionAboveSLPThresholdFunctionBasedLGK,
 }
 impl From<bo4e_core::enums::CalculationMethod> for Kalkulationsmethode {
     fn from(v: bo4e_core::enums::CalculationMethod) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::CalculationMethod::Steps => Kalkulationsmethode::Steps,
             bo4e_core::enums::CalculationMethod::Zones => Kalkulationsmethode::Zones,
@@ -89,6 +89,7 @@ impl From<bo4e_core::enums::CalculationMethod> for Kalkulationsmethode {
 }
 impl From<Kalkulationsmethode> for bo4e_core::enums::CalculationMethod {
     fn from(v: Kalkulationsmethode) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Kalkulationsmethode::Steps => bo4e_core::enums::CalculationMethod::Steps,
             Kalkulationsmethode::Zones => bo4e_core::enums::CalculationMethod::Zones,
@@ -134,7 +135,6 @@ impl From<Kalkulationsmethode> for bo4e_core::enums::CalculationMethod {
             Kalkulationsmethode::ConsumptionAboveSLPThresholdFunctionBasedLGK => {
                 bo4e_core::enums::CalculationMethod::ConsumptionAboveSLPThresholdFunctionBasedLGK
             }
-            _ => panic!("Unknown {} variant", stringify!(Kalkulationsmethode)),
         }
     }
 }

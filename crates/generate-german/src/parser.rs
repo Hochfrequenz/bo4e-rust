@@ -315,6 +315,7 @@ fn is_primitive_type(name: &str) -> bool {
             | "usize"
             | "isize"
             | "DateTime"
+            | "NaiveDate"
             | "Utc"
             | "Bo4eMeta"
             | "AdditionalAttribute"
@@ -523,6 +524,14 @@ fn is_valid_german_name(s: &str) -> bool {
     }
     // Must not contain special chars that indicate technical notation
     if s.contains('^') || s.contains('§') || s.contains('/') || s.contains('%') {
+        return false;
+    }
+    // Reject common English annotations that are not German names
+    let lower = s.to_lowercase();
+    if matches!(
+        lower.as_str(),
+        "old" | "new" | "deprecated" | "obsolete" | "legacy" | "future" | "reserved"
+    ) {
         return false;
     }
     true

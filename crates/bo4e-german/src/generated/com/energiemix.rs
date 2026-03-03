@@ -19,7 +19,11 @@ pub struct Energiemix {
     pub co2_emission: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "nuclearWaste")]
     pub atommuell: Option<f64>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "ecoCertificates")]
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        alias = "ecoCertificates"
+    )]
     pub oekozertifikate: Vec<crate::Oekozertifikat>,
     #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "ecoLabels")]
     pub oekolabel: Vec<crate::Oekolabel>,

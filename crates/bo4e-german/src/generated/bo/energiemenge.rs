@@ -13,7 +13,11 @@ pub struct Energiemenge {
     pub messart: Option<crate::Messart>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "validityPeriod")]
     pub gueltigkeitszeitraum: Option<crate::Zeitraum>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "measuredValues")]
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        alias = "measuredValues"
+    )]
     pub messwerte: Vec<crate::Messwert>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "marketLocationId")]
     pub marktlokations_id: Option<String>,

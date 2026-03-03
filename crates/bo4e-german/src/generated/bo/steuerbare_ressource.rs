@@ -3,7 +3,10 @@
 pub struct SteuerbareRessource {
     #[serde(flatten)]
     pub meta: bo4e_core::Bo4eMeta,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "controllableResourceId")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "controllableResourceId"
+    )]
     pub steuerbare_ressource_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "division")]
     pub sparte: Option<crate::Sparte>,

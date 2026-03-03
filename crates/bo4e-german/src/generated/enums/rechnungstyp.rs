@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Rechnungstyp {
     #[serde(rename = "ENDKUNDENRECHNUNG")]
     Endkundenrechnung,
@@ -30,10 +31,9 @@ pub enum Rechnungstyp {
 }
 impl From<bo4e_core::enums::InvoiceType> for Rechnungstyp {
     fn from(v: bo4e_core::enums::InvoiceType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
-            bo4e_core::enums::InvoiceType::EndCustomerInvoice => {
-                Rechnungstyp::Endkundenrechnung
-            }
+            bo4e_core::enums::InvoiceType::EndCustomerInvoice => Rechnungstyp::Endkundenrechnung,
             bo4e_core::enums::InvoiceType::NetworkUsageInvoice => {
                 Rechnungstyp::Netznutzungsrechnung
             }
@@ -43,25 +43,15 @@ impl From<bo4e_core::enums::InvoiceType> for Rechnungstyp {
             bo4e_core::enums::InvoiceType::MeteringPointOperationInvoice => {
                 Rechnungstyp::Messstellenbetriebsrechnung
             }
-            bo4e_core::enums::InvoiceType::ProcurementInvoice => {
-                Rechnungstyp::Beschaffungsrechnung
-            }
+            bo4e_core::enums::InvoiceType::ProcurementInvoice => Rechnungstyp::Beschaffungsrechnung,
             bo4e_core::enums::InvoiceType::BalancingEnergyInvoice => {
                 Rechnungstyp::Ausgleichsenergierechnung
             }
-            bo4e_core::enums::InvoiceType::FinalInvoice => {
-                Rechnungstyp::Abschlussrechnung
-            }
-            bo4e_core::enums::InvoiceType::InstalmentInvoice => {
-                Rechnungstyp::Abschlagsrechnung
-            }
-            bo4e_core::enums::InvoiceType::PeriodicInvoice => {
-                Rechnungstyp::Turnusrechnung
-            }
+            bo4e_core::enums::InvoiceType::FinalInvoice => Rechnungstyp::Abschlussrechnung,
+            bo4e_core::enums::InvoiceType::InstalmentInvoice => Rechnungstyp::Abschlagsrechnung,
+            bo4e_core::enums::InvoiceType::PeriodicInvoice => Rechnungstyp::Turnusrechnung,
             bo4e_core::enums::InvoiceType::MonthlyInvoice => Rechnungstyp::Monatsrechnung,
-            bo4e_core::enums::InvoiceType::InterimInvoice => {
-                Rechnungstyp::Zwischenrechnung
-            }
+            bo4e_core::enums::InvoiceType::InterimInvoice => Rechnungstyp::Zwischenrechnung,
             bo4e_core::enums::InvoiceType::Integrated13thInvoice => {
                 Rechnungstyp::Integrierte13teRechnung
             }
@@ -74,10 +64,9 @@ impl From<bo4e_core::enums::InvoiceType> for Rechnungstyp {
 }
 impl From<Rechnungstyp> for bo4e_core::enums::InvoiceType {
     fn from(v: Rechnungstyp) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
-            Rechnungstyp::Endkundenrechnung => {
-                bo4e_core::enums::InvoiceType::EndCustomerInvoice
-            }
+            Rechnungstyp::Endkundenrechnung => bo4e_core::enums::InvoiceType::EndCustomerInvoice,
             Rechnungstyp::Netznutzungsrechnung => {
                 bo4e_core::enums::InvoiceType::NetworkUsageInvoice
             }
@@ -87,32 +76,21 @@ impl From<Rechnungstyp> for bo4e_core::enums::InvoiceType {
             Rechnungstyp::Messstellenbetriebsrechnung => {
                 bo4e_core::enums::InvoiceType::MeteringPointOperationInvoice
             }
-            Rechnungstyp::Beschaffungsrechnung => {
-                bo4e_core::enums::InvoiceType::ProcurementInvoice
-            }
+            Rechnungstyp::Beschaffungsrechnung => bo4e_core::enums::InvoiceType::ProcurementInvoice,
             Rechnungstyp::Ausgleichsenergierechnung => {
                 bo4e_core::enums::InvoiceType::BalancingEnergyInvoice
             }
-            Rechnungstyp::Abschlussrechnung => {
-                bo4e_core::enums::InvoiceType::FinalInvoice
-            }
-            Rechnungstyp::Abschlagsrechnung => {
-                bo4e_core::enums::InvoiceType::InstalmentInvoice
-            }
-            Rechnungstyp::Turnusrechnung => {
-                bo4e_core::enums::InvoiceType::PeriodicInvoice
-            }
+            Rechnungstyp::Abschlussrechnung => bo4e_core::enums::InvoiceType::FinalInvoice,
+            Rechnungstyp::Abschlagsrechnung => bo4e_core::enums::InvoiceType::InstalmentInvoice,
+            Rechnungstyp::Turnusrechnung => bo4e_core::enums::InvoiceType::PeriodicInvoice,
             Rechnungstyp::Monatsrechnung => bo4e_core::enums::InvoiceType::MonthlyInvoice,
-            Rechnungstyp::Zwischenrechnung => {
-                bo4e_core::enums::InvoiceType::InterimInvoice
-            }
+            Rechnungstyp::Zwischenrechnung => bo4e_core::enums::InvoiceType::InterimInvoice,
             Rechnungstyp::Integrierte13teRechnung => {
                 bo4e_core::enums::InvoiceType::Integrated13thInvoice
             }
             Rechnungstyp::Zusaetzliche13teRechnung => {
                 bo4e_core::enums::InvoiceType::Additional13thInvoice
             }
-            _ => panic!("Unknown {} variant", stringify!(Rechnungstyp)),
         }
     }
 }

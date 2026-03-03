@@ -11,7 +11,10 @@ pub struct Messstellenstatus {
     pub statuscode: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "statusDescription")]
     pub statusbeschreibung: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "dataTransmissionActive")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "dataTransmissionActive"
+    )]
     pub datenuebertragung: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "installationStatus")]
     pub installationsstatus: Option<String>,

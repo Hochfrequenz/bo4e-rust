@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Waehrungscode {
     #[serde(rename = "AED")]
     Aed,
@@ -52,7 +53,7 @@ pub enum Waehrungscode {
     #[serde(rename = "BYN")]
     Byn,
     #[serde(rename = "BYR")]
-    old,
+    Byr,
     #[serde(rename = "BZD")]
     Bzd,
     #[serde(rename = "CAD")]
@@ -248,7 +249,7 @@ pub enum Waehrungscode {
     #[serde(rename = "RUB")]
     Rub,
     #[serde(rename = "RUR")]
-    old,
+    Rur,
     #[serde(rename = "RWF")]
     Rwf,
     #[serde(rename = "SAR")]
@@ -368,6 +369,7 @@ pub enum Waehrungscode {
 }
 impl From<bo4e_core::enums::Currency> for Waehrungscode {
     fn from(v: bo4e_core::enums::Currency) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::Currency::Aed => Waehrungscode::Aed,
             bo4e_core::enums::Currency::Afn => Waehrungscode::Afn,
@@ -394,7 +396,7 @@ impl From<bo4e_core::enums::Currency> for Waehrungscode {
             bo4e_core::enums::Currency::Btn => Waehrungscode::Btn,
             bo4e_core::enums::Currency::Bwp => Waehrungscode::Bwp,
             bo4e_core::enums::Currency::Byn => Waehrungscode::Byn,
-            bo4e_core::enums::Currency::Byr => Waehrungscode::old,
+            bo4e_core::enums::Currency::Byr => Waehrungscode::Byr,
             bo4e_core::enums::Currency::Bzd => Waehrungscode::Bzd,
             bo4e_core::enums::Currency::Cad => Waehrungscode::Cad,
             bo4e_core::enums::Currency::Cdf => Waehrungscode::Cdf,
@@ -492,7 +494,7 @@ impl From<bo4e_core::enums::Currency> for Waehrungscode {
             bo4e_core::enums::Currency::Ron => Waehrungscode::Ron,
             bo4e_core::enums::Currency::Rsd => Waehrungscode::Rsd,
             bo4e_core::enums::Currency::Rub => Waehrungscode::Rub,
-            bo4e_core::enums::Currency::Rur => Waehrungscode::old,
+            bo4e_core::enums::Currency::Rur => Waehrungscode::Rur,
             bo4e_core::enums::Currency::Rwf => Waehrungscode::Rwf,
             bo4e_core::enums::Currency::Sar => Waehrungscode::Sar,
             bo4e_core::enums::Currency::Sbd => Waehrungscode::Sbd,
@@ -557,6 +559,7 @@ impl From<bo4e_core::enums::Currency> for Waehrungscode {
 }
 impl From<Waehrungscode> for bo4e_core::enums::Currency {
     fn from(v: Waehrungscode) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Waehrungscode::Aed => bo4e_core::enums::Currency::Aed,
             Waehrungscode::Afn => bo4e_core::enums::Currency::Afn,
@@ -583,7 +586,7 @@ impl From<Waehrungscode> for bo4e_core::enums::Currency {
             Waehrungscode::Btn => bo4e_core::enums::Currency::Btn,
             Waehrungscode::Bwp => bo4e_core::enums::Currency::Bwp,
             Waehrungscode::Byn => bo4e_core::enums::Currency::Byn,
-            Waehrungscode::old => bo4e_core::enums::Currency::Byr,
+            Waehrungscode::Byr => bo4e_core::enums::Currency::Byr,
             Waehrungscode::Bzd => bo4e_core::enums::Currency::Bzd,
             Waehrungscode::Cad => bo4e_core::enums::Currency::Cad,
             Waehrungscode::Cdf => bo4e_core::enums::Currency::Cdf,
@@ -681,7 +684,7 @@ impl From<Waehrungscode> for bo4e_core::enums::Currency {
             Waehrungscode::Ron => bo4e_core::enums::Currency::Ron,
             Waehrungscode::Rsd => bo4e_core::enums::Currency::Rsd,
             Waehrungscode::Rub => bo4e_core::enums::Currency::Rub,
-            Waehrungscode::old => bo4e_core::enums::Currency::Rur,
+            Waehrungscode::Rur => bo4e_core::enums::Currency::Rur,
             Waehrungscode::Rwf => bo4e_core::enums::Currency::Rwf,
             Waehrungscode::Sar => bo4e_core::enums::Currency::Sar,
             Waehrungscode::Sbd => bo4e_core::enums::Currency::Sbd,
@@ -740,7 +743,6 @@ impl From<Waehrungscode> for bo4e_core::enums::Currency {
             Waehrungscode::Zar => bo4e_core::enums::Currency::Zar,
             Waehrungscode::Zmw => bo4e_core::enums::Currency::Zmw,
             Waehrungscode::Zwl => bo4e_core::enums::Currency::Zwl,
-            _ => panic!("Unknown {} variant", stringify!(Waehrungscode)),
         }
     }
 }

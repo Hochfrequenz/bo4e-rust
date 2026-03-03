@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum KundengruppeKA {
     #[serde(rename = "S_SCHWACHLAST")]
     StromSchwachlast,
@@ -44,6 +45,7 @@ pub enum KundengruppeKA {
 }
 impl From<bo4e_core::enums::ConcessionFeeCustomerGroup> for KundengruppeKA {
     fn from(v: bo4e_core::enums::ConcessionFeeCustomerGroup) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::ConcessionFeeCustomerGroup::ElectricityOffPeak => {
                 KundengruppeKA::StromSchwachlast
@@ -90,27 +92,18 @@ impl From<bo4e_core::enums::ConcessionFeeCustomerGroup> for KundengruppeKA {
             bo4e_core::enums::ConcessionFeeCustomerGroup::GasSpecialCustomer => {
                 KundengruppeKA::GasSonderkunde
             }
-            bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialKAS => {
-                KundengruppeKA::SpecialKAS
-            }
-            bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialSAS => {
-                KundengruppeKA::SpecialSAS
-            }
-            bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialTAS => {
-                KundengruppeKA::SpecialTAS
-            }
-            bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialTKS => {
-                KundengruppeKA::SpecialTKS
-            }
-            bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialTSS => {
-                KundengruppeKA::SpecialTSS
-            }
+            bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialKAS => KundengruppeKA::SpecialKAS,
+            bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialSAS => KundengruppeKA::SpecialSAS,
+            bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialTAS => KundengruppeKA::SpecialTAS,
+            bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialTKS => KundengruppeKA::SpecialTKS,
+            bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialTSS => KundengruppeKA::SpecialTSS,
             _ => panic!("Unknown {} variant", stringify!(ConcessionFeeCustomerGroup)),
         }
     }
 }
 impl From<KundengruppeKA> for bo4e_core::enums::ConcessionFeeCustomerGroup {
     fn from(v: KundengruppeKA) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             KundengruppeKA::StromSchwachlast => {
                 bo4e_core::enums::ConcessionFeeCustomerGroup::ElectricityOffPeak
@@ -157,22 +150,11 @@ impl From<KundengruppeKA> for bo4e_core::enums::ConcessionFeeCustomerGroup {
             KundengruppeKA::GasSonderkunde => {
                 bo4e_core::enums::ConcessionFeeCustomerGroup::GasSpecialCustomer
             }
-            KundengruppeKA::SpecialKAS => {
-                bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialKAS
-            }
-            KundengruppeKA::SpecialSAS => {
-                bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialSAS
-            }
-            KundengruppeKA::SpecialTAS => {
-                bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialTAS
-            }
-            KundengruppeKA::SpecialTKS => {
-                bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialTKS
-            }
-            KundengruppeKA::SpecialTSS => {
-                bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialTSS
-            }
-            _ => panic!("Unknown {} variant", stringify!(KundengruppeKA)),
+            KundengruppeKA::SpecialKAS => bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialKAS,
+            KundengruppeKA::SpecialSAS => bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialSAS,
+            KundengruppeKA::SpecialTAS => bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialTAS,
+            KundengruppeKA::SpecialTKS => bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialTKS,
+            KundengruppeKA::SpecialTSS => bo4e_core::enums::ConcessionFeeCustomerGroup::SpecialTSS,
         }
     }
 }

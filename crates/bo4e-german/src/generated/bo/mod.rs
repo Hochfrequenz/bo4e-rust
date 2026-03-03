@@ -104,4 +104,3 @@ pub use zaehler::Zaehler;
 
 mod zeitreihe;
 pub use zeitreihe::Zeitreihe;
-

@@ -19,7 +19,11 @@ pub struct PreisblattKonzessionsabgabe {
     pub gueltig_ab: Option<chrono::DateTime<chrono::Utc>>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "validUntil")]
     pub gueltig_bis: Option<chrono::DateTime<chrono::Utc>>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "concessionFees")]
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        alias = "concessionFees"
+    )]
     pub konzessionsabgaben: Vec<crate::Konzessionsabgabe>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "municipality")]
     pub gemeindebezeichnung: Option<String>,

@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Zeiteinheit {
     #[serde(rename = "SEKUNDE")]
     Second,
@@ -24,6 +25,7 @@ pub enum Zeiteinheit {
 }
 impl From<bo4e_core::enums::TimeUnit> for Zeiteinheit {
     fn from(v: bo4e_core::enums::TimeUnit) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::TimeUnit::Second => Zeiteinheit::Second,
             bo4e_core::enums::TimeUnit::Minute => Zeiteinheit::Minute,
@@ -41,6 +43,7 @@ impl From<bo4e_core::enums::TimeUnit> for Zeiteinheit {
 }
 impl From<Zeiteinheit> for bo4e_core::enums::TimeUnit {
     fn from(v: Zeiteinheit) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Zeiteinheit::Second => bo4e_core::enums::TimeUnit::Second,
             Zeiteinheit::Minute => bo4e_core::enums::TimeUnit::Minute,
@@ -52,7 +55,6 @@ impl From<Zeiteinheit> for bo4e_core::enums::TimeUnit {
             Zeiteinheit::Quarter => bo4e_core::enums::TimeUnit::Quarter,
             Zeiteinheit::HalfYear => bo4e_core::enums::TimeUnit::HalfYear,
             Zeiteinheit::Year => bo4e_core::enums::TimeUnit::Year,
-            _ => panic!("Unknown {} variant", stringify!(Zeiteinheit)),
         }
     }
 }

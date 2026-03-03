@@ -3,17 +3,35 @@
 pub struct Tarifeinschraenkung {
     #[serde(flatten)]
     pub meta: bo4e_core::Bo4eMeta,
-    #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "customerTypes")]
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        alias = "customerTypes"
+    )]
     pub kundentypen: Vec<crate::Kundentyp>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "division")]
     pub sparte: Option<crate::Sparte>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "requiredFeatures")]
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        alias = "requiredFeatures"
+    )]
     pub tarifmerkmale: Vec<crate::Tarifmerkmal>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "excludedFeatures")]
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        alias = "excludedFeatures"
+    )]
     pub ausgeschlossene_tarifmerkmale: Vec<crate::Tarifmerkmal>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "minAnnualConsumption")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "minAnnualConsumption"
+    )]
     pub mindestjahresverbrauch: Option<f64>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "maxAnnualConsumption")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "maxAnnualConsumption"
+    )]
     pub hoechstjahresverbrauch: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "notes")]
     pub bemerkung: Option<String>,

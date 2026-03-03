@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Messwertstatus {
     #[serde(rename = "ABGELESEN")]
     Abgelesen,
@@ -22,26 +23,17 @@ pub enum Messwertstatus {
 }
 impl From<bo4e_core::enums::MeasuredValueStatus> for Messwertstatus {
     fn from(v: bo4e_core::enums::MeasuredValueStatus) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::MeasuredValueStatus::Read => Messwertstatus::Abgelesen,
-            bo4e_core::enums::MeasuredValueStatus::Substitute => {
-                Messwertstatus::Ersatzwert
-            }
+            bo4e_core::enums::MeasuredValueStatus::Substitute => Messwertstatus::Ersatzwert,
             bo4e_core::enums::MeasuredValueStatus::DeliveryNoteInfo => {
                 Messwertstatus::AngabeFRLieferschein
             }
-            bo4e_core::enums::MeasuredValueStatus::Proposed => {
-                Messwertstatus::Vorschlagswert
-            }
-            bo4e_core::enums::MeasuredValueStatus::NotUsable => {
-                Messwertstatus::NichtVerwendbar
-            }
-            bo4e_core::enums::MeasuredValueStatus::Forecast => {
-                Messwertstatus::Prognosewert
-            }
-            bo4e_core::enums::MeasuredValueStatus::Preliminary => {
-                Messwertstatus::VorlUfigerWert
-            }
+            bo4e_core::enums::MeasuredValueStatus::Proposed => Messwertstatus::Vorschlagswert,
+            bo4e_core::enums::MeasuredValueStatus::NotUsable => Messwertstatus::NichtVerwendbar,
+            bo4e_core::enums::MeasuredValueStatus::Forecast => Messwertstatus::Prognosewert,
+            bo4e_core::enums::MeasuredValueStatus::Preliminary => Messwertstatus::VorlUfigerWert,
             bo4e_core::enums::MeasuredValueStatus::EnergySummed => {
                 Messwertstatus::EnergiemengeSummiert
             }
@@ -52,31 +44,21 @@ impl From<bo4e_core::enums::MeasuredValueStatus> for Messwertstatus {
 }
 impl From<Messwertstatus> for bo4e_core::enums::MeasuredValueStatus {
     fn from(v: Messwertstatus) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Messwertstatus::Abgelesen => bo4e_core::enums::MeasuredValueStatus::Read,
-            Messwertstatus::Ersatzwert => {
-                bo4e_core::enums::MeasuredValueStatus::Substitute
-            }
+            Messwertstatus::Ersatzwert => bo4e_core::enums::MeasuredValueStatus::Substitute,
             Messwertstatus::AngabeFRLieferschein => {
                 bo4e_core::enums::MeasuredValueStatus::DeliveryNoteInfo
             }
-            Messwertstatus::Vorschlagswert => {
-                bo4e_core::enums::MeasuredValueStatus::Proposed
-            }
-            Messwertstatus::NichtVerwendbar => {
-                bo4e_core::enums::MeasuredValueStatus::NotUsable
-            }
-            Messwertstatus::Prognosewert => {
-                bo4e_core::enums::MeasuredValueStatus::Forecast
-            }
-            Messwertstatus::VorlUfigerWert => {
-                bo4e_core::enums::MeasuredValueStatus::Preliminary
-            }
+            Messwertstatus::Vorschlagswert => bo4e_core::enums::MeasuredValueStatus::Proposed,
+            Messwertstatus::NichtVerwendbar => bo4e_core::enums::MeasuredValueStatus::NotUsable,
+            Messwertstatus::Prognosewert => bo4e_core::enums::MeasuredValueStatus::Forecast,
+            Messwertstatus::VorlUfigerWert => bo4e_core::enums::MeasuredValueStatus::Preliminary,
             Messwertstatus::EnergiemengeSummiert => {
                 bo4e_core::enums::MeasuredValueStatus::EnergySummed
             }
             Messwertstatus::Fehlt => bo4e_core::enums::MeasuredValueStatus::Missing,
-            _ => panic!("Unknown {} variant", stringify!(Messwertstatus)),
         }
     }
 }

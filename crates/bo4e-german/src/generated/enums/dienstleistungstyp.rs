@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Dienstleistungstyp {
     #[serde(rename = "DATENBEREITSTELLUNG_TAEGLICH")]
     DatenbereitstellungTaeglich,
@@ -74,6 +75,7 @@ pub enum Dienstleistungstyp {
 }
 impl From<bo4e_core::enums::ServiceType> for Dienstleistungstyp {
     fn from(v: bo4e_core::enums::ServiceType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::ServiceType::DataProvisionDaily => {
                 Dienstleistungstyp::DatenbereitstellungTaeglich
@@ -111,9 +113,7 @@ impl From<bo4e_core::enums::ServiceType> for Dienstleistungstyp {
             bo4e_core::enums::ServiceType::RemoteReadingDaily => {
                 Dienstleistungstyp::RemoteReadingDaily
             }
-            bo4e_core::enums::ServiceType::ManualReadingMsb => {
-                Dienstleistungstyp::ManualReadingMsb
-            }
+            bo4e_core::enums::ServiceType::ManualReadingMsb => Dienstleistungstyp::ManualReadingMsb,
             bo4e_core::enums::ServiceType::RemoteReadingMonthly => {
                 Dienstleistungstyp::RemoteReadingMonthly
             }
@@ -121,9 +121,7 @@ impl From<bo4e_core::enums::ServiceType> for Dienstleistungstyp {
                 Dienstleistungstyp::RemoteReadingYearly
             }
             bo4e_core::enums::ServiceType::ReadingMde => Dienstleistungstyp::MDE,
-            bo4e_core::enums::ServiceType::RemoteReading => {
-                Dienstleistungstyp::RemoteReading
-            }
+            bo4e_core::enums::ServiceType::RemoteReading => Dienstleistungstyp::RemoteReading,
             bo4e_core::enums::ServiceType::RemoteReadingAdditionalMsb => {
                 Dienstleistungstyp::RemoteReadingAdditionalMsb
             }
@@ -167,19 +165,16 @@ impl From<bo4e_core::enums::ServiceType> for Dienstleistungstyp {
                 Dienstleistungstyp::CompactVolumeConverterReading
             }
             bo4e_core::enums::ServiceType::Disconnection => Dienstleistungstyp::Sperrung,
-            bo4e_core::enums::ServiceType::Reconnection => {
-                Dienstleistungstyp::Entsperrung
-            }
+            bo4e_core::enums::ServiceType::Reconnection => Dienstleistungstyp::Entsperrung,
             bo4e_core::enums::ServiceType::ReminderFees => Dienstleistungstyp::Mahnkosten,
-            bo4e_core::enums::ServiceType::CollectionCosts => {
-                Dienstleistungstyp::Inkassokosten
-            }
+            bo4e_core::enums::ServiceType::CollectionCosts => Dienstleistungstyp::Inkassokosten,
             _ => panic!("Unknown {} variant", stringify!(ServiceType)),
         }
     }
 }
 impl From<Dienstleistungstyp> for bo4e_core::enums::ServiceType {
     fn from(v: Dienstleistungstyp) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Dienstleistungstyp::DatenbereitstellungTaeglich => {
                 bo4e_core::enums::ServiceType::DataProvisionDaily
@@ -217,9 +212,7 @@ impl From<Dienstleistungstyp> for bo4e_core::enums::ServiceType {
             Dienstleistungstyp::RemoteReadingDaily => {
                 bo4e_core::enums::ServiceType::RemoteReadingDaily
             }
-            Dienstleistungstyp::ManualReadingMsb => {
-                bo4e_core::enums::ServiceType::ManualReadingMsb
-            }
+            Dienstleistungstyp::ManualReadingMsb => bo4e_core::enums::ServiceType::ManualReadingMsb,
             Dienstleistungstyp::RemoteReadingMonthly => {
                 bo4e_core::enums::ServiceType::RemoteReadingMonthly
             }
@@ -227,9 +220,7 @@ impl From<Dienstleistungstyp> for bo4e_core::enums::ServiceType {
                 bo4e_core::enums::ServiceType::RemoteReadingYearly
             }
             Dienstleistungstyp::MDE => bo4e_core::enums::ServiceType::ReadingMde,
-            Dienstleistungstyp::RemoteReading => {
-                bo4e_core::enums::ServiceType::RemoteReading
-            }
+            Dienstleistungstyp::RemoteReading => bo4e_core::enums::ServiceType::RemoteReading,
             Dienstleistungstyp::RemoteReadingAdditionalMsb => {
                 bo4e_core::enums::ServiceType::RemoteReadingAdditionalMsb
             }
@@ -273,14 +264,9 @@ impl From<Dienstleistungstyp> for bo4e_core::enums::ServiceType {
                 bo4e_core::enums::ServiceType::CompactVolumeConverterReading
             }
             Dienstleistungstyp::Sperrung => bo4e_core::enums::ServiceType::Disconnection,
-            Dienstleistungstyp::Entsperrung => {
-                bo4e_core::enums::ServiceType::Reconnection
-            }
+            Dienstleistungstyp::Entsperrung => bo4e_core::enums::ServiceType::Reconnection,
             Dienstleistungstyp::Mahnkosten => bo4e_core::enums::ServiceType::ReminderFees,
-            Dienstleistungstyp::Inkassokosten => {
-                bo4e_core::enums::ServiceType::CollectionCosts
-            }
-            _ => panic!("Unknown {} variant", stringify!(Dienstleistungstyp)),
+            Dienstleistungstyp::Inkassokosten => bo4e_core::enums::ServiceType::CollectionCosts,
         }
     }
 }

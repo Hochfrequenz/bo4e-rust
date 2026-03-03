@@ -33,7 +33,10 @@ pub struct Zaehler {
     pub ausbaudatum: Option<chrono::DateTime<chrono::Utc>>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "calibrationDate")]
     pub eichdatum: Option<chrono::DateTime<chrono::Utc>>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "calibrationExpiryDate")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "calibrationExpiryDate"
+    )]
     pub eichablaufdatum: Option<chrono::DateTime<chrono::Utc>>,
 }
 impl From<bo4e_core::bo::Meter> for Zaehler {

@@ -19,7 +19,10 @@ pub struct Tarif {
     pub arbeitspreis: Option<crate::Preis>,
     #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "priceTiers")]
     pub preisstaffeln: Vec<crate::Preisstaffel>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "calculationParameters")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "calculationParameters"
+    )]
     pub tarifberechnungsparameter: Option<crate::Tarifberechnungsparameter>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "energyMix")]
     pub energiemix: Option<crate::Energiemix>,

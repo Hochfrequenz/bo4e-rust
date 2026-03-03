@@ -4,9 +4,9 @@ pub struct Datumsbereich {
     #[serde(flatten)]
     pub meta: bo4e_core::Bo4eMeta,
     #[serde(skip_serializing_if = "Option::is_none", alias = "startDate")]
-    pub startdatum: Option<NaiveDate>,
+    pub startdatum: Option<chrono::NaiveDate>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "endDate")]
-    pub enddatum: Option<NaiveDate>,
+    pub enddatum: Option<chrono::NaiveDate>,
 }
 impl From<bo4e_core::com::DateRange> for Datumsbereich {
     fn from(v: bo4e_core::com::DateRange) -> Self {

@@ -26,7 +26,10 @@ pub struct Ausschreibung {
         alias = "estimatedAnnualConsumption"
     )]
     pub jahresverbrauch: Option<f64>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "numberOfDeliveryPoints")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "numberOfDeliveryPoints"
+    )]
     pub anzahl_lieferstellen: Option<i32>,
 }
 impl From<bo4e_core::bo::Tender> for Ausschreibung {

@@ -53,7 +53,11 @@ impl From<PreisblattDienstleistung> for bo4e_core::bo::ServicePriceSheet {
             validity_period: v.gueltigkeitszeitraum.map(Into::into),
             valid_from: v.gueltig_ab,
             valid_until: v.gueltig_bis,
-            prices: v.dienstleistungspreise.into_iter().map(Into::into).collect(),
+            prices: v
+                .dienstleistungspreise
+                .into_iter()
+                .map(Into::into)
+                .collect(),
             provider: v.dienstleister.map(|b| Box::new((*b).into())),
         }
     }

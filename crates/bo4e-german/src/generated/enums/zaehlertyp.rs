@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Zaehlertyp {
     #[serde(rename = "DREHSTROMZAEHLER")]
     FerrarisMeterForThreePhase,
@@ -30,22 +31,17 @@ pub enum Zaehlertyp {
 }
 impl From<bo4e_core::enums::MeterType> for Zaehlertyp {
     fn from(v: bo4e_core::enums::MeterType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::MeterType::ThreePhaseRotatingMeter => {
                 Zaehlertyp::FerrarisMeterForThreePhase
             }
             bo4e_core::enums::MeterType::BellowsGasMeter => Zaehlertyp::BalgengaszHler,
-            bo4e_core::enums::MeterType::RotaryPistonGasMeter => {
-                Zaehlertyp::DrehkolbengaszHler
-            }
+            bo4e_core::enums::MeterType::RotaryPistonGasMeter => Zaehlertyp::DrehkolbengaszHler,
             bo4e_core::enums::MeterType::PowerMeter => Zaehlertyp::LeistungszHler,
             bo4e_core::enums::MeterType::MaximumDemandMeter => Zaehlertyp::MaximumzHler,
-            bo4e_core::enums::MeterType::TurbineWheelGasMeter => {
-                Zaehlertyp::TurbineWheelGasMeter
-            }
-            bo4e_core::enums::MeterType::UltrasonicGasMeter => {
-                Zaehlertyp::UltrasonicGasMeter
-            }
+            bo4e_core::enums::MeterType::TurbineWheelGasMeter => Zaehlertyp::TurbineWheelGasMeter,
+            bo4e_core::enums::MeterType::UltrasonicGasMeter => Zaehlertyp::UltrasonicGasMeter,
             bo4e_core::enums::MeterType::SinglePhaseAlternatingMeter => {
                 Zaehlertyp::FerrarisMeterForSinglePhase
             }
@@ -55,9 +51,7 @@ impl From<bo4e_core::enums::MeterType> for Zaehlertyp {
             bo4e_core::enums::MeterType::IntelligentMeasuringSystem => {
                 Zaehlertyp::IntelligentesMesssystem
             }
-            bo4e_core::enums::MeterType::ElectronicMeter => {
-                Zaehlertyp::ElektronischerZHler
-            }
+            bo4e_core::enums::MeterType::ElectronicMeter => Zaehlertyp::ElektronischerZHler,
             bo4e_core::enums::MeterType::VortexGasMeter => Zaehlertyp::WirbelgaszHler,
             bo4e_core::enums::MeterType::WaterMeter => Zaehlertyp::WasserzHler,
             _ => panic!("Unknown {} variant", stringify!(MeterType)),
@@ -66,22 +60,17 @@ impl From<bo4e_core::enums::MeterType> for Zaehlertyp {
 }
 impl From<Zaehlertyp> for bo4e_core::enums::MeterType {
     fn from(v: Zaehlertyp) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Zaehlertyp::FerrarisMeterForThreePhase => {
                 bo4e_core::enums::MeterType::ThreePhaseRotatingMeter
             }
             Zaehlertyp::BalgengaszHler => bo4e_core::enums::MeterType::BellowsGasMeter,
-            Zaehlertyp::DrehkolbengaszHler => {
-                bo4e_core::enums::MeterType::RotaryPistonGasMeter
-            }
+            Zaehlertyp::DrehkolbengaszHler => bo4e_core::enums::MeterType::RotaryPistonGasMeter,
             Zaehlertyp::LeistungszHler => bo4e_core::enums::MeterType::PowerMeter,
             Zaehlertyp::MaximumzHler => bo4e_core::enums::MeterType::MaximumDemandMeter,
-            Zaehlertyp::TurbineWheelGasMeter => {
-                bo4e_core::enums::MeterType::TurbineWheelGasMeter
-            }
-            Zaehlertyp::UltrasonicGasMeter => {
-                bo4e_core::enums::MeterType::UltrasonicGasMeter
-            }
+            Zaehlertyp::TurbineWheelGasMeter => bo4e_core::enums::MeterType::TurbineWheelGasMeter,
+            Zaehlertyp::UltrasonicGasMeter => bo4e_core::enums::MeterType::UltrasonicGasMeter,
             Zaehlertyp::FerrarisMeterForSinglePhase => {
                 bo4e_core::enums::MeterType::SinglePhaseAlternatingMeter
             }
@@ -91,12 +80,9 @@ impl From<Zaehlertyp> for bo4e_core::enums::MeterType {
             Zaehlertyp::IntelligentesMesssystem => {
                 bo4e_core::enums::MeterType::IntelligentMeasuringSystem
             }
-            Zaehlertyp::ElektronischerZHler => {
-                bo4e_core::enums::MeterType::ElectronicMeter
-            }
+            Zaehlertyp::ElektronischerZHler => bo4e_core::enums::MeterType::ElectronicMeter,
             Zaehlertyp::WirbelgaszHler => bo4e_core::enums::MeterType::VortexGasMeter,
             Zaehlertyp::WasserzHler => bo4e_core::enums::MeterType::WaterMeter,
-            _ => panic!("Unknown {} variant", stringify!(Zaehlertyp)),
         }
     }
 }

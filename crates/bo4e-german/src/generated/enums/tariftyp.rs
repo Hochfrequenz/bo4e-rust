@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Tariftyp {
     #[serde(rename = "GRUND_ERSATZVERSORGUNG")]
     GrundUndErsatzversorgung,
@@ -12,6 +13,7 @@ pub enum Tariftyp {
 }
 impl From<bo4e_core::enums::TariffType> for Tariftyp {
     fn from(v: bo4e_core::enums::TariffType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::TariffType::BasicAndBackupSupply => {
                 Tariftyp::GrundUndErsatzversorgung
@@ -25,6 +27,7 @@ impl From<bo4e_core::enums::TariffType> for Tariftyp {
 }
 impl From<Tariftyp> for bo4e_core::enums::TariffType {
     fn from(v: Tariftyp) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Tariftyp::GrundUndErsatzversorgung => {
                 bo4e_core::enums::TariffType::BasicAndBackupSupply
@@ -32,7 +35,6 @@ impl From<Tariftyp> for bo4e_core::enums::TariffType {
             Tariftyp::Grundversorgung => bo4e_core::enums::TariffType::BasicSupply,
             Tariftyp::Ersatzversorgung => bo4e_core::enums::TariffType::BackupSupply,
             Tariftyp::Sondertarif => bo4e_core::enums::TariffType::SpecialTariff,
-            _ => panic!("Unknown {} variant", stringify!(Tariftyp)),
         }
     }
 }

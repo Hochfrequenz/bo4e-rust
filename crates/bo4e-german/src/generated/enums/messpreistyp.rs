@@ -1,8 +1,9 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Messpreistyp {
     #[serde(rename = "MESSPREIS_G2_5")]
-    MeasurementPriceG2_5,
+    Measurementpriceg25,
     #[serde(rename = "MESSPREIS_G4")]
     MeasurementPriceG4,
     #[serde(rename = "MESSPREIS_G6")]
@@ -18,7 +19,7 @@ pub enum Messpreistyp {
     #[serde(rename = "ELEKTRONISCHER_AUFSATZ")]
     ElectronicAttachment,
     #[serde(rename = "SMART_METER_MESSPREIS_G2_5")]
-    SmartMeterMeasurementPriceG2_5,
+    Smartmetermeasurementpriceg25,
     #[serde(rename = "SMART_METER_MESSPREIS_G4")]
     SmartMeterMeasurementPriceG4,
     #[serde(rename = "SMART_METER_MESSPREIS_G6")]
@@ -52,9 +53,10 @@ pub enum Messpreistyp {
 }
 impl From<bo4e_core::enums::MeasurementPriceType> for Messpreistyp {
     fn from(v: bo4e_core::enums::MeasurementPriceType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::MeasurementPriceType::MeasurementPriceG2_5 => {
-                Messpreistyp::MeasurementPriceG2_5
+                Messpreistyp::Measurementpriceg25
             }
             bo4e_core::enums::MeasurementPriceType::MeasurementPriceG4 => {
                 Messpreistyp::MeasurementPriceG4
@@ -78,7 +80,7 @@ impl From<bo4e_core::enums::MeasurementPriceType> for Messpreistyp {
                 Messpreistyp::ElectronicAttachment
             }
             bo4e_core::enums::MeasurementPriceType::SmartMeterMeasurementPriceG2_5 => {
-                Messpreistyp::SmartMeterMeasurementPriceG2_5
+                Messpreistyp::Smartmetermeasurementpriceg25
             }
             bo4e_core::enums::MeasurementPriceType::SmartMeterMeasurementPriceG4 => {
                 Messpreistyp::SmartMeterMeasurementPriceG4
@@ -131,8 +133,9 @@ impl From<bo4e_core::enums::MeasurementPriceType> for Messpreistyp {
 }
 impl From<Messpreistyp> for bo4e_core::enums::MeasurementPriceType {
     fn from(v: Messpreistyp) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
-            Messpreistyp::MeasurementPriceG2_5 => {
+            Messpreistyp::Measurementpriceg25 => {
                 bo4e_core::enums::MeasurementPriceType::MeasurementPriceG2_5
             }
             Messpreistyp::MeasurementPriceG4 => {
@@ -156,7 +159,7 @@ impl From<Messpreistyp> for bo4e_core::enums::MeasurementPriceType {
             Messpreistyp::ElectronicAttachment => {
                 bo4e_core::enums::MeasurementPriceType::ElectronicAttachment
             }
-            Messpreistyp::SmartMeterMeasurementPriceG2_5 => {
+            Messpreistyp::Smartmetermeasurementpriceg25 => {
                 bo4e_core::enums::MeasurementPriceType::SmartMeterMeasurementPriceG2_5
             }
             Messpreistyp::SmartMeterMeasurementPriceG4 => {
@@ -204,7 +207,6 @@ impl From<Messpreistyp> for bo4e_core::enums::MeasurementPriceType {
             Messpreistyp::SurchargeTariffSwitching => {
                 bo4e_core::enums::MeasurementPriceType::SurchargeTariffSwitching
             }
-            _ => panic!("Unknown {} variant", stringify!(Messpreistyp)),
         }
     }
 }

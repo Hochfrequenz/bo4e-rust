@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Abgabeart {
     #[serde(rename = "KAS")]
     SpecialConcessionContract,
@@ -22,6 +23,7 @@ pub enum Abgabeart {
 }
 impl From<bo4e_core::enums::ConcessionFeeType> for Abgabeart {
     fn from(v: bo4e_core::enums::ConcessionFeeType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::ConcessionFeeType::SpecialConcessionContract => {
                 Abgabeart::SpecialConcessionContract
@@ -32,9 +34,7 @@ impl From<bo4e_core::enums::ConcessionFeeType> for Abgabeart {
             bo4e_core::enums::ConcessionFeeType::SpecialContractCustomerDeviating => {
                 Abgabeart::SpecialContractCustomerDeviating
             }
-            bo4e_core::enums::ConcessionFeeType::TariffCustomer => {
-                Abgabeart::TariffCustomer
-            }
+            bo4e_core::enums::ConcessionFeeType::TariffCustomer => Abgabeart::TariffCustomer,
             bo4e_core::enums::ConcessionFeeType::TariffCustomerDeviating => {
                 Abgabeart::TariffCustomerDeviating
             }
@@ -56,6 +56,7 @@ impl From<bo4e_core::enums::ConcessionFeeType> for Abgabeart {
 }
 impl From<Abgabeart> for bo4e_core::enums::ConcessionFeeType {
     fn from(v: Abgabeart) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Abgabeart::SpecialConcessionContract => {
                 bo4e_core::enums::ConcessionFeeType::SpecialConcessionContract
@@ -66,9 +67,7 @@ impl From<Abgabeart> for bo4e_core::enums::ConcessionFeeType {
             Abgabeart::SpecialContractCustomerDeviating => {
                 bo4e_core::enums::ConcessionFeeType::SpecialContractCustomerDeviating
             }
-            Abgabeart::TariffCustomer => {
-                bo4e_core::enums::ConcessionFeeType::TariffCustomer
-            }
+            Abgabeart::TariffCustomer => bo4e_core::enums::ConcessionFeeType::TariffCustomer,
             Abgabeart::TariffCustomerDeviating => {
                 bo4e_core::enums::ConcessionFeeType::TariffCustomerDeviating
             }
@@ -84,7 +83,6 @@ impl From<Abgabeart> for bo4e_core::enums::ConcessionFeeType {
             Abgabeart::ElectricityOffPeakDeviating => {
                 bo4e_core::enums::ConcessionFeeType::ElectricityOffPeakDeviating
             }
-            _ => panic!("Unknown {} variant", stringify!(Abgabeart)),
         }
     }
 }

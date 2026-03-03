@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Mengeneinheitenpraefix {
     #[serde(rename = "EXA")]
     Exa,
@@ -38,6 +39,7 @@ pub enum Mengeneinheitenpraefix {
 }
 impl From<bo4e_core::enums::UnitPrefix> for Mengeneinheitenpraefix {
     fn from(v: bo4e_core::enums::UnitPrefix) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::UnitPrefix::Exa => Mengeneinheitenpraefix::Exa,
             bo4e_core::enums::UnitPrefix::Peta => Mengeneinheitenpraefix::Peta,
@@ -62,6 +64,7 @@ impl From<bo4e_core::enums::UnitPrefix> for Mengeneinheitenpraefix {
 }
 impl From<Mengeneinheitenpraefix> for bo4e_core::enums::UnitPrefix {
     fn from(v: Mengeneinheitenpraefix) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Mengeneinheitenpraefix::Exa => bo4e_core::enums::UnitPrefix::Exa,
             Mengeneinheitenpraefix::Peta => bo4e_core::enums::UnitPrefix::Peta,
@@ -80,7 +83,6 @@ impl From<Mengeneinheitenpraefix> for bo4e_core::enums::UnitPrefix {
             Mengeneinheitenpraefix::Pico => bo4e_core::enums::UnitPrefix::Pico,
             Mengeneinheitenpraefix::Femto => bo4e_core::enums::UnitPrefix::Femto,
             Mengeneinheitenpraefix::Atto => bo4e_core::enums::UnitPrefix::Atto,
-            _ => panic!("Unknown {} variant", stringify!(Mengeneinheitenpraefix)),
         }
     }
 }

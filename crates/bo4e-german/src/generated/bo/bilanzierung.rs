@@ -13,7 +13,10 @@ pub struct Bilanzierung {
     pub sparte: Option<crate::Sparte>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "marketArea")]
     pub marktgebiet: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "balanceResponsibleParty")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "balanceResponsibleParty"
+    )]
     pub bilanzkreisverantwortlicher: Option<Box<crate::Marktteilnehmer>>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "validityPeriod")]
     pub gueltigkeitszeitraum: Option<crate::Zeitraum>,
@@ -31,9 +34,7 @@ impl From<bo4e_core::bo::Balancing> for Bilanzierung {
             beschreibung: v.description,
             sparte: v.division.map(Into::into),
             marktgebiet: v.market_area,
-            bilanzkreisverantwortlicher: v
-                .balance_responsible_party
-                .map(|b| Box::new((*b).into())),
+            bilanzkreisverantwortlicher: v.balance_responsible_party.map(|b| Box::new((*b).into())),
             gueltigkeitszeitraum: v.validity_period.map(Into::into),
             startdatum: v.start_date,
             enddatum: v.end_date,
@@ -49,9 +50,7 @@ impl From<Bilanzierung> for bo4e_core::bo::Balancing {
             description: v.beschreibung,
             division: v.sparte.map(Into::into),
             market_area: v.marktgebiet,
-            balance_responsible_party: v
-                .bilanzkreisverantwortlicher
-                .map(|b| Box::new((*b).into())),
+            balance_responsible_party: v.bilanzkreisverantwortlicher.map(|b| Box::new((*b).into())),
             validity_period: v.gueltigkeitszeitraum.map(Into::into),
             start_date: v.startdatum,
             end_date: v.enddatum,

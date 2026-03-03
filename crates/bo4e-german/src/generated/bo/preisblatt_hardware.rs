@@ -17,7 +17,11 @@ pub struct PreisblattHardware {
     pub gueltig_ab: Option<chrono::DateTime<chrono::Utc>>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "validUntil")]
     pub gueltig_bis: Option<chrono::DateTime<chrono::Utc>>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "hardwareItems")]
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        alias = "hardwareItems"
+    )]
     pub hardware: Vec<crate::Hardware>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "installationPrice")]
     pub installationspreis: Option<crate::Preis>,

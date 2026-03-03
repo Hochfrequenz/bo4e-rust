@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Vertragsstatus {
     #[serde(rename = "IN_ARBEIT")]
     InArbeit,
@@ -22,6 +23,7 @@ pub enum Vertragsstatus {
 }
 impl From<bo4e_core::enums::ContractStatus> for Vertragsstatus {
     fn from(v: bo4e_core::enums::ContractStatus) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::ContractStatus::InProgress => Vertragsstatus::InArbeit,
             bo4e_core::enums::ContractStatus::Transmitted => Vertragsstatus::Uebermittelt,
@@ -38,6 +40,7 @@ impl From<bo4e_core::enums::ContractStatus> for Vertragsstatus {
 }
 impl From<Vertragsstatus> for bo4e_core::enums::ContractStatus {
     fn from(v: Vertragsstatus) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Vertragsstatus::InArbeit => bo4e_core::enums::ContractStatus::InProgress,
             Vertragsstatus::Uebermittelt => bo4e_core::enums::ContractStatus::Transmitted,
@@ -48,7 +51,6 @@ impl From<Vertragsstatus> for bo4e_core::enums::ContractStatus {
             Vertragsstatus::Storniert => bo4e_core::enums::ContractStatus::Cancelled,
             Vertragsstatus::Gekuendigt => bo4e_core::enums::ContractStatus::Terminated,
             Vertragsstatus::Beendet => bo4e_core::enums::ContractStatus::Ended,
-            _ => panic!("Unknown {} variant", stringify!(Vertragsstatus)),
         }
     }
 }

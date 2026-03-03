@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum BoTyp {
     #[serde(rename = "Angebot")]
     Offer,
@@ -74,6 +75,7 @@ pub enum BoTyp {
 }
 impl From<bo4e_core::enums::BoType> for BoTyp {
     fn from(v: bo4e_core::enums::BoType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::BoType::Offer => BoTyp::Offer,
             bo4e_core::enums::BoType::Tender => BoTyp::Tender,
@@ -93,13 +95,9 @@ impl From<bo4e_core::enums::BoType> for BoTyp {
             bo4e_core::enums::BoType::PriceSheet => BoTyp::PriceSheet,
             bo4e_core::enums::BoType::ServicePriceSheet => BoTyp::ServicePriceSheet,
             bo4e_core::enums::BoType::HardwarePriceSheet => BoTyp::HardwarePriceSheet,
-            bo4e_core::enums::BoType::ConcessionFeePriceSheet => {
-                BoTyp::ConcessionFeePriceSheet
-            }
+            bo4e_core::enums::BoType::ConcessionFeePriceSheet => BoTyp::ConcessionFeePriceSheet,
             bo4e_core::enums::BoType::MeteringPriceSheet => BoTyp::MeteringPriceSheet,
-            bo4e_core::enums::BoType::NetworkUsagePriceSheet => {
-                BoTyp::NetworkUsagePriceSheet
-            }
+            bo4e_core::enums::BoType::NetworkUsagePriceSheet => BoTyp::NetworkUsagePriceSheet,
             bo4e_core::enums::BoType::Tariff => BoTyp::Tariff,
             bo4e_core::enums::BoType::TariffInfo => BoTyp::TariffInfo,
             bo4e_core::enums::BoType::TariffPriceSheet => BoTyp::TariffPriceSheet,
@@ -120,6 +118,7 @@ impl From<bo4e_core::enums::BoType> for BoTyp {
 }
 impl From<BoTyp> for bo4e_core::enums::BoType {
     fn from(v: BoTyp) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             BoTyp::Offer => bo4e_core::enums::BoType::Offer,
             BoTyp::Tender => bo4e_core::enums::BoType::Tender,
@@ -139,13 +138,9 @@ impl From<BoTyp> for bo4e_core::enums::BoType {
             BoTyp::PriceSheet => bo4e_core::enums::BoType::PriceSheet,
             BoTyp::ServicePriceSheet => bo4e_core::enums::BoType::ServicePriceSheet,
             BoTyp::HardwarePriceSheet => bo4e_core::enums::BoType::HardwarePriceSheet,
-            BoTyp::ConcessionFeePriceSheet => {
-                bo4e_core::enums::BoType::ConcessionFeePriceSheet
-            }
+            BoTyp::ConcessionFeePriceSheet => bo4e_core::enums::BoType::ConcessionFeePriceSheet,
             BoTyp::MeteringPriceSheet => bo4e_core::enums::BoType::MeteringPriceSheet,
-            BoTyp::NetworkUsagePriceSheet => {
-                bo4e_core::enums::BoType::NetworkUsagePriceSheet
-            }
+            BoTyp::NetworkUsagePriceSheet => bo4e_core::enums::BoType::NetworkUsagePriceSheet,
             BoTyp::Tariff => bo4e_core::enums::BoType::Tariff,
             BoTyp::TariffInfo => bo4e_core::enums::BoType::TariffInfo,
             BoTyp::TariffPriceSheet => bo4e_core::enums::BoType::TariffPriceSheet,
@@ -160,7 +155,6 @@ impl From<BoTyp> for bo4e_core::enums::BoType {
             BoTyp::Region => bo4e_core::enums::BoType::Region,
             BoTyp::RegionalTariff => bo4e_core::enums::BoType::RegionalTariff,
             BoTyp::LocationProperties => bo4e_core::enums::BoType::LocationProperties,
-            _ => panic!("Unknown {} variant", stringify!(BoTyp)),
         }
     }
 }

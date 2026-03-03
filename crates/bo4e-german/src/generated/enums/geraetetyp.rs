@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Geraetetyp {
     #[serde(rename = "MULTIPLEXANLAGE")]
     MultiplexSystem,
@@ -70,13 +71,7 @@ pub enum Geraetetyp {
     #[serde(rename = "MODEM_FUNK")]
     ModemRadio,
     #[serde(rename = "MODEM_GSM_O_LG")]
-    ProvidedByMSB,
-    #[serde(rename = "MODEM_GSM_M_LG")]
-    ProvidedByMSB,
-    #[serde(rename = "MODEM_FESTNETZ")]
-    ProvidedByMSB,
-    #[serde(rename = "MODEM_GPRS_M_LG")]
-    ProvidedByMSB,
+    ProvidedByMsb,
     #[serde(rename = "PLC_KOM")]
     Powerline,
     #[serde(rename = "ETHERNET_KOM")]
@@ -96,6 +91,7 @@ pub enum Geraetetyp {
 }
 impl From<bo4e_core::enums::DeviceType> for Geraetetyp {
     fn from(v: bo4e_core::enums::DeviceType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::DeviceType::MultiplexSystem => Geraetetyp::MultiplexSystem,
             bo4e_core::enums::DeviceType::FlatRateSystem => Geraetetyp::FlatRateSystem,
@@ -103,12 +99,8 @@ impl From<bo4e_core::enums::DeviceType> for Geraetetyp {
             bo4e_core::enums::DeviceType::SummationDevice => Geraetetyp::SummationDevice,
             bo4e_core::enums::DeviceType::PulseGenerator => Geraetetyp::PulseGenerator,
             bo4e_core::enums::DeviceType::VolumeConverter => Geraetetyp::VolumeConverter,
-            bo4e_core::enums::DeviceType::CurrentTransformer => {
-                Geraetetyp::CurrentTransformer
-            }
-            bo4e_core::enums::DeviceType::VoltageTransformer => {
-                Geraetetyp::VoltageTransformer
-            }
+            bo4e_core::enums::DeviceType::CurrentTransformer => Geraetetyp::CurrentTransformer,
+            bo4e_core::enums::DeviceType::VoltageTransformer => Geraetetyp::VoltageTransformer,
             bo4e_core::enums::DeviceType::CombinedMeasuringTransformer => {
                 Geraetetyp::CombinedMeasuringTransformer
             }
@@ -159,36 +151,22 @@ impl From<bo4e_core::enums::DeviceType> for Geraetetyp {
             }
             bo4e_core::enums::DeviceType::OtherDevice => Geraetetyp::OtherDevice,
             bo4e_core::enums::DeviceType::Edl21 => Geraetetyp::Edl21,
-            bo4e_core::enums::DeviceType::Edl40MeterAttachment => {
-                Geraetetyp::Edl40MeterAttachment
-            }
+            bo4e_core::enums::DeviceType::Edl40MeterAttachment => Geraetetyp::Edl40MeterAttachment,
             bo4e_core::enums::DeviceType::Edl40 => Geraetetyp::Edl40,
-            bo4e_core::enums::DeviceType::TelephoneConnection => {
-                Geraetetyp::TelephoneConnection
-            }
+            bo4e_core::enums::DeviceType::TelephoneConnection => Geraetetyp::TelephoneConnection,
             bo4e_core::enums::DeviceType::ModemGsm => Geraetetyp::ModemGsm,
             bo4e_core::enums::DeviceType::ModemGprs => Geraetetyp::ModemGprs,
             bo4e_core::enums::DeviceType::ModemRadio => Geraetetyp::ModemRadio,
-            bo4e_core::enums::DeviceType::ModemGsmWithoutLoadProfile => {
-                Geraetetyp::ProvidedByMSB
-            }
-            bo4e_core::enums::DeviceType::ModemGsmWithLoadProfile => {
-                Geraetetyp::ProvidedByMSB
-            }
-            bo4e_core::enums::DeviceType::ModemLandline => Geraetetyp::ProvidedByMSB,
-            bo4e_core::enums::DeviceType::ModemGprsWithLoadProfile => {
-                Geraetetyp::ProvidedByMSB
-            }
+            bo4e_core::enums::DeviceType::ModemGsmWithoutLoadProfile => Geraetetyp::ProvidedByMsb,
+            bo4e_core::enums::DeviceType::ModemGsmWithLoadProfile => Geraetetyp::ProvidedByMsb,
+            bo4e_core::enums::DeviceType::ModemLandline => Geraetetyp::ProvidedByMsb,
+            bo4e_core::enums::DeviceType::ModemGprsWithLoadProfile => Geraetetyp::ProvidedByMsb,
             bo4e_core::enums::DeviceType::PlcCommunication => Geraetetyp::Powerline,
             bo4e_core::enums::DeviceType::EthernetCommunication => {
                 Geraetetyp::EthernetCommunication
             }
-            bo4e_core::enums::DeviceType::DslCommunication => {
-                Geraetetyp::DslCommunication
-            }
-            bo4e_core::enums::DeviceType::LteCommunication => {
-                Geraetetyp::LteCommunication
-            }
+            bo4e_core::enums::DeviceType::DslCommunication => Geraetetyp::DslCommunication,
+            bo4e_core::enums::DeviceType::LteCommunication => Geraetetyp::LteCommunication,
             bo4e_core::enums::DeviceType::CompactVolumeConverter => {
                 Geraetetyp::CompactVolumeConverter
             }
@@ -198,15 +176,14 @@ impl From<bo4e_core::enums::DeviceType> for Geraetetyp {
             bo4e_core::enums::DeviceType::TemperatureVolumeConverter => {
                 Geraetetyp::TemperatureVolumeConverter
             }
-            bo4e_core::enums::DeviceType::StateVolumeConverter => {
-                Geraetetyp::StateVolumeConverter
-            }
+            bo4e_core::enums::DeviceType::StateVolumeConverter => Geraetetyp::StateVolumeConverter,
             _ => panic!("Unknown {} variant", stringify!(DeviceType)),
         }
     }
 }
 impl From<Geraetetyp> for bo4e_core::enums::DeviceType {
     fn from(v: Geraetetyp) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Geraetetyp::MultiplexSystem => bo4e_core::enums::DeviceType::MultiplexSystem,
             Geraetetyp::FlatRateSystem => bo4e_core::enums::DeviceType::FlatRateSystem,
@@ -214,12 +191,8 @@ impl From<Geraetetyp> for bo4e_core::enums::DeviceType {
             Geraetetyp::SummationDevice => bo4e_core::enums::DeviceType::SummationDevice,
             Geraetetyp::PulseGenerator => bo4e_core::enums::DeviceType::PulseGenerator,
             Geraetetyp::VolumeConverter => bo4e_core::enums::DeviceType::VolumeConverter,
-            Geraetetyp::CurrentTransformer => {
-                bo4e_core::enums::DeviceType::CurrentTransformer
-            }
-            Geraetetyp::VoltageTransformer => {
-                bo4e_core::enums::DeviceType::VoltageTransformer
-            }
+            Geraetetyp::CurrentTransformer => bo4e_core::enums::DeviceType::CurrentTransformer,
+            Geraetetyp::VoltageTransformer => bo4e_core::enums::DeviceType::VoltageTransformer,
             Geraetetyp::CombinedMeasuringTransformer => {
                 bo4e_core::enums::DeviceType::CombinedMeasuringTransformer
             }
@@ -270,36 +243,19 @@ impl From<Geraetetyp> for bo4e_core::enums::DeviceType {
             }
             Geraetetyp::OtherDevice => bo4e_core::enums::DeviceType::OtherDevice,
             Geraetetyp::Edl21 => bo4e_core::enums::DeviceType::Edl21,
-            Geraetetyp::Edl40MeterAttachment => {
-                bo4e_core::enums::DeviceType::Edl40MeterAttachment
-            }
+            Geraetetyp::Edl40MeterAttachment => bo4e_core::enums::DeviceType::Edl40MeterAttachment,
             Geraetetyp::Edl40 => bo4e_core::enums::DeviceType::Edl40,
-            Geraetetyp::TelephoneConnection => {
-                bo4e_core::enums::DeviceType::TelephoneConnection
-            }
+            Geraetetyp::TelephoneConnection => bo4e_core::enums::DeviceType::TelephoneConnection,
             Geraetetyp::ModemGsm => bo4e_core::enums::DeviceType::ModemGsm,
             Geraetetyp::ModemGprs => bo4e_core::enums::DeviceType::ModemGprs,
             Geraetetyp::ModemRadio => bo4e_core::enums::DeviceType::ModemRadio,
-            Geraetetyp::ProvidedByMSB => {
-                bo4e_core::enums::DeviceType::ModemGsmWithoutLoadProfile
-            }
-            Geraetetyp::ProvidedByMSB => {
-                bo4e_core::enums::DeviceType::ModemGsmWithLoadProfile
-            }
-            Geraetetyp::ProvidedByMSB => bo4e_core::enums::DeviceType::ModemLandline,
-            Geraetetyp::ProvidedByMSB => {
-                bo4e_core::enums::DeviceType::ModemGprsWithLoadProfile
-            }
+            Geraetetyp::ProvidedByMsb => bo4e_core::enums::DeviceType::ModemGsmWithoutLoadProfile,
             Geraetetyp::Powerline => bo4e_core::enums::DeviceType::PlcCommunication,
             Geraetetyp::EthernetCommunication => {
                 bo4e_core::enums::DeviceType::EthernetCommunication
             }
-            Geraetetyp::DslCommunication => {
-                bo4e_core::enums::DeviceType::DslCommunication
-            }
-            Geraetetyp::LteCommunication => {
-                bo4e_core::enums::DeviceType::LteCommunication
-            }
+            Geraetetyp::DslCommunication => bo4e_core::enums::DeviceType::DslCommunication,
+            Geraetetyp::LteCommunication => bo4e_core::enums::DeviceType::LteCommunication,
             Geraetetyp::CompactVolumeConverter => {
                 bo4e_core::enums::DeviceType::CompactVolumeConverter
             }
@@ -309,10 +265,7 @@ impl From<Geraetetyp> for bo4e_core::enums::DeviceType {
             Geraetetyp::TemperatureVolumeConverter => {
                 bo4e_core::enums::DeviceType::TemperatureVolumeConverter
             }
-            Geraetetyp::StateVolumeConverter => {
-                bo4e_core::enums::DeviceType::StateVolumeConverter
-            }
-            _ => panic!("Unknown {} variant", stringify!(Geraetetyp)),
+            Geraetetyp::StateVolumeConverter => bo4e_core::enums::DeviceType::StateVolumeConverter,
         }
     }
 }

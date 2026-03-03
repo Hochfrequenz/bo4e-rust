@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Geschaeftspartnerrolle {
     #[serde(rename = "LIEFERANT")]
     Lieferant,
@@ -16,16 +17,13 @@ pub enum Geschaeftspartnerrolle {
 }
 impl From<bo4e_core::enums::BusinessPartnerRole> for Geschaeftspartnerrolle {
     fn from(v: bo4e_core::enums::BusinessPartnerRole) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
-            bo4e_core::enums::BusinessPartnerRole::Supplier => {
-                Geschaeftspartnerrolle::Lieferant
-            }
+            bo4e_core::enums::BusinessPartnerRole::Supplier => Geschaeftspartnerrolle::Lieferant,
             bo4e_core::enums::BusinessPartnerRole::ServiceProvider => {
                 Geschaeftspartnerrolle::Dienstleister
             }
-            bo4e_core::enums::BusinessPartnerRole::Customer => {
-                Geschaeftspartnerrolle::Kunde
-            }
+            bo4e_core::enums::BusinessPartnerRole::Customer => Geschaeftspartnerrolle::Kunde,
             bo4e_core::enums::BusinessPartnerRole::InterestedParty => {
                 Geschaeftspartnerrolle::Interessent
             }
@@ -41,16 +39,13 @@ impl From<bo4e_core::enums::BusinessPartnerRole> for Geschaeftspartnerrolle {
 }
 impl From<Geschaeftspartnerrolle> for bo4e_core::enums::BusinessPartnerRole {
     fn from(v: Geschaeftspartnerrolle) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
-            Geschaeftspartnerrolle::Lieferant => {
-                bo4e_core::enums::BusinessPartnerRole::Supplier
-            }
+            Geschaeftspartnerrolle::Lieferant => bo4e_core::enums::BusinessPartnerRole::Supplier,
             Geschaeftspartnerrolle::Dienstleister => {
                 bo4e_core::enums::BusinessPartnerRole::ServiceProvider
             }
-            Geschaeftspartnerrolle::Kunde => {
-                bo4e_core::enums::BusinessPartnerRole::Customer
-            }
+            Geschaeftspartnerrolle::Kunde => bo4e_core::enums::BusinessPartnerRole::Customer,
             Geschaeftspartnerrolle::Interessent => {
                 bo4e_core::enums::BusinessPartnerRole::InterestedParty
             }
@@ -60,7 +55,6 @@ impl From<Geschaeftspartnerrolle> for bo4e_core::enums::BusinessPartnerRole {
             Geschaeftspartnerrolle::Netzbetreiber => {
                 bo4e_core::enums::BusinessPartnerRole::NetworkOperator
             }
-            _ => panic!("Unknown {} variant", stringify!(Geschaeftspartnerrolle)),
         }
     }
 }

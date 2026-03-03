@@ -4,12 +4,15 @@ pub struct Abrechnungsperiodendaten {
     #[serde(flatten)]
     pub meta: bo4e_core::Bo4eMeta,
     #[serde(skip_serializing_if = "Option::is_none", alias = "periodStart")]
-    pub abrechnungsbeginn: Option<NaiveDate>,
+    pub abrechnungsbeginn: Option<chrono::NaiveDate>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "periodEnd")]
-    pub abrechnungsende: Option<NaiveDate>,
+    pub abrechnungsende: Option<chrono::NaiveDate>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "startReading")]
     pub anfangsstand: Option<f64>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "startReadingTimestamp")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "startReadingTimestamp"
+    )]
     pub anfangsablesung: Option<chrono::DateTime<chrono::Utc>>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "endReading")]
     pub endstand: Option<f64>,

@@ -23,9 +23,15 @@ pub struct Marktlokation {
     pub netzbetreiber_codenummer: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "basicSupplierCode")]
     pub grundversorger_codenummer: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "meteringOperatorCode")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "meteringOperatorCode"
+    )]
     pub messstellenbetreiber_codenummer: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "transmissionOperatorCode")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "transmissionOperatorCode"
+    )]
     pub uebertragungsnetzbetreiber_codenummer: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "gridLevel")]
     pub netzebene: Option<String>,
@@ -39,7 +45,10 @@ pub struct Marktlokation {
         alias = "meteringLocationIds"
     )]
     pub messlokations_ids: Vec<String>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "isControllableResource")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "isControllableResource"
+    )]
     pub ist_steuerbare_ressource: Option<bool>,
 }
 impl From<bo4e_core::bo::MarketLocation> for Marktlokation {

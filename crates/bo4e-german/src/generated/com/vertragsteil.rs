@@ -11,9 +11,15 @@ pub struct Vertragsteil {
     pub lokation: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "fixedQuantityValue")]
     pub vertraglich_fixierte_menge: Option<f64>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "minimumQuantityValue")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "minimumQuantityValue"
+    )]
     pub minimale_abnahmemenge: Option<f64>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "maximumQuantityValue")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "maximumQuantityValue"
+    )]
     pub maximale_abnahmemenge: Option<f64>,
 }
 impl From<bo4e_core::com::ContractPart> for Vertragsteil {

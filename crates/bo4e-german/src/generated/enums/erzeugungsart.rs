@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Erzeugungsart {
     #[serde(rename = "FOSSIL")]
     Fossil,
@@ -32,6 +33,7 @@ pub enum Erzeugungsart {
 }
 impl From<bo4e_core::enums::GenerationType> for Erzeugungsart {
     fn from(v: bo4e_core::enums::GenerationType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::GenerationType::Fossil => Erzeugungsart::Fossil,
             bo4e_core::enums::GenerationType::CombinedHeatPower => {
@@ -46,19 +48,16 @@ impl From<bo4e_core::enums::GenerationType> for Erzeugungsart {
             bo4e_core::enums::GenerationType::Coal => Erzeugungsart::Coal,
             bo4e_core::enums::GenerationType::Gas => Erzeugungsart::Gas,
             bo4e_core::enums::GenerationType::Other => Erzeugungsart::Other,
-            bo4e_core::enums::GenerationType::OtherEeg => {
-                Erzeugungsart::RenewableEnergySourcesAct
-            }
+            bo4e_core::enums::GenerationType::OtherEeg => Erzeugungsart::RenewableEnergySourcesAct,
             bo4e_core::enums::GenerationType::Biogas => Erzeugungsart::Biogas,
-            bo4e_core::enums::GenerationType::ClimateNeutralGas => {
-                Erzeugungsart::ClimateNeutralGas
-            }
+            bo4e_core::enums::GenerationType::ClimateNeutralGas => Erzeugungsart::ClimateNeutralGas,
             _ => panic!("Unknown {} variant", stringify!(GenerationType)),
         }
     }
 }
 impl From<Erzeugungsart> for bo4e_core::enums::GenerationType {
     fn from(v: Erzeugungsart) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Erzeugungsart::Fossil => bo4e_core::enums::GenerationType::Fossil,
             Erzeugungsart::KraftWaermeKopplung => {
@@ -73,14 +72,9 @@ impl From<Erzeugungsart> for bo4e_core::enums::GenerationType {
             Erzeugungsart::Coal => bo4e_core::enums::GenerationType::Coal,
             Erzeugungsart::Gas => bo4e_core::enums::GenerationType::Gas,
             Erzeugungsart::Other => bo4e_core::enums::GenerationType::Other,
-            Erzeugungsart::RenewableEnergySourcesAct => {
-                bo4e_core::enums::GenerationType::OtherEeg
-            }
+            Erzeugungsart::RenewableEnergySourcesAct => bo4e_core::enums::GenerationType::OtherEeg,
             Erzeugungsart::Biogas => bo4e_core::enums::GenerationType::Biogas,
-            Erzeugungsart::ClimateNeutralGas => {
-                bo4e_core::enums::GenerationType::ClimateNeutralGas
-            }
-            _ => panic!("Unknown {} variant", stringify!(Erzeugungsart)),
+            Erzeugungsart::ClimateNeutralGas => bo4e_core::enums::GenerationType::ClimateNeutralGas,
         }
     }
 }

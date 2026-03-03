@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Tarifregionskriterium {
     #[serde(rename = "NETZ_NUMMER")]
     Netznummer,
@@ -14,6 +15,7 @@ pub enum Tarifregionskriterium {
 }
 impl From<bo4e_core::enums::TariffRegionCriterion> for Tarifregionskriterium {
     fn from(v: bo4e_core::enums::TariffRegionCriterion) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::TariffRegionCriterion::NetworkNumber => {
                 Tarifregionskriterium::Netznummer
@@ -32,6 +34,7 @@ impl From<bo4e_core::enums::TariffRegionCriterion> for Tarifregionskriterium {
 }
 impl From<Tarifregionskriterium> for bo4e_core::enums::TariffRegionCriterion {
     fn from(v: Tarifregionskriterium) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Tarifregionskriterium::Netznummer => {
                 bo4e_core::enums::TariffRegionCriterion::NetworkNumber
@@ -44,7 +47,6 @@ impl From<Tarifregionskriterium> for bo4e_core::enums::TariffRegionCriterion {
                 bo4e_core::enums::TariffRegionCriterion::BasicSupplierNumber
             }
             Tarifregionskriterium::URL => bo4e_core::enums::TariffRegionCriterion::Region,
-            _ => panic!("Unknown {} variant", stringify!(Tarifregionskriterium)),
         }
     }
 }

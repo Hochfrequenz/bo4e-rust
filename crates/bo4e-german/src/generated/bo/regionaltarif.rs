@@ -57,8 +57,16 @@ impl From<Regionaltarif> for bo4e_core::bo::RegionalTariff {
             validity_period: v.gueltigkeitszeitraum.map(Into::into),
             start_date: v.startdatum,
             end_date: v.enddatum,
-            price_tiers: v.regionale_preisstufen.into_iter().map(Into::into).collect(),
-            surcharges: v.regionale_aufschlaege.into_iter().map(Into::into).collect(),
+            price_tiers: v
+                .regionale_preisstufen
+                .into_iter()
+                .map(Into::into)
+                .collect(),
+            surcharges: v
+                .regionale_aufschlaege
+                .into_iter()
+                .map(Into::into)
+                .collect(),
         }
     }
 }

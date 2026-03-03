@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Kostenklasse {
     #[serde(rename = "FREMDKOSTEN")]
     Fremdkosten,
@@ -14,6 +15,7 @@ pub enum Kostenklasse {
 }
 impl From<bo4e_core::enums::CostClass> for Kostenklasse {
     fn from(v: bo4e_core::enums::CostClass) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::CostClass::ExternalCosts => Kostenklasse::Fremdkosten,
             bo4e_core::enums::CostClass::Procurement => Kostenklasse::Beschaffung,
@@ -28,6 +30,7 @@ impl From<bo4e_core::enums::CostClass> for Kostenklasse {
 }
 impl From<Kostenklasse> for bo4e_core::enums::CostClass {
     fn from(v: Kostenklasse) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Kostenklasse::Fremdkosten => bo4e_core::enums::CostClass::ExternalCosts,
             Kostenklasse::Beschaffung => bo4e_core::enums::CostClass::Procurement,
@@ -36,7 +39,6 @@ impl From<Kostenklasse> for bo4e_core::enums::CostClass {
             Kostenklasse::Energieversorgungskosten => {
                 bo4e_core::enums::CostClass::EnergySupplyCosts
             }
-            _ => panic!("Unknown {} variant", stringify!(Kostenklasse)),
         }
     }
 }

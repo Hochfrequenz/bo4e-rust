@@ -3,7 +3,10 @@
 pub struct Standorteigenschaften {
     #[serde(flatten)]
     pub meta: bo4e_core::Bo4eMeta,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "locationPropertiesId")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "locationPropertiesId"
+    )]
     pub standorteigenschaften_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "address")]
     pub adresse: Option<crate::Adresse>,
@@ -21,7 +24,10 @@ pub struct Standorteigenschaften {
     pub anzahl_wohneinheiten: Option<i32>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "heatingType")]
     pub heizungsart: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "energyEfficiencyClass")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "energyEfficiencyClass"
+    )]
     pub energieeffizienzklasse: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "hasSolar")]
     pub hat_solaranlage: Option<bool>,

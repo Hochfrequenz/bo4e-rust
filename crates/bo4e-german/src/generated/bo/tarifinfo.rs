@@ -61,7 +61,11 @@ impl From<Tarifinfo> for bo4e_core::bo::TariffInfo {
             available_until: v.enddatum,
             energy_mix: v.energiemix.map(Into::into),
             price_guarantee: v.preisgarantie.map(Into::into),
-            restrictions: v.tarifeinschraenkungen.into_iter().map(Into::into).collect(),
+            restrictions: v
+                .tarifeinschraenkungen
+                .into_iter()
+                .map(Into::into)
+                .collect(),
             supplier: v.anbieter.map(|b| Box::new((*b).into())),
         }
     }

@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Angebotsstatus {
     #[serde(rename = "KONZEPTION")]
     Konzeption,
@@ -22,6 +23,7 @@ pub enum Angebotsstatus {
 }
 impl From<bo4e_core::enums::OfferStatus> for Angebotsstatus {
     fn from(v: bo4e_core::enums::OfferStatus) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::OfferStatus::Concept => Angebotsstatus::Konzeption,
             bo4e_core::enums::OfferStatus::NonBinding => Angebotsstatus::Unverbindlich,
@@ -38,6 +40,7 @@ impl From<bo4e_core::enums::OfferStatus> for Angebotsstatus {
 }
 impl From<Angebotsstatus> for bo4e_core::enums::OfferStatus {
     fn from(v: Angebotsstatus) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Angebotsstatus::Konzeption => bo4e_core::enums::OfferStatus::Concept,
             Angebotsstatus::Unverbindlich => bo4e_core::enums::OfferStatus::NonBinding,
@@ -48,7 +51,6 @@ impl From<Angebotsstatus> for bo4e_core::enums::OfferStatus {
             Angebotsstatus::Nachgefasst => bo4e_core::enums::OfferStatus::FollowedUp,
             Angebotsstatus::Ausstehend => bo4e_core::enums::OfferStatus::Pending,
             Angebotsstatus::Erledigt => bo4e_core::enums::OfferStatus::Completed,
-            _ => panic!("Unknown {} variant", stringify!(Angebotsstatus)),
         }
     }
 }

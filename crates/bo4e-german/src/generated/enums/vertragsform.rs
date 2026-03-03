@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Vertragsform {
     #[serde(rename = "ONLINE")]
     Online,
@@ -10,6 +11,7 @@ pub enum Vertragsform {
 }
 impl From<bo4e_core::enums::ContractForm> for Vertragsform {
     fn from(v: bo4e_core::enums::ContractForm) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::ContractForm::Online => Vertragsform::Online,
             bo4e_core::enums::ContractForm::Direct => Vertragsform::Direct,
@@ -20,11 +22,11 @@ impl From<bo4e_core::enums::ContractForm> for Vertragsform {
 }
 impl From<Vertragsform> for bo4e_core::enums::ContractForm {
     fn from(v: Vertragsform) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Vertragsform::Online => bo4e_core::enums::ContractForm::Online,
             Vertragsform::Direct => bo4e_core::enums::ContractForm::Direct,
             Vertragsform::Fax => bo4e_core::enums::ContractForm::Fax,
-            _ => panic!("Unknown {} variant", stringify!(Vertragsform)),
         }
     }
 }

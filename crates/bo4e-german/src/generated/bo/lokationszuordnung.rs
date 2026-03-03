@@ -11,7 +11,10 @@ pub struct Lokationszuordnung {
     pub netzlokations_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "technicalResourceId")]
     pub technische_ressource_id: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "controllableResourceId")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "controllableResourceId"
+    )]
     pub steuerbare_ressource_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "locationType")]
     pub lokationstyp: Option<crate::Lokationstyp>,

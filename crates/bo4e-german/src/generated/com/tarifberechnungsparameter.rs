@@ -9,9 +9,15 @@ pub struct Tarifberechnungsparameter {
     pub tarifzeit: Option<crate::Tarifzeit>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "isDemandBased")]
     pub ist_leistungsabhaengig: Option<bool>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "minAnnualConsumption")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "minAnnualConsumption"
+    )]
     pub mindestjahresverbrauch: Option<f64>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "maxAnnualConsumption")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "maxAnnualConsumption"
+    )]
     pub hoechstjahresverbrauch: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "description")]
     pub beschreibung: Option<String>,

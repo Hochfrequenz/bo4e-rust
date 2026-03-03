@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Regionskriteriumtyp {
     #[serde(rename = "BUNDESLANDKENNZIFFER")]
     Bundeslandkennziffer,
@@ -28,9 +29,9 @@ pub enum Regionskriteriumtyp {
     #[serde(rename = "BILANZIERUNGS_GEBIET_NUMMER")]
     ElectricityBilanzierungsgebietsnummerGasNetzkontonummer,
     #[serde(rename = "MSB_NUMMER")]
-    MSBCodenummer,
+    MsbCodenummer,
     #[serde(rename = "MSB_NAME")]
-    MSBName,
+    MsbName,
     #[serde(rename = "VERSORGER_NUMMER")]
     LieferantenCodenummer,
     #[serde(rename = "VERSORGER_NAME")]
@@ -70,6 +71,7 @@ pub enum Regionskriteriumtyp {
 }
 impl From<bo4e_core::enums::RegionCriterionType> for Regionskriteriumtyp {
     fn from(v: bo4e_core::enums::RegionCriterionType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::RegionCriterionType::FederalStateCode => {
                 Regionskriteriumtyp::Bundeslandkennziffer
@@ -92,9 +94,7 @@ impl From<bo4e_core::enums::RegionCriterionType> for Regionskriteriumtyp {
             bo4e_core::enums::RegionCriterionType::ElectricityNetwork => {
                 Regionskriteriumtyp::NetzStrom
             }
-            bo4e_core::enums::RegionCriterionType::GasNetwork => {
-                Regionskriteriumtyp::NetzGas
-            }
+            bo4e_core::enums::RegionCriterionType::GasNetwork => Regionskriteriumtyp::NetzGas,
             bo4e_core::enums::RegionCriterionType::ElectricityNetworkOperatorNumber => {
                 Regionskriteriumtyp::NetzbetreiberCodenummerStrom
             }
@@ -111,10 +111,10 @@ impl From<bo4e_core::enums::RegionCriterionType> for Regionskriteriumtyp {
                 Regionskriteriumtyp::ElectricityBilanzierungsgebietsnummerGasNetzkontonummer
             }
             bo4e_core::enums::RegionCriterionType::MeteringServiceOperatorNumber => {
-                Regionskriteriumtyp::MSBCodenummer
+                Regionskriteriumtyp::MsbCodenummer
             }
             bo4e_core::enums::RegionCriterionType::MeteringServiceOperatorName => {
-                Regionskriteriumtyp::MSBName
+                Regionskriteriumtyp::MsbName
             }
             bo4e_core::enums::RegionCriterionType::SupplierNumber => {
                 Regionskriteriumtyp::LieferantenCodenummer
@@ -134,9 +134,7 @@ impl From<bo4e_core::enums::RegionCriterionType> for Regionskriteriumtyp {
             bo4e_core::enums::RegionCriterionType::GasBasicSupplierName => {
                 Regionskriteriumtyp::GasGrundversorgerName
             }
-            bo4e_core::enums::RegionCriterionType::DistrictName => {
-                Regionskriteriumtyp::Kreis
-            }
+            bo4e_core::enums::RegionCriterionType::DistrictName => Regionskriteriumtyp::Kreis,
             bo4e_core::enums::RegionCriterionType::DistrictCode => {
                 Regionskriteriumtyp::Kreiskennziffer
             }
@@ -146,9 +144,7 @@ impl From<bo4e_core::enums::RegionCriterionType> for Regionskriteriumtyp {
             bo4e_core::enums::RegionCriterionType::MunicipalityCode => {
                 Regionskriteriumtyp::Gemeindekennziffer
             }
-            bo4e_core::enums::RegionCriterionType::PostalCode => {
-                Regionskriteriumtyp::Postleitzahl
-            }
+            bo4e_core::enums::RegionCriterionType::PostalCode => Regionskriteriumtyp::Postleitzahl,
             bo4e_core::enums::RegionCriterionType::City => Regionskriteriumtyp::Ort,
             bo4e_core::enums::RegionCriterionType::PostalCity => {
                 Regionskriteriumtyp::PostleitzahlUndOrt
@@ -159,12 +155,8 @@ impl From<bo4e_core::enums::RegionCriterionType> for Regionskriteriumtyp {
             bo4e_core::enums::RegionCriterionType::CityPopulation => {
                 Regionskriteriumtyp::EinwohnerzahlOrt
             }
-            bo4e_core::enums::RegionCriterionType::RadiusKm => {
-                Regionskriteriumtyp::KmUmkreis
-            }
-            bo4e_core::enums::RegionCriterionType::Nationwide => {
-                Regionskriteriumtyp::Bundesweit
-            }
+            bo4e_core::enums::RegionCriterionType::RadiusKm => Regionskriteriumtyp::KmUmkreis,
+            bo4e_core::enums::RegionCriterionType::Nationwide => Regionskriteriumtyp::Bundesweit,
             bo4e_core::enums::RegionCriterionType::PostalCodeRange => {
                 Regionskriteriumtyp::Postleitzahlenbereich
             }
@@ -174,6 +166,7 @@ impl From<bo4e_core::enums::RegionCriterionType> for Regionskriteriumtyp {
 }
 impl From<Regionskriteriumtyp> for bo4e_core::enums::RegionCriterionType {
     fn from(v: Regionskriteriumtyp) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Regionskriteriumtyp::Bundeslandkennziffer => {
                 bo4e_core::enums::RegionCriterionType::FederalStateCode
@@ -196,9 +189,7 @@ impl From<Regionskriteriumtyp> for bo4e_core::enums::RegionCriterionType {
             Regionskriteriumtyp::NetzStrom => {
                 bo4e_core::enums::RegionCriterionType::ElectricityNetwork
             }
-            Regionskriteriumtyp::NetzGas => {
-                bo4e_core::enums::RegionCriterionType::GasNetwork
-            }
+            Regionskriteriumtyp::NetzGas => bo4e_core::enums::RegionCriterionType::GasNetwork,
             Regionskriteriumtyp::NetzbetreiberCodenummerStrom => {
                 bo4e_core::enums::RegionCriterionType::ElectricityNetworkOperatorNumber
             }
@@ -214,10 +205,10 @@ impl From<Regionskriteriumtyp> for bo4e_core::enums::RegionCriterionType {
             Regionskriteriumtyp::ElectricityBilanzierungsgebietsnummerGasNetzkontonummer => {
                 bo4e_core::enums::RegionCriterionType::BalancingAreaNumber
             }
-            Regionskriteriumtyp::MSBCodenummer => {
+            Regionskriteriumtyp::MsbCodenummer => {
                 bo4e_core::enums::RegionCriterionType::MeteringServiceOperatorNumber
             }
-            Regionskriteriumtyp::MSBName => {
+            Regionskriteriumtyp::MsbName => {
                 bo4e_core::enums::RegionCriterionType::MeteringServiceOperatorName
             }
             Regionskriteriumtyp::LieferantenCodenummer => {
@@ -238,9 +229,7 @@ impl From<Regionskriteriumtyp> for bo4e_core::enums::RegionCriterionType {
             Regionskriteriumtyp::GasGrundversorgerName => {
                 bo4e_core::enums::RegionCriterionType::GasBasicSupplierName
             }
-            Regionskriteriumtyp::Kreis => {
-                bo4e_core::enums::RegionCriterionType::DistrictName
-            }
+            Regionskriteriumtyp::Kreis => bo4e_core::enums::RegionCriterionType::DistrictName,
             Regionskriteriumtyp::Kreiskennziffer => {
                 bo4e_core::enums::RegionCriterionType::DistrictCode
             }
@@ -250,9 +239,7 @@ impl From<Regionskriteriumtyp> for bo4e_core::enums::RegionCriterionType {
             Regionskriteriumtyp::Gemeindekennziffer => {
                 bo4e_core::enums::RegionCriterionType::MunicipalityCode
             }
-            Regionskriteriumtyp::Postleitzahl => {
-                bo4e_core::enums::RegionCriterionType::PostalCode
-            }
+            Regionskriteriumtyp::Postleitzahl => bo4e_core::enums::RegionCriterionType::PostalCode,
             Regionskriteriumtyp::Ort => bo4e_core::enums::RegionCriterionType::City,
             Regionskriteriumtyp::PostleitzahlUndOrt => {
                 bo4e_core::enums::RegionCriterionType::PostalCity
@@ -263,16 +250,11 @@ impl From<Regionskriteriumtyp> for bo4e_core::enums::RegionCriterionType {
             Regionskriteriumtyp::EinwohnerzahlOrt => {
                 bo4e_core::enums::RegionCriterionType::CityPopulation
             }
-            Regionskriteriumtyp::KmUmkreis => {
-                bo4e_core::enums::RegionCriterionType::RadiusKm
-            }
-            Regionskriteriumtyp::Bundesweit => {
-                bo4e_core::enums::RegionCriterionType::Nationwide
-            }
+            Regionskriteriumtyp::KmUmkreis => bo4e_core::enums::RegionCriterionType::RadiusKm,
+            Regionskriteriumtyp::Bundesweit => bo4e_core::enums::RegionCriterionType::Nationwide,
             Regionskriteriumtyp::Postleitzahlenbereich => {
                 bo4e_core::enums::RegionCriterionType::PostalCodeRange
             }
-            _ => panic!("Unknown {} variant", stringify!(Regionskriteriumtyp)),
         }
     }
 }

@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Netzebene {
     #[serde(rename = "NSP")]
     LowVoltage,
@@ -24,13 +25,12 @@ pub enum Netzebene {
 }
 impl From<bo4e_core::enums::NetworkLevel> for Netzebene {
     fn from(v: bo4e_core::enums::NetworkLevel) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::NetworkLevel::LowVoltage => Netzebene::LowVoltage,
             bo4e_core::enums::NetworkLevel::MediumVoltage => Netzebene::MediumVoltage,
             bo4e_core::enums::NetworkLevel::HighVoltage => Netzebene::HighVoltage,
-            bo4e_core::enums::NetworkLevel::ExtraHighVoltage => {
-                Netzebene::ExtraHighVoltage
-            }
+            bo4e_core::enums::NetworkLevel::ExtraHighVoltage => Netzebene::ExtraHighVoltage,
             bo4e_core::enums::NetworkLevel::MediumLowVoltageTransformation => {
                 Netzebene::MediumLowVoltageTransformation
             }
@@ -49,13 +49,12 @@ impl From<bo4e_core::enums::NetworkLevel> for Netzebene {
 }
 impl From<Netzebene> for bo4e_core::enums::NetworkLevel {
     fn from(v: Netzebene) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Netzebene::LowVoltage => bo4e_core::enums::NetworkLevel::LowVoltage,
             Netzebene::MediumVoltage => bo4e_core::enums::NetworkLevel::MediumVoltage,
             Netzebene::HighVoltage => bo4e_core::enums::NetworkLevel::HighVoltage,
-            Netzebene::ExtraHighVoltage => {
-                bo4e_core::enums::NetworkLevel::ExtraHighVoltage
-            }
+            Netzebene::ExtraHighVoltage => bo4e_core::enums::NetworkLevel::ExtraHighVoltage,
             Netzebene::MediumLowVoltageTransformation => {
                 bo4e_core::enums::NetworkLevel::MediumLowVoltageTransformation
             }
@@ -68,7 +67,6 @@ impl From<Netzebene> for bo4e_core::enums::NetworkLevel {
             Netzebene::HighPressure => bo4e_core::enums::NetworkLevel::HighPressure,
             Netzebene::MediumPressure => bo4e_core::enums::NetworkLevel::MediumPressure,
             Netzebene::LowPressure => bo4e_core::enums::NetworkLevel::LowPressure,
-            _ => panic!("Unknown {} variant", stringify!(Netzebene)),
         }
     }
 }

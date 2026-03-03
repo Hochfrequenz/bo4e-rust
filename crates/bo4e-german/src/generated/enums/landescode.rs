@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Landescode {
     #[serde(rename = "DE")]
     Deutschland,
@@ -68,6 +69,7 @@ pub enum Landescode {
 }
 impl From<bo4e_core::enums::Country> for Landescode {
     fn from(v: bo4e_core::enums::Country) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::Country::Germany => Landescode::Deutschland,
             bo4e_core::enums::Country::Austria => Landescode::Oesterreich,
@@ -81,9 +83,7 @@ impl From<bo4e_core::enums::Country> for Landescode {
             bo4e_core::enums::Country::Denmark => Landescode::Daenemark,
             bo4e_core::enums::Country::Italy => Landescode::Italien,
             bo4e_core::enums::Country::Spain => Landescode::Spanien,
-            bo4e_core::enums::Country::UnitedKingdom => {
-                Landescode::VereinigtesKoenigreich
-            }
+            bo4e_core::enums::Country::UnitedKingdom => Landescode::VereinigtesKoenigreich,
             bo4e_core::enums::Country::Sweden => Landescode::Schweden,
             bo4e_core::enums::Country::Norway => Landescode::Norwegen,
             bo4e_core::enums::Country::Finland => Landescode::Finnland,
@@ -109,6 +109,7 @@ impl From<bo4e_core::enums::Country> for Landescode {
 }
 impl From<Landescode> for bo4e_core::enums::Country {
     fn from(v: Landescode) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Landescode::Deutschland => bo4e_core::enums::Country::Germany,
             Landescode::Oesterreich => bo4e_core::enums::Country::Austria,
@@ -122,9 +123,7 @@ impl From<Landescode> for bo4e_core::enums::Country {
             Landescode::Daenemark => bo4e_core::enums::Country::Denmark,
             Landescode::Italien => bo4e_core::enums::Country::Italy,
             Landescode::Spanien => bo4e_core::enums::Country::Spain,
-            Landescode::VereinigtesKoenigreich => {
-                bo4e_core::enums::Country::UnitedKingdom
-            }
+            Landescode::VereinigtesKoenigreich => bo4e_core::enums::Country::UnitedKingdom,
             Landescode::Schweden => bo4e_core::enums::Country::Sweden,
             Landescode::Norwegen => bo4e_core::enums::Country::Norway,
             Landescode::Finnland => bo4e_core::enums::Country::Finland,
@@ -144,7 +143,6 @@ impl From<Landescode> for bo4e_core::enums::Country {
             Landescode::Malta => bo4e_core::enums::Country::Malta,
             Landescode::Liechtenstein => bo4e_core::enums::Country::Liechtenstein,
             Landescode::Island => bo4e_core::enums::Country::Iceland,
-            _ => panic!("Unknown {} variant", stringify!(Landescode)),
         }
     }
 }

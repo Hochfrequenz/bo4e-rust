@@ -11,7 +11,10 @@ pub struct Messlokation {
     pub adresse: Option<crate::Adresse>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "coordinates")]
     pub geokoordinaten: Option<crate::Geokoordinaten>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "meteringOperatorCode")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        alias = "meteringOperatorCode"
+    )]
     pub messstellenbetreiber_codenummer: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "networkOperatorCode")]
     pub netzbetreiber_codenummer: Option<String>,
@@ -23,7 +26,11 @@ pub struct Messlokation {
     pub geraete: Vec<crate::Hardware>,
     #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "meterIds")]
     pub zaehler: Vec<String>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "marketLocationIds")]
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        alias = "marketLocationIds"
+    )]
     pub marktlokationen: Vec<String>,
 }
 impl From<bo4e_core::bo::MeteringLocation> for Messlokation {

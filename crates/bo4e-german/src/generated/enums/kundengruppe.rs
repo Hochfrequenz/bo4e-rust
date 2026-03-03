@@ -1,8 +1,9 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Kundengruppe {
     #[serde(rename = "RLM")]
-    NoSLP,
+    NoSlp,
     #[serde(rename = "RLM_KOMMUNAL")]
     RlmMunicipal,
     #[serde(rename = "SLP_KOMMUNAL")]
@@ -40,7 +41,7 @@ pub enum Kundengruppe {
     #[serde(rename = "SLP_S_EM")]
     EM,
     #[serde(rename = "SLP_S_HZ_GEM")]
-    HZ_GEM,
+    HzGem,
     #[serde(rename = "SLP_G_GKO")]
     SlpGasGko,
     #[serde(rename = "SLP_G_STANDARD")]
@@ -74,8 +75,9 @@ pub enum Kundengruppe {
 }
 impl From<bo4e_core::enums::CustomerGroup> for Kundengruppe {
     fn from(v: bo4e_core::enums::CustomerGroup) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
-            bo4e_core::enums::CustomerGroup::Rlm => Kundengruppe::NoSLP,
+            bo4e_core::enums::CustomerGroup::Rlm => Kundengruppe::NoSlp,
             bo4e_core::enums::CustomerGroup::RlmMunicipal => Kundengruppe::RlmMunicipal,
             bo4e_core::enums::CustomerGroup::SlpMunicipal => Kundengruppe::SlpMunicipal,
             bo4e_core::enums::CustomerGroup::SlpElectricityG0 => Kundengruppe::G0,
@@ -94,11 +96,9 @@ impl From<bo4e_core::enums::CustomerGroup> for Kundengruppe {
             bo4e_core::enums::CustomerGroup::SlpElectricityHz => Kundengruppe::HZ,
             bo4e_core::enums::CustomerGroup::SlpElectricityWp => Kundengruppe::WP,
             bo4e_core::enums::CustomerGroup::SlpElectricityEm => Kundengruppe::EM,
-            bo4e_core::enums::CustomerGroup::SlpElectricityHzGem => Kundengruppe::HZ_GEM,
+            bo4e_core::enums::CustomerGroup::SlpElectricityHzGem => Kundengruppe::HzGem,
             bo4e_core::enums::CustomerGroup::SlpGasGko => Kundengruppe::SlpGasGko,
-            bo4e_core::enums::CustomerGroup::SlpGasStandard => {
-                Kundengruppe::SlpGasStandard
-            }
+            bo4e_core::enums::CustomerGroup::SlpGasStandard => Kundengruppe::SlpGasStandard,
             bo4e_core::enums::CustomerGroup::SlpGasGha => Kundengruppe::SlpGasGha,
             bo4e_core::enums::CustomerGroup::SlpGasGmk => Kundengruppe::SlpGasGmk,
             bo4e_core::enums::CustomerGroup::SlpGasGbd => Kundengruppe::SlpGasGbd,
@@ -118,8 +118,9 @@ impl From<bo4e_core::enums::CustomerGroup> for Kundengruppe {
 }
 impl From<Kundengruppe> for bo4e_core::enums::CustomerGroup {
     fn from(v: Kundengruppe) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
-            Kundengruppe::NoSLP => bo4e_core::enums::CustomerGroup::Rlm,
+            Kundengruppe::NoSlp => bo4e_core::enums::CustomerGroup::Rlm,
             Kundengruppe::RlmMunicipal => bo4e_core::enums::CustomerGroup::RlmMunicipal,
             Kundengruppe::SlpMunicipal => bo4e_core::enums::CustomerGroup::SlpMunicipal,
             Kundengruppe::G0 => bo4e_core::enums::CustomerGroup::SlpElectricityG0,
@@ -138,11 +139,9 @@ impl From<Kundengruppe> for bo4e_core::enums::CustomerGroup {
             Kundengruppe::HZ => bo4e_core::enums::CustomerGroup::SlpElectricityHz,
             Kundengruppe::WP => bo4e_core::enums::CustomerGroup::SlpElectricityWp,
             Kundengruppe::EM => bo4e_core::enums::CustomerGroup::SlpElectricityEm,
-            Kundengruppe::HZ_GEM => bo4e_core::enums::CustomerGroup::SlpElectricityHzGem,
+            Kundengruppe::HzGem => bo4e_core::enums::CustomerGroup::SlpElectricityHzGem,
             Kundengruppe::SlpGasGko => bo4e_core::enums::CustomerGroup::SlpGasGko,
-            Kundengruppe::SlpGasStandard => {
-                bo4e_core::enums::CustomerGroup::SlpGasStandard
-            }
+            Kundengruppe::SlpGasStandard => bo4e_core::enums::CustomerGroup::SlpGasStandard,
             Kundengruppe::SlpGasGha => bo4e_core::enums::CustomerGroup::SlpGasGha,
             Kundengruppe::SlpGasGmk => bo4e_core::enums::CustomerGroup::SlpGasGmk,
             Kundengruppe::SlpGasGbd => bo4e_core::enums::CustomerGroup::SlpGasGbd,
@@ -156,7 +155,6 @@ impl From<Kundengruppe> for bo4e_core::enums::CustomerGroup {
             Kundengruppe::SlpGasHef => bo4e_core::enums::CustomerGroup::SlpGasHef,
             Kundengruppe::SlpGasHmf => bo4e_core::enums::CustomerGroup::SlpGasHmf,
             Kundengruppe::SlpGasHko => bo4e_core::enums::CustomerGroup::SlpGasHko,
-            _ => panic!("Unknown {} variant", stringify!(Kundengruppe)),
         }
     }
 }

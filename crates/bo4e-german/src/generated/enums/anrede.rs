@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Anrede {
     #[serde(rename = "HERR")]
     Herr,
@@ -18,6 +19,7 @@ pub enum Anrede {
 }
 impl From<bo4e_core::enums::Salutation> for Anrede {
     fn from(v: bo4e_core::enums::Salutation) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::Salutation::Mr => Anrede::Herr,
             bo4e_core::enums::Salutation::Ms => Anrede::Frau,
@@ -25,15 +27,14 @@ impl From<bo4e_core::enums::Salutation> for Anrede {
             bo4e_core::enums::Salutation::Company => Anrede::Firma,
             bo4e_core::enums::Salutation::Family => Anrede::Familie,
             bo4e_core::enums::Salutation::HeirsCommunity => Anrede::Erbengemeinschaft,
-            bo4e_core::enums::Salutation::PropertyCommunity => {
-                Anrede::Grundstuecksgemeinschaft
-            }
+            bo4e_core::enums::Salutation::PropertyCommunity => Anrede::Grundstuecksgemeinschaft,
             _ => panic!("Unknown {} variant", stringify!(Salutation)),
         }
     }
 }
 impl From<Anrede> for bo4e_core::enums::Salutation {
     fn from(v: Anrede) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Anrede::Herr => bo4e_core::enums::Salutation::Mr,
             Anrede::Frau => bo4e_core::enums::Salutation::Ms,
@@ -41,10 +42,7 @@ impl From<Anrede> for bo4e_core::enums::Salutation {
             Anrede::Firma => bo4e_core::enums::Salutation::Company,
             Anrede::Familie => bo4e_core::enums::Salutation::Family,
             Anrede::Erbengemeinschaft => bo4e_core::enums::Salutation::HeirsCommunity,
-            Anrede::Grundstuecksgemeinschaft => {
-                bo4e_core::enums::Salutation::PropertyCommunity
-            }
-            _ => panic!("Unknown {} variant", stringify!(Anrede)),
+            Anrede::Grundstuecksgemeinschaft => bo4e_core::enums::Salutation::PropertyCommunity,
         }
     }
 }

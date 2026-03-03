@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Themengebiet {
     #[serde(rename = "ALLGEMEINER_INFORMATIONSAUSTAUSCH")]
     AllgemeinerInformationsaustausch,
@@ -24,7 +25,7 @@ pub enum Themengebiet {
     #[serde(rename = "DEMAND_SIDE_MANAGEMENT")]
     DemandSideManagement,
     #[serde(rename = "EDI_VEREINBARUNG")]
-    EDIVereinbarung,
+    EdiVereinbarung,
     #[serde(rename = "EDIFACT")]
     Edifact,
     #[serde(rename = "ENERGIEDATENMANAGEMENT")]
@@ -66,7 +67,7 @@ pub enum Themengebiet {
     #[serde(rename = "KLAERFAELLE")]
     KlRfLle,
     #[serde(rename = "LASTGAENGE_RLM")]
-    LastgNgeRLM,
+    LastgNgeRlm,
     #[serde(rename = "LIEFERANTENRAHMENVERTRAG")]
     Lieferantenrahmenvertrag,
     #[serde(rename = "LIEFERANTENWECHSEL")]
@@ -104,7 +105,7 @@ pub enum Themengebiet {
     #[serde(rename = "TECHNISCHE_FRAGEN")]
     TechnischeFragen,
     #[serde(rename = "UMSTELLUNG_INVOIC")]
-    UmstellungINVOIC,
+    UmstellungInvoic,
     #[serde(rename = "VERSCHLUESSELUNG_SIGNATUR")]
     EncryptionSignature,
     #[serde(rename = "VERTRAGSMANAGEMENT")]
@@ -114,7 +115,7 @@ pub enum Themengebiet {
     #[serde(rename = "WIM")]
     WechselprozesseImMesswesen,
     #[serde(rename = "ZAEHLERSTAENDE_SLP")]
-    ZHlerstNdeSLP,
+    ZHlerstNdeSlp,
     #[serde(rename = "ZAHLUNGSVERKEHR")]
     Zahlungsverkehr,
     #[serde(rename = "ZUORDNUNGSVEREINBARUNG")]
@@ -126,6 +127,7 @@ pub enum Themengebiet {
 }
 impl From<bo4e_core::enums::SubjectArea> for Themengebiet {
     fn from(v: bo4e_core::enums::SubjectArea) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::SubjectArea::GeneralInformationExchange => {
                 Themengebiet::AllgemeinerInformationsaustausch
@@ -133,12 +135,8 @@ impl From<bo4e_core::enums::SubjectArea> for Themengebiet {
             bo4e_core::enums::SubjectArea::RegistrationDeregistration => {
                 Themengebiet::AnUndAbmeldung
             }
-            bo4e_core::enums::SubjectArea::GeneralContact => {
-                Themengebiet::AnsprechpartnerAllgemein
-            }
-            bo4e_core::enums::SubjectArea::BdewDvgwContact => {
-                Themengebiet::BdewDvgwContact
-            }
+            bo4e_core::enums::SubjectArea::GeneralContact => Themengebiet::AnsprechpartnerAllgemein,
+            bo4e_core::enums::SubjectArea::BdewDvgwContact => Themengebiet::BdewDvgwContact,
             bo4e_core::enums::SubjectArea::ItTechContact => Themengebiet::ItTechContact,
             bo4e_core::enums::SubjectArea::Balancing => Themengebiet::Bilanzierung,
             bo4e_core::enums::SubjectArea::BalancingAreaCoordinator => {
@@ -150,20 +148,16 @@ impl From<bo4e_core::enums::SubjectArea> for Themengebiet {
             bo4e_core::enums::SubjectArea::DataFormatsCertificatesEncryption => {
                 Themengebiet::DatenformateZertifikateVerschlSselungen
             }
-            bo4e_core::enums::SubjectArea::DebtorManagement => {
-                Themengebiet::Debitorenmanagement
-            }
+            bo4e_core::enums::SubjectArea::DebtorManagement => Themengebiet::Debitorenmanagement,
             bo4e_core::enums::SubjectArea::DemandSideManagement => {
                 Themengebiet::DemandSideManagement
             }
-            bo4e_core::enums::SubjectArea::EdiAgreement => Themengebiet::EDIVereinbarung,
+            bo4e_core::enums::SubjectArea::EdiAgreement => Themengebiet::EdiVereinbarung,
             bo4e_core::enums::SubjectArea::Edifact => Themengebiet::Edifact,
             bo4e_core::enums::SubjectArea::EnergyDataManagement => {
                 Themengebiet::Energiedatenmanagement
             }
-            bo4e_core::enums::SubjectArea::ScheduleManagement => {
-                Themengebiet::Fahrplanmanagement
-            }
+            bo4e_core::enums::SubjectArea::ScheduleManagement => Themengebiet::Fahrplanmanagement,
             bo4e_core::enums::SubjectArea::Alocat => Themengebiet::Alocat,
             bo4e_core::enums::SubjectArea::Aperak => Themengebiet::Aperak,
             bo4e_core::enums::SubjectArea::Contrl => Themengebiet::Contrl,
@@ -181,17 +175,13 @@ impl From<bo4e_core::enums::SubjectArea> for Themengebiet {
                 Themengebiet::GeschFtsprozesseZurKundenbelieferungMitElektrizitT
             }
             bo4e_core::enums::SubjectArea::Commissioning => Themengebiet::Inbetriebnahme,
-            bo4e_core::enums::SubjectArea::CapacityManagement => {
-                Themengebiet::KapazitTsmanagement
-            }
+            bo4e_core::enums::SubjectArea::CapacityManagement => Themengebiet::KapazitTsmanagement,
             bo4e_core::enums::SubjectArea::ClarificationCases => Themengebiet::KlRfLle,
-            bo4e_core::enums::SubjectArea::LoadProfilesRlm => Themengebiet::LastgNgeRLM,
+            bo4e_core::enums::SubjectArea::LoadProfilesRlm => Themengebiet::LastgNgeRlm,
             bo4e_core::enums::SubjectArea::SupplierFrameworkContract => {
                 Themengebiet::Lieferantenrahmenvertrag
             }
-            bo4e_core::enums::SubjectArea::SupplierSwitch => {
-                Themengebiet::Lieferantenwechsel
-            }
+            bo4e_core::enums::SubjectArea::SupplierSwitch => Themengebiet::Lieferantenwechsel,
             bo4e_core::enums::SubjectArea::Mabis => {
                 Themengebiet::MarktregelnFRBilanzkreisabrechnungStrom
             }
@@ -199,18 +189,12 @@ impl From<bo4e_core::enums::SubjectArea> for Themengebiet {
             bo4e_core::enums::SubjectArea::MarketAreaResponsible => {
                 Themengebiet::Marktgebietsverantwortlicher
             }
-            bo4e_core::enums::SubjectArea::MarketCommunication => {
-                Themengebiet::Marktkommunikation
-            }
-            bo4e_core::enums::SubjectArea::MoreLessQuantities => {
-                Themengebiet::MoreLessQuantities
-            }
+            bo4e_core::enums::SubjectArea::MarketCommunication => Themengebiet::Marktkommunikation,
+            bo4e_core::enums::SubjectArea::MoreLessQuantities => Themengebiet::MoreLessQuantities,
             bo4e_core::enums::SubjectArea::MsbMdl => Themengebiet::MsbMdl,
             bo4e_core::enums::SubjectArea::NetworkBilling => Themengebiet::Netzabrechnung,
             bo4e_core::enums::SubjectArea::NetworkCharges => Themengebiet::Netzentgelte,
-            bo4e_core::enums::SubjectArea::NetworkManagement => {
-                Themengebiet::Netzmanagement
-            }
+            bo4e_core::enums::SubjectArea::NetworkManagement => Themengebiet::Netzmanagement,
             bo4e_core::enums::SubjectArea::Legal => Themengebiet::Recht,
             bo4e_core::enums::SubjectArea::RegulatoryManagement => {
                 Themengebiet::Regulierungsmanagement
@@ -221,41 +205,26 @@ impl From<bo4e_core::enums::SubjectArea> for Themengebiet {
             }
             bo4e_core::enums::SubjectArea::MasterData => Themengebiet::Stammdaten,
             bo4e_core::enums::SubjectArea::FaultCases => Themengebiet::StRungsfLle,
-            bo4e_core::enums::SubjectArea::TechnicalQuestions => {
-                Themengebiet::TechnischeFragen
-            }
-            bo4e_core::enums::SubjectArea::InvoicConversion => {
-                Themengebiet::UmstellungINVOIC
-            }
-            bo4e_core::enums::SubjectArea::EncryptionSignature => {
-                Themengebiet::EncryptionSignature
-            }
-            bo4e_core::enums::SubjectArea::ContractManagement => {
-                Themengebiet::Vertragsmanagement
-            }
+            bo4e_core::enums::SubjectArea::TechnicalQuestions => Themengebiet::TechnischeFragen,
+            bo4e_core::enums::SubjectArea::InvoicConversion => Themengebiet::UmstellungInvoic,
+            bo4e_core::enums::SubjectArea::EncryptionSignature => Themengebiet::EncryptionSignature,
+            bo4e_core::enums::SubjectArea::ContractManagement => Themengebiet::Vertragsmanagement,
             bo4e_core::enums::SubjectArea::Sales => Themengebiet::Vertrieb,
-            bo4e_core::enums::SubjectArea::Wim => {
-                Themengebiet::WechselprozesseImMesswesen
-            }
-            bo4e_core::enums::SubjectArea::MeterReadingsSlp => {
-                Themengebiet::ZHlerstNdeSLP
-            }
-            bo4e_core::enums::SubjectArea::PaymentTransactions => {
-                Themengebiet::Zahlungsverkehr
-            }
+            bo4e_core::enums::SubjectArea::Wim => Themengebiet::WechselprozesseImMesswesen,
+            bo4e_core::enums::SubjectArea::MeterReadingsSlp => Themengebiet::ZHlerstNdeSlp,
+            bo4e_core::enums::SubjectArea::PaymentTransactions => Themengebiet::Zahlungsverkehr,
             bo4e_core::enums::SubjectArea::AssignmentAgreement => {
                 Themengebiet::Zuordnungsvereinbarung
             }
             bo4e_core::enums::SubjectArea::FeedIn => Themengebiet::Einspeisung,
-            bo4e_core::enums::SubjectArea::TransactionData => {
-                Themengebiet::Bewegungsdaten
-            }
+            bo4e_core::enums::SubjectArea::TransactionData => Themengebiet::Bewegungsdaten,
             _ => panic!("Unknown {} variant", stringify!(SubjectArea)),
         }
     }
 }
 impl From<Themengebiet> for bo4e_core::enums::SubjectArea {
     fn from(v: Themengebiet) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Themengebiet::AllgemeinerInformationsaustausch => {
                 bo4e_core::enums::SubjectArea::GeneralInformationExchange
@@ -263,12 +232,8 @@ impl From<Themengebiet> for bo4e_core::enums::SubjectArea {
             Themengebiet::AnUndAbmeldung => {
                 bo4e_core::enums::SubjectArea::RegistrationDeregistration
             }
-            Themengebiet::AnsprechpartnerAllgemein => {
-                bo4e_core::enums::SubjectArea::GeneralContact
-            }
-            Themengebiet::BdewDvgwContact => {
-                bo4e_core::enums::SubjectArea::BdewDvgwContact
-            }
+            Themengebiet::AnsprechpartnerAllgemein => bo4e_core::enums::SubjectArea::GeneralContact,
+            Themengebiet::BdewDvgwContact => bo4e_core::enums::SubjectArea::BdewDvgwContact,
             Themengebiet::ItTechContact => bo4e_core::enums::SubjectArea::ItTechContact,
             Themengebiet::Bilanzierung => bo4e_core::enums::SubjectArea::Balancing,
             Themengebiet::Bilanzkreiskoordinator => {
@@ -280,20 +245,16 @@ impl From<Themengebiet> for bo4e_core::enums::SubjectArea {
             Themengebiet::DatenformateZertifikateVerschlSselungen => {
                 bo4e_core::enums::SubjectArea::DataFormatsCertificatesEncryption
             }
-            Themengebiet::Debitorenmanagement => {
-                bo4e_core::enums::SubjectArea::DebtorManagement
-            }
+            Themengebiet::Debitorenmanagement => bo4e_core::enums::SubjectArea::DebtorManagement,
             Themengebiet::DemandSideManagement => {
                 bo4e_core::enums::SubjectArea::DemandSideManagement
             }
-            Themengebiet::EDIVereinbarung => bo4e_core::enums::SubjectArea::EdiAgreement,
+            Themengebiet::EdiVereinbarung => bo4e_core::enums::SubjectArea::EdiAgreement,
             Themengebiet::Edifact => bo4e_core::enums::SubjectArea::Edifact,
             Themengebiet::Energiedatenmanagement => {
                 bo4e_core::enums::SubjectArea::EnergyDataManagement
             }
-            Themengebiet::Fahrplanmanagement => {
-                bo4e_core::enums::SubjectArea::ScheduleManagement
-            }
+            Themengebiet::Fahrplanmanagement => bo4e_core::enums::SubjectArea::ScheduleManagement,
             Themengebiet::Alocat => bo4e_core::enums::SubjectArea::Alocat,
             Themengebiet::Aperak => bo4e_core::enums::SubjectArea::Aperak,
             Themengebiet::Contrl => bo4e_core::enums::SubjectArea::Contrl,
@@ -311,17 +272,13 @@ impl From<Themengebiet> for bo4e_core::enums::SubjectArea {
                 bo4e_core::enums::SubjectArea::Gpke
             }
             Themengebiet::Inbetriebnahme => bo4e_core::enums::SubjectArea::Commissioning,
-            Themengebiet::KapazitTsmanagement => {
-                bo4e_core::enums::SubjectArea::CapacityManagement
-            }
+            Themengebiet::KapazitTsmanagement => bo4e_core::enums::SubjectArea::CapacityManagement,
             Themengebiet::KlRfLle => bo4e_core::enums::SubjectArea::ClarificationCases,
-            Themengebiet::LastgNgeRLM => bo4e_core::enums::SubjectArea::LoadProfilesRlm,
+            Themengebiet::LastgNgeRlm => bo4e_core::enums::SubjectArea::LoadProfilesRlm,
             Themengebiet::Lieferantenrahmenvertrag => {
                 bo4e_core::enums::SubjectArea::SupplierFrameworkContract
             }
-            Themengebiet::Lieferantenwechsel => {
-                bo4e_core::enums::SubjectArea::SupplierSwitch
-            }
+            Themengebiet::Lieferantenwechsel => bo4e_core::enums::SubjectArea::SupplierSwitch,
             Themengebiet::MarktregelnFRBilanzkreisabrechnungStrom => {
                 bo4e_core::enums::SubjectArea::Mabis
             }
@@ -329,18 +286,12 @@ impl From<Themengebiet> for bo4e_core::enums::SubjectArea {
             Themengebiet::Marktgebietsverantwortlicher => {
                 bo4e_core::enums::SubjectArea::MarketAreaResponsible
             }
-            Themengebiet::Marktkommunikation => {
-                bo4e_core::enums::SubjectArea::MarketCommunication
-            }
-            Themengebiet::MoreLessQuantities => {
-                bo4e_core::enums::SubjectArea::MoreLessQuantities
-            }
+            Themengebiet::Marktkommunikation => bo4e_core::enums::SubjectArea::MarketCommunication,
+            Themengebiet::MoreLessQuantities => bo4e_core::enums::SubjectArea::MoreLessQuantities,
             Themengebiet::MsbMdl => bo4e_core::enums::SubjectArea::MsbMdl,
             Themengebiet::Netzabrechnung => bo4e_core::enums::SubjectArea::NetworkBilling,
             Themengebiet::Netzentgelte => bo4e_core::enums::SubjectArea::NetworkCharges,
-            Themengebiet::Netzmanagement => {
-                bo4e_core::enums::SubjectArea::NetworkManagement
-            }
+            Themengebiet::Netzmanagement => bo4e_core::enums::SubjectArea::NetworkManagement,
             Themengebiet::Recht => bo4e_core::enums::SubjectArea::Legal,
             Themengebiet::Regulierungsmanagement => {
                 bo4e_core::enums::SubjectArea::RegulatoryManagement
@@ -351,36 +302,19 @@ impl From<Themengebiet> for bo4e_core::enums::SubjectArea {
             }
             Themengebiet::Stammdaten => bo4e_core::enums::SubjectArea::MasterData,
             Themengebiet::StRungsfLle => bo4e_core::enums::SubjectArea::FaultCases,
-            Themengebiet::TechnischeFragen => {
-                bo4e_core::enums::SubjectArea::TechnicalQuestions
-            }
-            Themengebiet::UmstellungINVOIC => {
-                bo4e_core::enums::SubjectArea::InvoicConversion
-            }
-            Themengebiet::EncryptionSignature => {
-                bo4e_core::enums::SubjectArea::EncryptionSignature
-            }
-            Themengebiet::Vertragsmanagement => {
-                bo4e_core::enums::SubjectArea::ContractManagement
-            }
+            Themengebiet::TechnischeFragen => bo4e_core::enums::SubjectArea::TechnicalQuestions,
+            Themengebiet::UmstellungInvoic => bo4e_core::enums::SubjectArea::InvoicConversion,
+            Themengebiet::EncryptionSignature => bo4e_core::enums::SubjectArea::EncryptionSignature,
+            Themengebiet::Vertragsmanagement => bo4e_core::enums::SubjectArea::ContractManagement,
             Themengebiet::Vertrieb => bo4e_core::enums::SubjectArea::Sales,
-            Themengebiet::WechselprozesseImMesswesen => {
-                bo4e_core::enums::SubjectArea::Wim
-            }
-            Themengebiet::ZHlerstNdeSLP => {
-                bo4e_core::enums::SubjectArea::MeterReadingsSlp
-            }
-            Themengebiet::Zahlungsverkehr => {
-                bo4e_core::enums::SubjectArea::PaymentTransactions
-            }
+            Themengebiet::WechselprozesseImMesswesen => bo4e_core::enums::SubjectArea::Wim,
+            Themengebiet::ZHlerstNdeSlp => bo4e_core::enums::SubjectArea::MeterReadingsSlp,
+            Themengebiet::Zahlungsverkehr => bo4e_core::enums::SubjectArea::PaymentTransactions,
             Themengebiet::Zuordnungsvereinbarung => {
                 bo4e_core::enums::SubjectArea::AssignmentAgreement
             }
             Themengebiet::Einspeisung => bo4e_core::enums::SubjectArea::FeedIn,
-            Themengebiet::Bewegungsdaten => {
-                bo4e_core::enums::SubjectArea::TransactionData
-            }
-            _ => panic!("Unknown {} variant", stringify!(Themengebiet)),
+            Themengebiet::Bewegungsdaten => bo4e_core::enums::SubjectArea::TransactionData,
         }
     }
 }

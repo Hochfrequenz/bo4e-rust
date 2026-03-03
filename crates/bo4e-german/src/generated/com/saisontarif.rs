@@ -6,9 +6,9 @@ pub struct Saisontarif {
     #[serde(skip_serializing_if = "Option::is_none", alias = "seasonName")]
     pub saisonbezeichnung: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "startDate")]
-    pub startdatum: Option<NaiveDate>,
+    pub startdatum: Option<chrono::NaiveDate>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "endDate")]
-    pub enddatum: Option<NaiveDate>,
+    pub enddatum: Option<chrono::NaiveDate>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "tariffId")]
     pub tarifkennung: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "priceFactor")]

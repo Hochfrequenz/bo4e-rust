@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Kundentyp {
     #[serde(rename = "GEWERBE")]
     Gewerbe,
@@ -14,11 +15,11 @@ pub enum Kundentyp {
     #[serde(rename = "DIREKTHEIZUNG")]
     Direktheizung,
     #[serde(rename = "GEMEINSCHAFT_MFH")]
-    GemeinschaftMFH,
+    GemeinschaftMfh,
     #[serde(rename = "KIRCHE")]
     Kirche,
     #[serde(rename = "KWK")]
-    KWKAnlagen,
+    KwkAnlagen,
     #[serde(rename = "LADESAEULE")]
     Ladesaeule,
     #[serde(rename = "BELEUCHTUNG_OEFFENTLICH")]
@@ -34,6 +35,7 @@ pub enum Kundentyp {
 }
 impl From<bo4e_core::enums::CustomerType> for Kundentyp {
     fn from(v: bo4e_core::enums::CustomerType) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::CustomerType::Commercial => Kundentyp::Gewerbe,
             bo4e_core::enums::CustomerType::Private => Kundentyp::Privat,
@@ -41,18 +43,12 @@ impl From<bo4e_core::enums::CustomerType> for Kundentyp {
             bo4e_core::enums::CustomerType::Other => Kundentyp::Sonstige,
             bo4e_core::enums::CustomerType::Household => Kundentyp::Haushalt,
             bo4e_core::enums::CustomerType::DirectHeating => Kundentyp::Direktheizung,
-            bo4e_core::enums::CustomerType::CommonFacilitiesMfh => {
-                Kundentyp::GemeinschaftMFH
-            }
+            bo4e_core::enums::CustomerType::CommonFacilitiesMfh => Kundentyp::GemeinschaftMfh,
             bo4e_core::enums::CustomerType::Church => Kundentyp::Kirche,
-            bo4e_core::enums::CustomerType::Chp => Kundentyp::KWKAnlagen,
+            bo4e_core::enums::CustomerType::Chp => Kundentyp::KwkAnlagen,
             bo4e_core::enums::CustomerType::ChargingStation => Kundentyp::Ladesaeule,
-            bo4e_core::enums::CustomerType::PublicLighting => {
-                Kundentyp::OeffentlicheBeleuchtung
-            }
-            bo4e_core::enums::CustomerType::StreetLighting => {
-                Kundentyp::Strassenbeleuchtung
-            }
+            bo4e_core::enums::CustomerType::PublicLighting => Kundentyp::OeffentlicheBeleuchtung,
+            bo4e_core::enums::CustomerType::StreetLighting => Kundentyp::Strassenbeleuchtung,
             bo4e_core::enums::CustomerType::StorageHeating => Kundentyp::Speicherheizung,
             bo4e_core::enums::CustomerType::InterruptibleDevice => {
                 Kundentyp::UnterbrechbareEinrichtung
@@ -64,6 +60,7 @@ impl From<bo4e_core::enums::CustomerType> for Kundentyp {
 }
 impl From<Kundentyp> for bo4e_core::enums::CustomerType {
     fn from(v: Kundentyp) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Kundentyp::Gewerbe => bo4e_core::enums::CustomerType::Commercial,
             Kundentyp::Privat => bo4e_core::enums::CustomerType::Private,
@@ -71,24 +68,17 @@ impl From<Kundentyp> for bo4e_core::enums::CustomerType {
             Kundentyp::Sonstige => bo4e_core::enums::CustomerType::Other,
             Kundentyp::Haushalt => bo4e_core::enums::CustomerType::Household,
             Kundentyp::Direktheizung => bo4e_core::enums::CustomerType::DirectHeating,
-            Kundentyp::GemeinschaftMFH => {
-                bo4e_core::enums::CustomerType::CommonFacilitiesMfh
-            }
+            Kundentyp::GemeinschaftMfh => bo4e_core::enums::CustomerType::CommonFacilitiesMfh,
             Kundentyp::Kirche => bo4e_core::enums::CustomerType::Church,
-            Kundentyp::KWKAnlagen => bo4e_core::enums::CustomerType::Chp,
+            Kundentyp::KwkAnlagen => bo4e_core::enums::CustomerType::Chp,
             Kundentyp::Ladesaeule => bo4e_core::enums::CustomerType::ChargingStation,
-            Kundentyp::OeffentlicheBeleuchtung => {
-                bo4e_core::enums::CustomerType::PublicLighting
-            }
-            Kundentyp::Strassenbeleuchtung => {
-                bo4e_core::enums::CustomerType::StreetLighting
-            }
+            Kundentyp::OeffentlicheBeleuchtung => bo4e_core::enums::CustomerType::PublicLighting,
+            Kundentyp::Strassenbeleuchtung => bo4e_core::enums::CustomerType::StreetLighting,
             Kundentyp::Speicherheizung => bo4e_core::enums::CustomerType::StorageHeating,
             Kundentyp::UnterbrechbareEinrichtung => {
                 bo4e_core::enums::CustomerType::InterruptibleDevice
             }
             Kundentyp::Waermepumpe => bo4e_core::enums::CustomerType::HeatPump,
-            _ => panic!("Unknown {} variant", stringify!(Kundentyp)),
         }
     }
 }

@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Oekolabel {
     #[serde(rename = "ENERGREEN")]
     Energreen,
@@ -28,16 +29,13 @@ pub enum Oekolabel {
 }
 impl From<bo4e_core::enums::EcoLabel> for Oekolabel {
     fn from(v: bo4e_core::enums::EcoLabel) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::EcoLabel::Energreen => Oekolabel::Energreen,
-            bo4e_core::enums::EcoLabel::GasgreenGruenerStrom => {
-                Oekolabel::GasgreenGruenerStrom
-            }
+            bo4e_core::enums::EcoLabel::GasgreenGruenerStrom => Oekolabel::GasgreenGruenerStrom,
             bo4e_core::enums::EcoLabel::Gasgreen => Oekolabel::Gasgreen,
             bo4e_core::enums::EcoLabel::GruenerStromGold => Oekolabel::GruenerStromGold,
-            bo4e_core::enums::EcoLabel::GruenerStromSilber => {
-                Oekolabel::GruenerStromSilber
-            }
+            bo4e_core::enums::EcoLabel::GruenerStromSilber => Oekolabel::GruenerStromSilber,
             bo4e_core::enums::EcoLabel::GruenerStrom => Oekolabel::GruenerStrom,
             bo4e_core::enums::EcoLabel::GruenesGas => Oekolabel::GruenesGas,
             bo4e_core::enums::EcoLabel::NaturwattStrom => Oekolabel::NaturwattStrom,
@@ -51,16 +49,13 @@ impl From<bo4e_core::enums::EcoLabel> for Oekolabel {
 }
 impl From<Oekolabel> for bo4e_core::enums::EcoLabel {
     fn from(v: Oekolabel) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Oekolabel::Energreen => bo4e_core::enums::EcoLabel::Energreen,
-            Oekolabel::GasgreenGruenerStrom => {
-                bo4e_core::enums::EcoLabel::GasgreenGruenerStrom
-            }
+            Oekolabel::GasgreenGruenerStrom => bo4e_core::enums::EcoLabel::GasgreenGruenerStrom,
             Oekolabel::Gasgreen => bo4e_core::enums::EcoLabel::Gasgreen,
             Oekolabel::GruenerStromGold => bo4e_core::enums::EcoLabel::GruenerStromGold,
-            Oekolabel::GruenerStromSilber => {
-                bo4e_core::enums::EcoLabel::GruenerStromSilber
-            }
+            Oekolabel::GruenerStromSilber => bo4e_core::enums::EcoLabel::GruenerStromSilber,
             Oekolabel::GruenerStrom => bo4e_core::enums::EcoLabel::GruenerStrom,
             Oekolabel::GruenesGas => bo4e_core::enums::EcoLabel::GruenesGas,
             Oekolabel::NaturwattStrom => bo4e_core::enums::EcoLabel::NaturwattStrom,
@@ -68,7 +63,6 @@ impl From<Oekolabel> for bo4e_core::enums::EcoLabel {
             Oekolabel::RenewablePlus => bo4e_core::enums::EcoLabel::RenewablePlus,
             Oekolabel::Watergreen => bo4e_core::enums::EcoLabel::Watergreen,
             Oekolabel::WatergreenPlus => bo4e_core::enums::EcoLabel::WatergreenPlus,
-            _ => panic!("Unknown {} variant", stringify!(Oekolabel)),
         }
     }
 }

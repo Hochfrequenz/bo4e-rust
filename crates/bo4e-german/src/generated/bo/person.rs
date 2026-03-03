@@ -18,10 +18,14 @@ pub struct Person {
     #[serde(skip_serializing_if = "Option::is_none", alias = "companyName")]
     pub firma: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "birthDate")]
-    pub geburtsdatum: Option<NaiveDate>,
+    pub geburtsdatum: Option<chrono::NaiveDate>,
     #[serde(skip_serializing_if = "Option::is_none", alias = "address")]
     pub adresse: Option<crate::Adresse>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "contactMethods")]
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        alias = "contactMethods"
+    )]
     pub kontaktwege: Vec<crate::Kontaktweg>,
 }
 impl From<bo4e_core::bo::Person> for Person {

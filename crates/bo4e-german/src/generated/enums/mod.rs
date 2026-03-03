@@ -218,4 +218,3 @@ pub use zahlungsweise::Zahlungsweise;
 
 mod zeiteinheit;
 pub use zeiteinheit::Zeiteinheit;
-

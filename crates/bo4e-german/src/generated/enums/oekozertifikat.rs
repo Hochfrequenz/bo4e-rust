@@ -1,5 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 #[non_exhaustive]
+#[allow(non_camel_case_types)]
 pub enum Oekozertifikat {
     #[serde(rename = "CMS_EE01")]
     CmsEe01,
@@ -38,6 +39,7 @@ pub enum Oekozertifikat {
 }
 impl From<bo4e_core::enums::EcoCertificate> for Oekozertifikat {
     fn from(v: bo4e_core::enums::EcoCertificate) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             bo4e_core::enums::EcoCertificate::CmsEe01 => Oekozertifikat::CmsEe01,
             bo4e_core::enums::EcoCertificate::CmsEe02 => Oekozertifikat::CmsEe02,
@@ -56,22 +58,17 @@ impl From<bo4e_core::enums::EcoCertificate> for Oekozertifikat {
             bo4e_core::enums::EcoCertificate::Tuev => Oekozertifikat::Tuev,
             bo4e_core::enums::EcoCertificate::TuevHessen => Oekozertifikat::TuevHessen,
             bo4e_core::enums::EcoCertificate::TuevNord => Oekozertifikat::TuevNord,
-            bo4e_core::enums::EcoCertificate::TuevRheinland => {
-                Oekozertifikat::TuevRheinland
-            }
+            bo4e_core::enums::EcoCertificate::TuevRheinland => Oekozertifikat::TuevRheinland,
             bo4e_core::enums::EcoCertificate::TuevSued => Oekozertifikat::TuevSued,
-            bo4e_core::enums::EcoCertificate::TuevSuedEe01 => {
-                Oekozertifikat::TuevSuedEe01
-            }
-            bo4e_core::enums::EcoCertificate::TuevSuedEe02 => {
-                Oekozertifikat::TuevSuedEe02
-            }
+            bo4e_core::enums::EcoCertificate::TuevSuedEe01 => Oekozertifikat::TuevSuedEe01,
+            bo4e_core::enums::EcoCertificate::TuevSuedEe02 => Oekozertifikat::TuevSuedEe02,
             _ => panic!("Unknown {} variant", stringify!(EcoCertificate)),
         }
     }
 }
 impl From<Oekozertifikat> for bo4e_core::enums::EcoCertificate {
     fn from(v: Oekozertifikat) -> Self {
+        #[allow(unreachable_patterns)]
         match v {
             Oekozertifikat::CmsEe01 => bo4e_core::enums::EcoCertificate::CmsEe01,
             Oekozertifikat::CmsEe02 => bo4e_core::enums::EcoCertificate::CmsEe02,
@@ -90,17 +87,10 @@ impl From<Oekozertifikat> for bo4e_core::enums::EcoCertificate {
             Oekozertifikat::Tuev => bo4e_core::enums::EcoCertificate::Tuev,
             Oekozertifikat::TuevHessen => bo4e_core::enums::EcoCertificate::TuevHessen,
             Oekozertifikat::TuevNord => bo4e_core::enums::EcoCertificate::TuevNord,
-            Oekozertifikat::TuevRheinland => {
-                bo4e_core::enums::EcoCertificate::TuevRheinland
-            }
+            Oekozertifikat::TuevRheinland => bo4e_core::enums::EcoCertificate::TuevRheinland,
             Oekozertifikat::TuevSued => bo4e_core::enums::EcoCertificate::TuevSued,
-            Oekozertifikat::TuevSuedEe01 => {
-                bo4e_core::enums::EcoCertificate::TuevSuedEe01
-            }
-            Oekozertifikat::TuevSuedEe02 => {
-                bo4e_core::enums::EcoCertificate::TuevSuedEe02
-            }
-            _ => panic!("Unknown {} variant", stringify!(Oekozertifikat)),
+            Oekozertifikat::TuevSuedEe01 => bo4e_core::enums::EcoCertificate::TuevSuedEe01,
+            Oekozertifikat::TuevSuedEe02 => bo4e_core::enums::EcoCertificate::TuevSuedEe02,
         }
     }
 }
