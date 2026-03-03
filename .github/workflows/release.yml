@@ -37,6 +37,14 @@ jobs:
       - name: Wait for crates.io
         run: sleep 30
 
+      - name: Publish bo4e-german
+        run: cargo publish -p bo4e-german
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ steps.crates-io-auth.outputs.token }}
+
+      - name: Wait for crates.io
+        run: sleep 30
+
       - name: Publish bo4e-serde
         run: cargo publish -p bo4e-serde
         env:
