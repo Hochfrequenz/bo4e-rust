@@ -1,0 +1,30 @@
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
+#[non_exhaustive]
+pub enum Messart {
+    #[serde(rename = "AKTUELLERWERT")]
+    AktuellerWert,
+    #[serde(rename = "MITTELWERT")]
+    Mittelwert,
+    #[serde(rename = "MAXIMALWERT")]
+    Maximalwert,
+}
+impl From<bo4e_core::enums::MeasurementType> for Messart {
+    fn from(v: bo4e_core::enums::MeasurementType) -> Self {
+        match v {
+            bo4e_core::enums::MeasurementType::CurrentValue => Messart::AktuellerWert,
+            bo4e_core::enums::MeasurementType::MeanValue => Messart::Mittelwert,
+            bo4e_core::enums::MeasurementType::MaximumValue => Messart::Maximalwert,
+            _ => panic!("Unknown {} variant", stringify!(MeasurementType)),
+        }
+    }
+}
+impl From<Messart> for bo4e_core::enums::MeasurementType {
+    fn from(v: Messart) -> Self {
+        match v {
+            Messart::AktuellerWert => bo4e_core::enums::MeasurementType::CurrentValue,
+            Messart::Mittelwert => bo4e_core::enums::MeasurementType::MeanValue,
+            Messart::Maximalwert => bo4e_core::enums::MeasurementType::MaximumValue,
+            _ => panic!("Unknown {} variant", stringify!(Messart)),
+        }
+    }
+}
